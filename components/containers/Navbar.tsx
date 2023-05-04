@@ -21,6 +21,7 @@ import {
   navigationListVariants,
 } from 'data';
 import { theme } from 'tailwind.config';
+import { getCurrentTheme } from 'utils';
 
 type Props = {
   path: string;
@@ -227,8 +228,10 @@ const MobileMenu = () => {
 };
 
 export const Navbar = () => {
+  const pathname = usePathname();
+  const { theme } = getCurrentTheme(pathname || '');
   return (
-    <nav>
+    <nav className={theme}>
       <SkipToContent id="Skip navbar">
         <div className="relative hidden h-full lg:block">
           <Menu />

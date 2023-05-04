@@ -14,10 +14,9 @@ export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
       parseFrontmatter: true,
     });
 
-    const { base64 } = await getPlaiceholder(
-      (frontmatter as unknown as PickFrontmatter<T>).image,
-      { size: 10 }
-    );
+    const { base64 } = await getPlaiceholder((frontmatter as any).image, {
+      size: 10,
+    });
 
     return {
       ...(frontmatter as unknown as PickFrontmatter<T>),
