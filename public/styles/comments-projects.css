@@ -1,0 +1,257 @@
+// DONT JUDGE THIS CODE 🙏 I KNOW IT'S TERRIBLE
+
+:selection {
+  background-color: #006644;
+  color: #fff;
+}
+
+.gsc-comment-box {
+  border-radius: 0.5rem !important;
+  border-width: 1px;
+  border-color: #2e3039 !important;
+  background-color: #1f2028;
+}
+.gsc-comment-box:not(.gsc-comment-box-is-reply) {
+  border-radius: 0.5rem !important;
+  border-width: 1px;
+  border-color: #2e3039 !important;
+  background-color: #1f2028;
+}
+.gsc-comment-box-tabs {
+  background-color: #1f2028 !important;
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+  border-width: 0 0 1px 0 !important;
+  border-color: #2e3039 !important;
+}
+.gsc-comment-box-main textarea{
+  background-color: #2e3039 !important;
+  border-radius: 0.5rem !important;
+  border-color: #2e3039 !important;
+}
+.color-bg-canvas {
+  background-color: #1f2028 !important;
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+  border-color: #2e3039 !important;
+}
+.gsc-reactions-button {
+  padding: 1rem;
+}
+.color-bg-primary {
+  background-color: #1f2028 !important;
+}
+.gsc-direct-reaction-button {
+  padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  border-color: #1f2028;
+  background-color: #2e3039;
+}
+.gsc-direct-reaction-button-emoji {
+  height: 24px;
+  width: 24px;
+}
+.gsc-upvote-button.gsc-social-reaction-summary-item {
+  padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem !important;
+}
+.gsc-upvote-button.gsc-social-reaction-summary-item .gsc-direct-reaction-button-emoji {
+  height: 20px;
+  width: 20px;
+}
+.gsc-emoji-button {
+  height: 40px;
+  width: 40px;
+  font-size: 1.1rem;
+  border-radius: 99999px;
+}
+.gsc-comment-header {
+  padding: 0.25rem 1rem;
+}
+.gsc-reply-box {
+  background-color: #1f2028;
+  border-color: #2e3039 !important;
+}
+.form-control.color-text-secondary {
+  background-color: #2e3039;
+  padding: 0.5rem 0.75rem !important; 
+  margin-left: 0.75rem !important;
+  border-radius: 0.5rem !important;
+  border-color: #2e3039 !important;
+}
+.gsc-reactions {
+  padding-bottom: 2rem;
+}
+.gsc-reactions-button {
+  border-color: #2e3039;
+  background-color: #1f2028 !important;
+}
+
+.gsc-reactions-button:hover {
+  background-color: #2e3039 !important;
+}
+
+.BtnGroup-item[aria-selected="true"] {
+  background-color: #2e3039;
+}
+.BtnGroup-item[aria-selected="false"] {
+  background-color: #1f2028;
+}
+.BtnGroup {
+  border-color: #1f2028;
+}
+.BtnGroup button {
+  padding: 0.5rem 1.5rem !important;
+}
+.BtnGroup-item:first-child:not(:only-child) {
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-color: #1f2028 !important;
+}
+.BtnGroup-item:first-child+.BtnGroup-item:last-child {
+  border-radius: 0 0.5rem 0.5rem 0;
+  border-color: #1f2028 !important;
+}
+.BtnGroup-item:first-child:not(:only-child):hover {
+  background-color: #2e3039;
+}
+.BtnGroup-item:first-child+.BtnGroup-item:last-child:hover {
+  background-color: #2e3039;
+}
+.gsc-reactions-popover.open.left:before {
+  display: none;
+}
+.gsc-reactions-popover.open.left:after {
+  display: none;
+}
+.color-bg-overlay {
+  background-color: #1f2028 !important;
+}
+.gsc-reactions-popover { 
+  border-radius: 0.5rem;
+  border-color: #2e3039 !important;
+}
+.gsc-reactions-popover > div {
+  border-color: #2e3039 !important;
+}
+
+.gsc-comment-box-bottom {
+  border-radius: 0 0 0.5rem 0.5rem !important;
+  border-color: #2e3039 !important;
+}
+.gsc-comment-box.gsc-comment-box-is-reply {
+  border-radius: 0.5rem !important;
+  border-color: #2e3039 !important;
+}
+.gsc-comment-box-is-reply .gsc-comment-box-tabs {
+  border-radius: 0 !important;
+}
+.gsc-comment div {
+  border-radius: 0.5rem !important;
+  border-color: #2e3039 !important;
+}
+.gsc-comment-author > div > span {
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 9999px !important;
+  border-color: #00ffaa40 !important;
+  background-color: #00ffaa20;
+}
+.gsc-social-reaction-summary-item.has-reacted {
+  border-color: #00ffaa40 !important;
+  background-color: #00ffaa20 !important;
+}
+.gsc-social-reaction-summary-item.has-reacted:hover {
+  background-color: #00ffaa40 !important;
+}
+.form-control:focus {
+  box-shadow: 0 0 0 3px #00ffaa;
+}
+.gsc-comment-box-preview {
+  border-color: #2e3039 !important;
+}
+.gsc-reactions-popover > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.gsc-reactions-popover > div > button.has-reacted {
+  border-color: #00ffaa40;
+  background-color: #00ffaa20;
+}
+.gsc-reactions-popover {
+  width: 160px;
+}
+.btn.btn-primary {
+  background-color: #00ffaa !important;
+  color: #1f2028;
+  border-width: 0px;
+  outline-width: 0px;
+  font-weight: 700;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 1.5rem !important;
+  margin-left: 0.5rem !important;
+}
+.gsc-comment-box-buttons .btn {
+  font-weight: 700;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 1.5rem !important;
+  border-color: #2e3039 !important;
+  border-width: 2px !important;
+}
+body {
+  font-size: 18px;
+}
+.gsc-comment, .gsc-comment-box {
+  font-size: 1rem !important;
+}
+
+@media (max-width: 768px) {
+  .gsc-comment-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gsc-comment-footer .gsc-comment-replies-count {
+    display: none;
+  }
+}
+
+.gsc-comment-box-markdown-hint {
+  color: rgb(156 163 175) !important;
+}
+.color-text-secondary, .link-secondary {
+  color: rgb(156 163 175) !important;
+}
+.color-text-primary, .link-primary {
+  color: #dde0e4;
+}
+.gsc-comment-box-is-reply .gsc-comment-box-markdown-hint {
+  display: none;
+}
+.gsc-comment-box-is-reply .gsc-comment-box-buttons {
+  margin-left: auto;
+}
+.gsc-upvote-button.gsc-social-reaction-summary-item {
+  background-color: #1f2028;
+  border-color: #2e3039;
+}
+*:focus-visible {
+  outline: #00ffaa solid 2px !important;
+  border-radius: 99999px;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+.gsc-comment-reactions {
+  width: 100%;
+}
+.gsc-direct-reaction-buttons {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  flex: 1;
+  padding-right: 2rem;
+}
+.gsc-comment-box-textarea-extras {
+  display: none;
+}

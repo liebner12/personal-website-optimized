@@ -1,0 +1,117 @@
+.prose {
+  max-width: 50rem;
+  font-size: 18px;
+}
+
+.prose code:not(:where([data-code-type='code-block'])) {
+  @apply rounded-md px-1 py-1 text-white;
+  background-color: hsl(var(--color-primary-dark));
+}
+
+.prose a {
+  text-decoration: none;
+}
+
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: '';
+}
+
+.prose blockquote {
+  border-style: solid;
+  border-width: 0 0 0 0.25rem;
+  border-image: linear-gradient(
+      to top,
+      hsl(var(--color-primary)),
+      hsl(var(--color-primary-light))
+    )
+    1;
+}
+
+.prose hr {
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-image: linear-gradient(
+      to right,
+      hsl(var(--color-primary)),
+      hsl(var(--color-primary-light))
+    )
+    1;
+}
+
+.prose > ol > li > :last-child,
+.prose > ul > li > :last-child {
+  margin-bottom: 0;
+}
+.prose > ol > li > :first-child,
+.prose > ul > li > :first-child {
+  margin-top: 0;
+}
+
+.mdx.prose :where(h1, h2, h3, h4) {
+  scroll-margin-top: 100px;
+  position: relative;
+  display: block;
+  margin-right: 0.5rem;
+  width: fit-content;
+}
+
+.mdx.prose :where(h1, h2, h3, h4) > a {
+  border-bottom: none;
+}
+
+.mdx.prose.projects blockquote {
+  font-style: normal;
+}
+.mdx.prose.projects blockquote:first-of-type h2 {
+  margin-top: 1rem;
+}
+.mdx.prose.projects blockquote.with-icons h2 {
+  margin-bottom: 0;
+}
+
+.hash-anchor {
+  @apply absolute inset-y-0 w-full text-primary-main focus:outline-none;
+  &:focus,
+  &:hover {
+    &:after {
+      @apply invisible absolute -right-5 top-1/2 -translate-y-1/2 text-lg text-primary-main;
+      content: '#';
+    }
+    background-repeat: no-repeat;
+    background-image: linear-gradient(
+      to right,
+      hsl(var(--color-primary)),
+      hsl(var(--color-primary-light))
+    );
+    background-size: 100% 2px;
+    background-position: bottom;
+  }
+}
+
+.hash-anchor:hover:after,
+.hash-anchor:focus:after {
+  visibility: visible;
+}
+
+.hash-anchor:after {
+  @apply invisible absolute -right-5 top-1/2 -translate-y-1/2 text-lg text-primary-main;
+  content: '#';
+}
+
+pre {
+  position: relative;
+}
+
+.mdx.prose a {
+  @apply italic text-primary-main underline underline-offset-2;
+}
+
+.grid-cols-figure-reset figure {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.prose p em {
+  @apply font-bold text-white;
+}

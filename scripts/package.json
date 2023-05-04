@@ -1,0 +1,17 @@
+{
+  "name": "webp-optimizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.31.1"
+  },
+  "scripts": {
+    "convert": "node ./convert.js",
+    "resize": "node ./resize.js",
+    "convert:public": "node ./convertProduction.js"
+  }
+}
