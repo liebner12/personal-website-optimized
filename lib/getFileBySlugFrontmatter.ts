@@ -34,7 +34,7 @@ export async function getFileBySlugFrontmatter<T extends ContentType>(
   });
 
   const { base64 } = await getPlaiceholder(
-    (mdxSource.frontmatter as unknown as PickFrontmatter<T>).image,
+    (mdxSource.frontmatter as any).image,
     { size: 10 }
   );
 
