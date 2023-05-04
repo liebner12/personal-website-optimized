@@ -1,3 +1,4 @@
+'use client';
 import { FiGithub, FiLinkedin, FiMail, FiTwitter } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { Container, ContactButton, Seo, Heading } from 'components';

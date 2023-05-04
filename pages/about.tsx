@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { motion } from 'framer-motion';

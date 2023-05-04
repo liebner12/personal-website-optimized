@@ -1,3 +1,4 @@
+'use client';
 import { motion } from 'framer-motion';
 import { FiExternalLink } from 'react-icons/fi';
 import {
