@@ -63,7 +63,7 @@ export default async function Page({
           </div>
         </div>
       </Container>
-      <PostFooter title={'title'} type="projects" />
+      <PostFooter title={title} type="projects" />
     </div>
   );
 }

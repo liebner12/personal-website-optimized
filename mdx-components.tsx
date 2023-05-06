@@ -1,5 +1,4 @@
 import type { MDXComponents } from 'mdx/types';
-import { CloudinaryImage } from 'components/post/CloudinaryImage';
 import { CustomCode } from 'components/post/CustomCode';
 import { CustomImage } from 'components/post/CustomImage';
 import { GridCols } from 'components/post/GridCols';
@@ -17,7 +16,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // h1: ({ children }) => <h1 style={{ fontSize: "100px" }}>{children}</h1>,
     ...components,
     CustomImage,
-    CloudinaryImage,
     Icons,
     code: (props) => <CustomCode {...props} />,
     GridCols,
