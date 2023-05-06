@@ -8,9 +8,9 @@ import { getMarkdownFiles } from 'lib/getMarkdownFiles';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 
 export async function generateStaticParams() {
-  return getMarkdownFiles('projects').map((file) =>
-    file.split('.').slice(0, -1).join('')
-  );
+  return getMarkdownFiles('projects').map((file) => ({
+    slug: file.split('.').slice(0, -1).join(''),
+  }));
 }
 
 export default async function Page({
