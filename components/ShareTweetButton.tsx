@@ -1,5 +1,5 @@
+'use client';
 import clsx from 'clsx';
-import * as React from 'react';
 import { SiTwitter } from 'react-icons/si';
 import { Button, ButtonProps } from './Button';
 

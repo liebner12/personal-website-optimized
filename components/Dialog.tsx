@@ -1,7 +1,7 @@
 'use client';
 import { ReactNode, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FADE_IN_VIEW } from 'data';
+import { FADE_IN_VIEW } from 'data/constants';
 
 export function Dialog({
   children,

@@ -1,49 +1,37 @@
-'use client';
 import { FaGithub, FaRegComments } from 'react-icons/fa';
-import { MdCalendarToday, MdRemoveRedEye, MdTimer } from 'react-icons/md';
-import { motion } from 'framer-motion';
+import { MdCalendarToday, MdTimer } from 'react-icons/md';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import clsx from 'clsx';
-import { useContext } from 'react';
-import {
-  FADE_IN_FIRST,
-  FADE_IN_SECOND,
-  FADE_IN_X,
-  ReactionsKeys,
-  REACTIONS_LIST_SM,
-  REACTIONS_PRIORITIES,
-} from 'data';
-import { BlogFrontmatter, ProjectFrontmatter } from 'types';
-import { Button, BackButton, PostContext } from 'components';
+import { ProjectFrontmatter, BlogFrontmatter } from 'types/frontmatters';
 import { Tooltip } from 'components/Tooltip';
-import { Reaction } from 'lib';
+import { BackButton } from 'components/BackButton';
+import { Button } from 'components/Button';
+import { ReactionsList } from 'components/ReactionsList';
+import { PostViews } from 'components/PostViews';
 
 export type PostHeader = Partial<
-  Pick<BlogFrontmatter, 'title' | 'readingTime' | 'publishedAt'> &
+  Pick<BlogFrontmatter, 'title' | 'publishedAt' | 'readingTime'> &
     Pick<ProjectFrontmatter, 'title' | 'repository' | 'url' | 'publishedAt'>
 > & {
   image: string;
-  blurDataURL: string;
   href: string;
+  blurDataURL?: string;
 };
 
 export function PostHeader({
   title,
   publishedAt,
   repository,
-  readingTime,
   url,
-  blurDataURL,
   image,
+  readingTime,
+  blurDataURL,
   href,
 }: PostHeader) {
-  const { reactions, views, isLoading } = useContext(PostContext);
-
   return (
-    <>
-      <motion.div className="mb-8" {...FADE_IN_FIRST}>
+    <div className="col-start-1 row-start-1">
+      <div className=" mb-8">
         <BackButton href={href} />
         <h1 className="text-4xl font-bold text-white">{title}</h1>
         <div className="mt-3 flex flex-wrap items-center gap-2 text-base font-semibold text-slate-200">
@@ -65,31 +53,7 @@ export function PostHeader({
             </>
           )}
         </div>
-        {isLoading && (
-          <div className="mt-4 h-6 w-80 animate-pulse rounded-full bg-grey-800" />
-        )}
-        {reactions && (
-          <ul className="mt-4 flex flex-wrap gap-6d lg:gap-8">
-            {(Object.entries(reactions) as [ReactionsKeys, Reaction][])
-              .filter(([, { count }]) => count)
-              .sort(
-                ([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b]
-              )
-              .map(([key, reaction]) => (
-                <Tooltip content={key} key={key} size="sm" tabIndex={-1}>
-                  <div className="flex cursor-default items-center gap-0.5 text-2xld">
-                    <Image
-                      src={REACTIONS_LIST_SM[key]}
-                      alt={key}
-                      width={32}
-                      height={32}
-                    />
-                    <span className="text-lg text-white">{reaction.count}</span>
-                  </div>
-                </Tooltip>
-              ))}
-          </ul>
-        )}
+        <ReactionsList />
         {(url || repository) && (
           <ul className="mt-6 flex items-center gap-4">
             {url && (
@@ -122,21 +86,9 @@ export function PostHeader({
             </Tooltip>
           </ul>
         )}
-      </motion.div>
-      <motion.div {...FADE_IN_SECOND} className="relative">
-        <motion.div
-          {...FADE_IN_X}
-          className={clsx(
-            'absolute top-2 right-2 flex h-8 items-center gap-2 rounded-full bg-blured py-1.5 px-4 font-semibold text-white backdrop-blur md:top-4 md:right-4',
-            { 'animate-pulse': isLoading }
-          )}
-        >
-          {views && (
-            <>
-              <MdRemoveRedEye className="text-primary-main" /> {views} views
-            </>
-          )}
-        </motion.div>
+      </div>
+      <div className="relative">
+        <PostViews />
         <Image
           placeholder="blur"
           blurDataURL={blurDataURL}
@@ -147,7 +99,7 @@ export function PostHeader({
           className="max-w-full rounded-lg"
           loading="eager"
         />
-      </motion.div>
-    </>
+      </div>
+    </div>
   );
 }

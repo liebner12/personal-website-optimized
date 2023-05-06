@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Navbar } from './Navbar';
+import { Footer } from './Footer';
 import { Background } from 'components/Background';
 type Props = {
   children: ReactNode;
@@ -14,7 +15,9 @@ export const Layout = ({ children }: Props) => {
         {children}
       </div>
       <div className="flex w-full border-t-2 border-grey-900">
-        <div className="mx-auto max-w-screen-lg"></div>
+        <div className="mx-auto max-w-screen-lg">
+          <Footer />
+        </div>
       </div>
     </div>
   );

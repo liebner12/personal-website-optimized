@@ -2,14 +2,13 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import clsx from 'clsx';
-import useSWR from 'swr';
+import { ArrowLink } from 'components/ArrowLink';
 import {
   FADE_IN_VIEW,
   navigationItemVariants,
   navigationListVariants,
-} from 'data';
-import { ArrowLink, StyledLink } from 'components';
-import { usePushView } from 'hooks';
+} from 'data/constants';
+import { StyledLink } from 'components/StyledLink';
 
 type Props = {
   path?: string;
@@ -57,8 +56,6 @@ const FooterItem = ({ path, text, target, as, children }: Props) => {
 };
 
 export const Footer = () => {
-  const { data, isLoading } = useSWR(`/api/posts/total`);
-  usePushView('total');
   return (
     <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-16">
       <motion.div
@@ -133,18 +130,18 @@ export const Footer = () => {
           {...FADE_IN_VIEW}
           className={clsx(
             'flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 px-5 py-2 text-grey-400',
-            { 'animate-pulse text-transparent': isLoading }
+            { 'animate-pulse text-transparent': false }
           )}
         >
           <span
             className={clsx('relative grid h-3 w-3 place-items-center', {
-              'opacity-0': isLoading,
+              'opacity-0': false,
             })}
           >
             <span className="absolute left-0 top-0 inline-flex h-full w-full animate-ping rounded-full bg-primary-main opacity-75"></span>
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-main"></span>
           </span>
-          {data?.post?.count} total views count
+          0 total views count
         </motion.div>
         <div className="text-grey-300 sm:ml-auto">
           All rights reserved © Michał Liebner 2023

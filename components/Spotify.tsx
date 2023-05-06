@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { BsSpotify } from 'react-icons/bs';
 import useSWR from 'swr';
 import { motion } from 'framer-motion';
-import { FADE_IN_VIEW } from 'data';
+import { FADE_IN_VIEW } from 'data/constants';
 
 const MotionLink = motion(Link);
 

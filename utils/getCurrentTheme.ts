@@ -1,4 +1,4 @@
-import { THEMES } from 'data';
+import { THEMES } from 'data/constants';
 import { theme } from 'tailwind.config';
 
 export const getCurrentTheme = (path: string) => {

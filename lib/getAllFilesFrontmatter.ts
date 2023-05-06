@@ -1,28 +1,27 @@
-import { serialize } from 'next-mdx-remote/serialize';
 import { getPlaiceholder } from 'plaiceholder';
 import readingTime from 'reading-time';
+import matter from 'gray-matter';
 import { getFileByName } from './getFile';
-import { getFiles } from './getFiles';
+import { getMarkdownFiles } from './getMarkdownFiles';
+import { getMdxContent } from './getMdxContent';
 import { ContentType, PickFrontmatter } from 'types/frontmatters';
 
 export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
-  const files = getFiles(type);
+  const files = getMarkdownFiles(type);
   const formatFiles = files.map(async (filename) => {
     const markdown = getFileByName(type, filename);
-
-    const { frontmatter, compiledSource } = await serialize(markdown, {
-      parseFrontmatter: true,
-    });
-
-    const { base64 } = await getPlaiceholder((frontmatter as any).image, {
+    const { content, data } = matter(markdown);
+    const { base64 } = await getPlaiceholder(data.image, {
       size: 10,
     });
+    const mdxContent = getMdxContent(filename.replace('.mdx', ''));
 
     return {
-      ...(frontmatter as unknown as PickFrontmatter<T>),
+      ...(data as PickFrontmatter<T>),
       slug: filename.replace('.mdx', ''),
-      readingTime: readingTime(compiledSource),
+      readingTime: readingTime(content),
       blurDataURL: base64,
+      Content: mdxContent,
     };
   });
 

@@ -13,15 +13,17 @@ import clsx from 'clsx';
 import { SiGithub } from 'react-icons/si';
 import { usePathname } from 'next/navigation';
 import { IconType } from 'react-icons/lib';
-import { Button, SkipToContent, StyledLink } from 'components';
-import { useMediaQuery } from 'hooks';
+import { getCurrentTheme } from 'utils/getCurrentTheme';
+import { useMediaQuery } from 'hooks/useMediaQuery';
 import {
   FADE_IN_X_REVERSE,
   navigationItemVariants,
   navigationListVariants,
-} from 'data';
+} from 'data/constants';
 import { theme } from 'tailwind.config';
-import { getCurrentTheme } from 'utils';
+import { StyledLink } from 'components/StyledLink';
+import { Button } from 'components/Button';
+import { SkipToContent } from 'components/SkipToContent';
 
 type Props = {
   path: string;

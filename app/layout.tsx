@@ -2,7 +2,8 @@ import 'styles/globals.scss';
 import 'styles/prose.css';
 import 'styles/prism.css';
 import { ReactNode } from 'react';
-import { Layout, Loader } from 'components';
+import { Layout } from 'components/containers/Layout';
+import { Loader } from 'components/Loader';
 
 export const metadata = {
   title: 'Home',

@@ -1,14 +1,4 @@
 import { Variants } from 'framer-motion';
-import ExplodingHead from 'assets/icons/Exploding.webp';
-import Rocket from 'assets/icons/Rocket.webp';
-import Fire from 'assets/icons/Fire.webp';
-import RedHeart from 'assets/icons/Heart.webp';
-import ThinkingFace from 'assets/icons/Thinking.webp';
-import ExplodingHeadSm from 'assets/icons/sm/Exploding.webp';
-import RocketSm from 'assets/icons/sm/Rocket.webp';
-import FireSm from 'assets/icons/sm/Fire.webp';
-import RedHeartSm from 'assets/icons/sm/Heart.webp';
-import ThinkingFaceSm from 'assets/icons/sm/Thinking.webp';
 
 export const THEMES = {
   about: 'theme-about',
@@ -102,19 +92,25 @@ export const navigationListVariants: Variants = {
 };
 
 export const REACTIONS_LIST_SM = {
-  like: RedHeartSm,
-  cool: FireSm,
-  'exploding head': ExplodingHeadSm,
-  'to the moon': RocketSm,
-  interesting: ThinkingFaceSm,
+  like: 'https://res.cloudinary.com/dtce87smh/image/upload/w_32/v1683203871/Heart_h6gbn0.webp',
+  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/w_32/v1683203871/Fire_zlazxh.webp',
+  'exploding head':
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_32/v1683203871/Exploding_xtvmud.webp',
+  'to the moon':
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_32/v1683203871/Rocket_xwtjgh.webp',
+  interesting:
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_32/v1683203871/Thinking_calccw.webp',
 };
 
 export const REACTIONS_LIST = {
-  like: RedHeart,
-  cool: Fire,
-  'exploding head': ExplodingHead,
-  'to the moon': Rocket,
-  interesting: ThinkingFace,
+  like: 'https://res.cloudinary.com/dtce87smh/image/upload/v1683203871/Heart_h6gbn0.webp',
+  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/v1683203871/Fire_zlazxh.webp',
+  'exploding head':
+    'https://res.cloudinary.com/dtce87smh/image/upload/v1683203871/Exploding_xtvmud.webp',
+  'to the moon':
+    'https://res.cloudinary.com/dtce87smh/image/upload/v1683203871/Rocket_xwtjgh.webp',
+  interesting:
+    'https://res.cloudinary.com/dtce87smh/image/upload/v1683203871/Thinking_calccw.webp',
 };
 
 export const REACTIONS_PRIORITIES = {

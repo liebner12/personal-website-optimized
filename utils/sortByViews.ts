@@ -1,4 +1,4 @@
-import { BlogFrontmatter, ProjectFrontmatter } from 'types';
+import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
 
 export const sortByViews = (
   contentA: BlogFrontmatter | ProjectFrontmatter,

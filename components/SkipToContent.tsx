@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { HOVER_SCALE } from 'data';
+import { HOVER_SCALE } from 'data/constants';
 export const SkipToContent = ({
   children,
   id,

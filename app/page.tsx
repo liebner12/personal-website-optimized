@@ -1,15 +1,13 @@
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import Image from 'next/image';
-import {
-  Container,
-  StyledLink,
-  Button,
-  ArrowLink,
-  Heading,
-  ImagesGrid,
-  CardsRange,
-} from 'components';
-import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data';
+import { Container } from 'components/containers/Container';
+import { StyledLink } from 'components/StyledLink';
+import { Button } from 'components/Button';
+import { ArrowLink } from 'components/ArrowLink';
+import { Heading } from 'components/Heading';
+import { ImagesGrid } from 'components/ImagesGrid';
+import { CardsRange } from 'components/CardsRange';
+import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data/constants';
 import Me from 'assets/images/profileSecond.webp';
 
 export default function HomePage() {

@@ -1,11 +1,10 @@
-import { StaticImageData } from 'next/image';
 import { InjectedViews, ProjectFrontmatter } from './frontmatters';
-import { IconsList } from 'components';
+import { IconsList } from 'components/Icons';
 
 export type Project = {
   slug: string;
   title: string;
-  image: string | StaticImageData;
+  image: string;
   desc: string;
   tags: Array<IconsList>;
   publishedAt: string;

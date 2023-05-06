@@ -1,6 +1,6 @@
 import { Tag } from './Tag';
-import { SkipToContent } from 'components';
-import { TagsType } from 'lib';
+import { SkipToContent } from 'components/SkipToContent';
+import { TagsType } from 'lib/getTags';
 
 export const TagsList = ({
   tags,

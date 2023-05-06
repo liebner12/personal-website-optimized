@@ -9,8 +9,8 @@ import {
   useRef,
 } from 'react';
 import useSWR from 'swr';
-import { ReactionsKeys, REACTIONS_LIST } from 'data';
-import { Reaction } from 'lib';
+import { Reaction } from 'lib/getPost';
+import { ReactionsKeys, REACTIONS_LIST } from 'data/constants';
 
 export type PostContext = {
   isLoading?: boolean;

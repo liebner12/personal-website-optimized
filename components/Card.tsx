@@ -11,10 +11,9 @@ import { MdFavorite } from 'react-icons/md';
 import { FaCommentDots } from 'react-icons/fa';
 import { AiFillEye } from 'react-icons/ai';
 import { Icons, IconsList } from './Icons';
+import { FADE_IN_VIEW, HOVER_SCALE } from 'data/constants';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
-import { FADE_IN_VIEW, HOVER_SCALE } from 'data';
-import { MappedDiscussion } from 'pages/api/github/discussions';
-import { Post } from 'lib';
+import { Post } from 'lib/getPost';
 
 type Card = Pick<ProjectFrontmatter & BlogFrontmatter, 'slug'> & {
   children: JSX.Element[] | JSX.Element;
@@ -95,19 +94,6 @@ export type CardFooter = Pick<
 };
 
 const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
-  const posts = useSWR<Record<string, Post>>(`/api/posts/${slug}`);
-  const discussions = useSWR<MappedDiscussion[]>('/api/github/discussions');
-  const isLoading = posts.isLoading || discussions.isLoading;
-  const summedReactions = useMemo(() => {
-    if (isLoading || !posts?.data?.post.reactions) return 0;
-    let sum = 0;
-    Object.values(posts.data.post.reactions).forEach((val) => {
-      sum += val;
-    });
-
-    return sum;
-  }, [isLoading, posts?.data?.post?.reactions]);
-
   return (
     <div className="mx-4 mt-auto">
       {icons && <Icons icons={icons} checkTagged={checkTagged} />}
@@ -128,33 +114,6 @@ const CardFooter = ({ icons, tags, slug, title, checkTagged }: CardFooter) => {
           ))}
         </ul>
       )}
-      <ul
-        className={clsx(
-          'mt-6 flex h-8 items-center justify-center gap-4 rounded-lg px-4 py-1.5 font-mono text-sm text-grey-300',
-          {
-            'animate-pulse bg-grey-800': isLoading || !posts?.data,
-          },
-          { 'bg-primary-dark': !isLoading || posts?.data }
-        )}
-      >
-        {!isLoading && posts?.data && (
-          <>
-            <li className="flex items-center gap-1">
-              <AiFillEye className="h-4 w-4" />
-              {posts.data.post.count}
-            </li>
-            <li className="flex items-center gap-1">
-              <FaCommentDots className="h-4 w-4" />
-              {discussions.data?.find((discussion) => {
-                return discussion.title === title;
-              })?.numberOfComments || 0}
-            </li>
-            <li className="flex items-center gap-1">
-              <MdFavorite className="h-4 w-4" /> {summedReactions}
-            </li>
-          </>
-        )}
-      </ul>
     </div>
   );
 };

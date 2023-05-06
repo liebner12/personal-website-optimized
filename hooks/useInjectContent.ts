@@ -1,10 +1,10 @@
 'use client';
 import useSWR from 'swr';
 import { useEffect, useState } from 'react';
+import { ViewCount } from 'lib/getAllPosts';
 import { BlogWithMeta } from 'types/blogs';
-import { ViewCount } from 'lib';
 import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
-import { ProjectWithMeta } from 'types';
+import { ProjectWithMeta } from 'types/projects';
 
 export function useInjectContent(
   frontmatter: Array<BlogFrontmatter & ProjectFrontmatter>

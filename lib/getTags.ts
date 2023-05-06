@@ -1,4 +1,4 @@
-import { Project } from 'types';
+import { Project } from 'types/projects';
 import { Blog } from 'types/blogs';
 
 export type TagsType = Array<string>;

@@ -1,7 +1,7 @@
 'use client';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
-import { getCurrentTheme } from 'utils';
+import { getCurrentTheme } from 'utils/getCurrentTheme';
 
 export const Background = () => {
   const pathname = usePathname();

@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { ReactionsKeys } from 'data';
+import { ReactionsKeys } from 'data/constants';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,

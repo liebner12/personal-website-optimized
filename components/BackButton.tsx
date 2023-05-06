@@ -1,8 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { ArrowLink } from './ArrowLink';
-import { FADE_IN_FIRST } from 'data';
 
 export const BackButton = ({
   text = 'Back to overview',
@@ -14,7 +12,7 @@ export const BackButton = ({
   const router = useRouter();
 
   return (
-    <motion.div className="mb-8 lg:col-span-12" {...FADE_IN_FIRST}>
+    <div className="mb-8 lg:col-span-12">
       <ArrowLink
         direction="left"
         isCircle={false}
@@ -25,6 +23,6 @@ export const BackButton = ({
       >
         {text}
       </ArrowLink>
-    </motion.div>
+    </div>
   );
 };

@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { FADE_IN_FIRST } from 'data';
+import { FADE_IN_FIRST } from 'data/constants';
 
 export const Missing = ({ color }: { color: string }) => {
   return (

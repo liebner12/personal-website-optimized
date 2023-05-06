@@ -37,7 +37,7 @@ const getVariant = (
       return '';
     }
     default: {
-      return 'bg-primary-main text-grey-900 font-bold';
+      return 'bg-primary-main font-bold';
     }
   }
 };
@@ -64,6 +64,7 @@ export const Button = ({
           `rounded-${rounded}`,
           className
         )}
+        color={variant === 'primary' ? 'text-grey-900' : undefined}
         StartIcon={StartIcon}
         EndIcon={EndIcon}
         {...props}

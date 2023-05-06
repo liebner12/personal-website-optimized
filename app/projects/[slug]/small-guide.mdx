@@ -1,0 +1,106 @@
+---
+  title: 'Small Guide'
+  image: 'https://res.cloudinary.com/dtce87smh/image/upload/v1676228382/small-guide/thumbnail_cczygh.webp'
+  desc: 'Application for creating and searching for tours with recommendations'
+  tags: ['firebase', 'nextjs', 'tailwindcss', 'algolia']
+  publishedAt: 'Tue Dec 13 2022 20:53:31 GMT+0100'
+  repository: 'https://github.com/liebner12/small-guide'
+---
+
+> ## Short Explanation
+
+This app was created as a project for studies in Wrocław University of Science and Technology. It is designed to help the end user to find trips that would contain points of intrests
+and link to quickly navigate between them. Each trip would also contain information about place, description and plans for few days. Similar trips would be also served
+to help user find quickly his destination. User could also easily save each trip and edit them.
+
+<GridCols>
+  <CloudinaryImage
+    width="400"
+    height="800"
+    src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228381/small-guide/home_k8aybg.webp"
+    alt="Home page of Small Guide"
+  />
+  <CloudinaryImage
+    width="400"
+    height="800"
+    src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228381/small-guide/process-map_kyi8jg.webp"
+    alt="Trip creator screen"
+  />
+  <CloudinaryImage
+    width="400"
+    height="800"
+    src="https://res.cloudinary.com/dtce87smh/image/upload/v1676228382/small-guide/trip_iuk3bi.webp"
+    alt="Created trip"
+  />
+</GridCols>
+
+> ## Project Goals
+
+I wanted to create full fledged service for creating, managing and searching trips with intuitive interface that would allow all this features.
+The main idea behind this project was to implement application that would integrate regression system that shows user similar trips to his/her taste so it's easier for him to navigate.
+After user authenticate, user would be able to create trips with special integration with Google Maps, that with just point and click on different locations he could add points to his trip plan
+and later after fullfilling more information, application would generate link for end user to quickly get to navigation.
+
+<CloudinaryImage
+  src="https://res.cloudinary.com/dtce87smh/image/upload/v1676484393/small-guide/mockup_cyph4k.webp"
+  height="1204"
+  width="800"
+  alt="Created trip"
+  placeholder="blur"
+/>
+
+> ## Tech Stack Used
+
+<div className="not-prose">
+  <Icons
+    icons={[
+      'firebase',
+      'nextjs',
+      'tailwindcss',
+      'algolia',
+      'framermotion',
+      'typescript',
+    ]}
+  />
+</div>
+
+This project is built with many different tools, but the core of it is _Next.js_ with _Redux Toolkit_ as a state manager. Even though most of the app is client side rendered it was still usefull in many cases to optimize performance and also
+recommendation system is created on edge functions provided by Vercel. For authorization purposes I used library _NextAuth.js_ which was really handy and with implementation of _Firebase_ in version 9
+I could implement login with Google. Firebase was used also as a database and cloud storage for images, thanks to that it was easy to setup everything. I've used client side SDK from them, but if I had more time
+I would implement it on server side to improve significantly performance with for example prebuilding with Next.js.
+
+To index all data in the database I used _Algolia_ and it was also pretty simple to setup
+with their SDK and worked really fast. When it comes to styling in this project I used propably for the first time _tailwindcss_ and it came out clutch, after learning and working with documentation
+I could create my UI really fast, and for gestures support and advanced animations, like keeping image animated between screens I used _Framer Motion_.
+
+This project is also developed with _Typescript_ language which was really helpful when it comes to developing, I've written before applications with JSDoc and it can suggest types, but it's nothing compares
+to Typescript which can do so much more when it comes to types and many other things.
+
+> ## Spotlight
+
+### Recommendation system
+
+The biggest challenge that I had to resolve was implementation of recommendation system. I've settled on _TFIDF_ algorithm which calculates _term frequency_ and _inverse document frequency_.
+It calculates words that are in each of trips and then it multiplies it by logarithm of number of documents divided by number of documents that contains looking word. Then I had to use cosine similarity,
+to compare all vectors from documents. This kind of approach is commonly used in search enginges and recommendations systems because of it's simplicity and ease of implementation.
+
+### Animations between screens
+
+When I first created mockup of this application I wanted to make it feel smooth and be close to user. So I knew that there should be animations and support for gestures that would respond to user actions.
+As I wrote I used for this purpose Framer Motion which allowed me for example to keep image animated between each of screens by using `<AnimatePresence/>` component. It could smoothly transition from small
+card to header of new page, also when user was creating new tours, he could drag to remove, change order or rollup list with points of intrests, so it was easier for him to quickly do his actions.
+
+> ## Lessons Learned
+
+This project came out as another booster for my skills. I've learned a lot about algorithmic approach and designing full stack systems even without using server.
+Right now I know how to handle edge functions in applications and efficiently create architecture with platforms like Firebase. Right now after finishing all things I would do so many things differently.
+Most imporant part was using Firebase database and cloud storage, when I was developing app it was pain in the ass that I was very limited by quering provided by Google. In this case for example Postgress
+database with Prisma would better fit that advanced system. For example to update trip I had to search through all old images then new one and filter redunant one, it could be easily avoided with better quering solutins.
+
+Another important thing was creating UI/UX for application, firstly I created mockup in _Figma_ to help me later with decision making in application. To implement this I used _tailwindcss_ which was my first try with it
+and to be honest I felt in love with it. It's so easy and fast to write well designed code with proper predefined guidelines which is amazing. And when it comes to animating, before I've only used
+simple transition via native CSS, and using professional framework like _Frame Motion_ was intresting experience and it allowed me to create more advanced animations like keeping elements animated
+even when changing routes. Not only that but it also have great support for gestures, so as I developed application for mobile devices only it was really imporant.
+
+Thanks for reading this post, in the end I want to mention that this code is getting outdated with new changes from _Next.js 13_ routes API and a lot of things can be improved and it's purpose is purely
+educational.

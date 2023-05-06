@@ -1,26 +1,20 @@
 'use client';
-import { motion } from 'framer-motion';
 import { MdComment, MdShare } from 'react-icons/md';
 import { RiHeartAddFill } from 'react-icons/ri';
 import { useContext, useEffect, useState } from 'react';
 import { BiLink } from 'react-icons/bi';
 import clsx from 'clsx';
 import Image, { StaticImageData } from 'next/dist/client/image';
+import { TableOfContents } from './TableOfContents';
+import { Button, ButtonProps } from 'components/Button';
+import { DesktopPopover, MobilePopover } from 'components/Popover';
+import { Dialog } from 'components/Dialog';
+import { PostContext } from 'components/PostProvider';
 import {
-  FADE_IN_X,
   ReactionsKeys,
   REACTIONS_LIST,
   REACTIONS_PRIORITIES,
-} from 'data';
-import {
-  Button,
-  ButtonProps,
-  DesktopPopover,
-  Dialog,
-  MobilePopover,
-  PostContext,
-  TableOfContents,
-} from 'components';
+} from 'data/constants';
 import { Tooltip } from 'components/Tooltip';
 
 const HOVER_LARGE_SCALE = {
@@ -89,7 +83,12 @@ const Reactions = () => {
   };
   return (
     <ul className="relative flex flex-wrap items-center gap-2 sm:flex-nowrap">
-      {(Object.entries(REACTIONS_LIST) as [ReactionsKeys, StaticImageData][])
+      {(
+        Object.entries(REACTIONS_LIST) as unknown as [
+          ReactionsKeys,
+          StaticImageData
+        ][]
+      )
         .sort(([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b])
         .map(([key, icon]) => (
           <Tooltip key={key} content={key} size="sm" tabIndex={-1}>
@@ -204,14 +203,11 @@ const Shortcuts = () => {
 export function ShortcutsBar() {
   return (
     <>
-      <div className="sticky top-16 z-40 hidden h-screen pb-16 lg:block">
-        <motion.div
-          className="col-start-2 hidden h-full lg:block"
-          {...FADE_IN_X}
-        >
+      <div className="sticky top-16 z-40 col-start-2 row-span-2 hidden h-screen pb-16 lg:block">
+        <div className="col-start-2 hidden h-full lg:block">
           <TableOfContents />
           <Shortcuts />
-        </motion.div>
+        </div>
       </div>
       <MobileShortcuts />
     </>

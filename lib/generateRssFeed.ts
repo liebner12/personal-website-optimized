@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { Feed } from 'feed';
 import { getAllFilesFrontmatter } from './getAllFilesFrontmatter';
-import { meta } from 'data';
+import { meta } from 'data/meta';
 
 export async function generateRssFeed() {
   const blogs = await getAllFilesFrontmatter('blog');

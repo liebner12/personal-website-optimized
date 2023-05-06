@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { meta } from 'data';
+import { meta } from 'data/meta';
 
 const defaultMeta = {
   ...meta,

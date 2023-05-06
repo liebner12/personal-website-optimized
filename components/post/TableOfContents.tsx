@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useScrollSpy } from 'hooks';
-import { StyledLink } from 'components';
+import { StyledLink } from 'components/StyledLink';
+import { useScrollSpy } from 'hooks/useScrollspy';
 
 export function TableOfContents() {
   const [toc, setToc] = useState([{ id: '', level: 0, text: '' }]);

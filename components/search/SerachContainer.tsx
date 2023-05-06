@@ -2,9 +2,9 @@ import { Dispatch, SetStateAction } from 'react';
 import { Search } from './Search';
 import { SortList } from './SortList';
 import { TagsList } from './TagsList';
-import { BLOG_SORT_LIST, FADE_IN_SECOND } from 'data';
-import { TagsType } from 'lib';
-import { checkTagged } from 'utils';
+import { BLOG_SORT_LIST, FADE_IN_SECOND } from 'data/constants';
+import { TagsType } from 'lib/getTags';
+import { checkTagged } from 'utils/checkTagged';
 
 type SearchContainerType = {
   sortBy?: string;

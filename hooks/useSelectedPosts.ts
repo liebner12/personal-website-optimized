@@ -1,8 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { BLOG_SORT_LIST } from 'data';
+import { BLOG_SORT_LIST } from 'data/constants';
 import { ContentType, PickFrontmatterWithMeta } from 'types/frontmatters';
-import { sortByDate } from 'utils';
+import { sortByDate } from 'utils/sortByDate';
 
 const sortPosts = <T extends ContentType>(
   sortBy: string,
