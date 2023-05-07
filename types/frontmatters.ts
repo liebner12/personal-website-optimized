@@ -9,6 +9,7 @@ export type BlogFrontmatter = Blog & {
   readingTime: ReadTimeResults;
   views?: number;
   blurDataURL: string;
+  content?: string;
 };
 
 export type ProjectFrontmatter = Project & {
@@ -16,6 +17,7 @@ export type ProjectFrontmatter = Project & {
   readingTime: ReadTimeResults;
   views?: number;
   blurDataURL: string;
+  content?: string;
 };
 
 export type InjectedViews = { views?: number };

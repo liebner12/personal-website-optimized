@@ -200,12 +200,12 @@ const Shortcuts = () => {
   );
 };
 
-export function ShortcutsBar() {
+export function ShortcutsBar({ content }: { content: string }) {
   return (
     <>
       <div className="sticky top-16 z-40 col-start-2 row-span-2 hidden h-screen pb-16 lg:block">
         <div className="col-start-2 hidden h-full lg:block">
-          <TableOfContents />
+          <TableOfContents content={content} />
           <Shortcuts />
         </div>
       </div>

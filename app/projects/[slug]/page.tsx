@@ -4,11 +4,12 @@ import { Container } from 'components/containers/Container';
 import { PostFooter } from 'components/post/PostFooter';
 import { ShortcutsBar } from 'components/post/Shortcuts';
 import { PostProvider } from 'components/PostProvider';
-import { getMarkdownFiles } from 'lib/getMarkdownFiles';
+import { getFiles } from 'lib/getFiles';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
+import { PostBody } from 'components/post/PostBody';
 
 export async function generateStaticParams() {
-  return getMarkdownFiles('projects').map((file) => ({
+  return getFiles('projects').map((file) => ({
     slug: file.split('.').slice(0, -1).join(''),
   }));
 }
@@ -32,8 +33,9 @@ export default async function Page({
     repository,
     image,
     publishedAt,
-    Content,
     blurDataURL,
+    content,
+    markdown,
   } = project;
 
   return (
@@ -56,11 +58,9 @@ export default async function Page({
               blurDataURL={blurDataURL}
               href="/projects"
             />
-            <ShortcutsBar />
+            <ShortcutsBar content={markdown} />
           </PostProvider>
-          <div className="mdx prose prose-invert col-start-1 row-start-2 mx-auto w-full pb-16">
-            <Content />
-          </div>
+          <PostBody content={content} />
         </div>
       </Container>
       <PostFooter title={title} type="projects" />

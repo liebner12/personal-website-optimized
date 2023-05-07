@@ -7,9 +7,8 @@
 //   buildExcludes: [/middleware-manifest.json$/],
 //   disable: process.env.NODE_ENV === 'development',
 // });
-const withMDX = require('@next/mdx')();
 
-module.exports = withMDX({
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
@@ -19,4 +18,4 @@ module.exports = withMDX({
   images: {
     domains: ['i.scdn.co', 'res.cloudinary.com'],
   },
-});
+};

@@ -1,4 +1,3 @@
-'use client';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { ReactNode, useRef } from 'react';
 import clsx from 'clsx';
