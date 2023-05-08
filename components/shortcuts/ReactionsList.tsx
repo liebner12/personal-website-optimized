@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Tooltip } from '../Tooltip';
 import {
   ReactionsKeys,
-  REACTIONS_LIST,
+  REACTIONS_LIST_SM,
   REACTIONS_PRIORITIES,
 } from 'data/constants';
 import { getPost } from 'lib/getPost';
@@ -23,7 +23,7 @@ export const ReactionsList = async ({ slug }: { slug: string }) => {
           <Tooltip content={key} key={key} size="sm" tabIndex={-1}>
             <div className="flex cursor-default items-center gap-0.5 text-2xld">
               <Image
-                src={REACTIONS_LIST[key]}
+                src={REACTIONS_LIST_SM[key]}
                 alt={key}
                 width={32}
                 height={32}
