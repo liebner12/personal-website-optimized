@@ -10,6 +10,10 @@ import { getPost } from 'lib/getPost';
 export const ReactionsList = async ({ slug }: { slug: string }) => {
   const { reactions } = await getPost(slug);
 
+  if (!reactions) {
+    return null;
+  }
+
   return (
     <ul className="mt-4 flex flex-wrap gap-6d lg:gap-8">
       {(Object.entries(reactions) as [ReactionsKeys, number][])
