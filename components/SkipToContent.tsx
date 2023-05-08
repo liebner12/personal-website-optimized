@@ -14,7 +14,7 @@ export const SkipToContent = ({
         {...HOVER_SCALE}
         href={`#${id}`}
         style={{ translateX: '-50%' }}
-        className="focus-state fixed top-4 left-1/2 -z-10 h-0 w-0 rounded-full bg-primary-main font-bold text-grey-900 opacity-0 focus-within:z-40 focus:block focus:h-auto focus:w-auto focus:-translate-x-1/2 focus:overflow-auto focus:px-6 focus:py-2 focus:opacity-100"
+        className="focus-state fixed left-1/2 top-4 -z-10 h-0 w-0 rounded-full bg-primary-main font-bold text-grey-900 opacity-0 focus-within:z-40 focus:block focus:h-auto focus:w-auto focus:-translate-x-1/2 focus:overflow-auto focus:px-6 focus:py-2 focus:opacity-100"
       >
         {id}
       </motion.a>

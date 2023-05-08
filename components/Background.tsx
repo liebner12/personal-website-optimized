@@ -7,7 +7,7 @@ export const Background = () => {
   const pathname = usePathname();
   const { theme } = getCurrentTheme(pathname || '');
   return (
-    <div className="absolute top-0 right-0 -z-10 h-full w-full overflow-hidden">
+    <div className="absolute right-0 top-0 -z-10 h-full w-full overflow-hidden">
       <div className={clsx('h-3/5 lg:h-full ', theme)}>
         <div className="background-gradient h-full" />
       </div>

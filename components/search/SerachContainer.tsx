@@ -40,7 +40,7 @@ export const SearchContainer = ({
           </div>
         )}
       </div>
-      <p className="mt-8 mb-6 text-lg font-semibold">Search blog by topics</p>
+      <p className="mb-6 mt-8 text-lg font-semibold">Search blog by topics</p>
       <div className="mb-6 flex flex-col gap-4">
         <TagsList
           tags={tags}

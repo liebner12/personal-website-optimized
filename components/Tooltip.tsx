@@ -45,8 +45,8 @@ export const Tooltip = ({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: '10px', opacity: 0 }}
             className={clsx(
-              { 'mb-3 py-0.5 px-4': size == 'md' },
-              { 'mb-2 py-0.5 px-2 text-base': size == 'sm' },
+              { 'mb-3 px-4 py-0.5': size == 'md' },
+              { 'mb-2 px-2 py-0.5 text-base': size == 'sm' },
               'absolute bottom-full whitespace-nowrap rounded-lg bg-[#eeeeee] capitalize text-grey-900'
             )}
           >

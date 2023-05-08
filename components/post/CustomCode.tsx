@@ -31,7 +31,7 @@ export function CustomCode(
             setTimeout(() => setIsCopied(false), 1500);
           }}
         >
-          <button className="absolute top-2 right-2 hidden rounded border border-grey-700 p-2 text-lg text-grey-300 transition-colors hover:bg-grey-900 md:block">
+          <button className="absolute right-2 top-2 hidden rounded border border-grey-700 p-2 text-lg text-grey-300 transition-colors hover:bg-grey-900 md:block">
             {isCopied ? (
               <HiCheckCircle className="text-primary-main" />
             ) : (
@@ -41,7 +41,7 @@ export function CustomCode(
         </CopyToClipboard>
       )}
       {language && (
-        <span className="absolute right-4 bottom-4 text-primary-main">
+        <span className="absolute bottom-4 right-4 text-primary-main">
           {language}
         </span>
       )}

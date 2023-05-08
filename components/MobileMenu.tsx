@@ -47,7 +47,7 @@ export const MobileMenu = () => {
       animate={isOpen ? 'open' : 'closed'}
     >
       <motion.div
-        className="absolute top-0 left-0 z-40 h-[100dvh] w-full bg-backgroundOpacity backdrop-blur-sm"
+        className="absolute left-0 top-0 z-40 h-[100dvh] w-full bg-backgroundOpacity backdrop-blur-sm"
         variants={backgroundFill}
       />
       <motion.button
@@ -137,7 +137,7 @@ export const MobileMenu = () => {
           />
           <motion.li
             variants={navigationItemVariants}
-            className="mx-auto pt-10 pb-10"
+            className="mx-auto pb-10 pt-10"
           >
             <Button
               StartIcon={SiGithub}

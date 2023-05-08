@@ -10,7 +10,7 @@ export const PostViews = () => {
   return (
     <div
       className={clsx(
-        'absolute top-2 right-2 flex h-8 items-center gap-2 rounded-full bg-blured py-1.5 px-4 font-semibold text-white backdrop-blur md:top-4 md:right-4',
+        'absolute right-2 top-2 flex h-8 items-center gap-2 rounded-full bg-blured px-4 py-1.5 font-semibold text-white backdrop-blur md:right-4 md:top-4',
         { 'animate-pulse': isLoading }
       )}
     >
