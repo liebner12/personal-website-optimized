@@ -59,12 +59,12 @@ export default function HomePage() {
             className="relative mx-auto mt-20 flex-1 lg:mt-0"
             {...FADE_IN_FIRST}
           >
-            <div className="absolute -top-16 -left-6 z-10 flex max-w-[90%] flex-col items-start gap-1 md:-left-12 md:-top-8">
+            <div className="absolute -left-6 -top-16 z-10 flex max-w-[90%] flex-col items-start gap-1 md:-left-12 md:-top-8">
               <div className="border-full rounded-full bg-home-light px-12 py-4 font-semibold text-home-dark">
                 Want to learn JavaScript development?🧑‍💻
               </div>
             </div>
-            <div className="waves-box-horizontal absolute -top-4 -left-4 -z-10 h-24 w-3/4" />
+            <div className="waves-box-horizontal absolute -left-4 -top-4 -z-10 h-24 w-3/4" />
             <Image
               src={Me}
               width={500}

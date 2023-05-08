@@ -3,11 +3,12 @@ import { MdCalendarToday, MdTimer } from 'react-icons/md';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { Suspense } from 'react';
 import { ProjectFrontmatter, BlogFrontmatter } from 'types/frontmatters';
 import { Tooltip } from 'components/Tooltip';
 import { BackButton } from 'components/BackButton';
 import { Button } from 'components/Button';
-import { ReactionsList } from 'components/ReactionsList';
+import { ReactionsList } from 'components/shortcuts/ReactionsList';
 import { PostViews } from 'components/PostViews';
 
 export type PostHeader = Partial<
@@ -17,6 +18,7 @@ export type PostHeader = Partial<
   image: string;
   href: string;
   blurDataURL?: string;
+  slug: string;
 };
 
 export function PostHeader({
@@ -28,6 +30,7 @@ export function PostHeader({
   readingTime,
   blurDataURL,
   href,
+  slug,
 }: PostHeader) {
   return (
     <div className="col-start-1 row-start-1">
@@ -53,7 +56,10 @@ export function PostHeader({
             </>
           )}
         </div>
-        <ReactionsList />
+        <Suspense fallback={<div>...Loading</div>}>
+          {/* @ts-expect-error Server Component */}
+          <ReactionsList slug={slug} />
+        </Suspense>
         {(url || repository) && (
           <ul className="mt-6 flex items-center gap-4">
             {url && (

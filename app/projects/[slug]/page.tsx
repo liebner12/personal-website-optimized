@@ -1,9 +1,8 @@
 import { notFound } from 'next/navigation';
+import { ShortcutsBar } from 'components/shortcuts/ShortcutsBar';
 import { PostHeader } from 'components/post/PostHeader';
 import { Container } from 'components/containers/Container';
 import { PostFooter } from 'components/post/PostFooter';
-import { ShortcutsBar } from 'components/post/Shortcuts';
-import { PostProvider } from 'components/PostProvider';
 import { getFiles } from 'lib/getFiles';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { PostBody } from 'components/post/PostBody';
@@ -47,19 +46,18 @@ export default async function Page({
             gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
           }}
         >
-          <PostProvider slug={slug}>
-            <PostHeader
-              title={title}
-              url={url}
-              readingTime={readingTime}
-              repository={repository}
-              publishedAt={publishedAt}
-              image={image}
-              blurDataURL={blurDataURL}
-              href="/projects"
-            />
-            <ShortcutsBar content={markdown} />
-          </PostProvider>
+          <PostHeader
+            slug={slug}
+            title={title}
+            url={url}
+            readingTime={readingTime}
+            repository={repository}
+            publishedAt={publishedAt}
+            image={image}
+            blurDataURL={blurDataURL}
+            href="/projects"
+          />
+          <ShortcutsBar content={markdown} slug={slug} type="projects" />
           <PostBody content={content} />
         </div>
       </Container>

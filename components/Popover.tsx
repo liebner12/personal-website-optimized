@@ -1,5 +1,6 @@
+'use client';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Popover } from '@headlessui/react';
 import { IconType } from 'react-icons/lib';
@@ -7,15 +8,12 @@ import { Button, ButtonProps } from './Button';
 
 export const DesktopPopover = ({
   children,
-  isHovered,
-  setIsHovered,
   button,
 }: {
-  isHovered: boolean;
-  setIsHovered: (value: boolean) => void;
   children: ReactNode;
   button: ReactNode;
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
   const handleHover = (value: boolean) => {
@@ -44,9 +42,9 @@ export const DesktopPopover = ({
       {button}
       <AnimatePresence>
         {isHovered && (
-          <motion.div className="absolute right-[120%] bottom-1/2 -z-50 translate-y-1/2">
+          <motion.div className="absolute bottom-1/2 right-[120%] -z-50 translate-y-1/2">
             <motion.div
-              className="rounded-full border-2 border-grey-800 bg-grey-900 py-3 px-6"
+              className="rounded-full border-2 border-grey-800 bg-grey-900 px-6 py-3"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 20, opacity: 0 }}
@@ -62,30 +60,6 @@ export const DesktopPopover = ({
     </motion.div>
   );
 };
-
-const PopoverButton = ({
-  variant = 'secondary',
-  StartIcon,
-  ariaLabel,
-  className,
-}: Pick<ButtonProps, 'variant' | 'StartIcon' | 'className' | 'ariaLabel'>) => {
-  return (
-    <Button
-      as="button"
-      variant={variant}
-      StartIcon={StartIcon}
-      size="circle"
-      ariaLabel={ariaLabel}
-      color="text-white"
-      className={clsx(
-        'transition-colors hover:bg-grey-800 hover:text-primary-main focus:bg-grey-800 focus:text-primary-main',
-        className
-      )}
-    />
-  );
-};
-
-DesktopPopover.Button = PopoverButton;
 
 export const MobilePopover = ({
   isNavbarHidden,
