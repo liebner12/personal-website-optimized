@@ -67,7 +67,7 @@ export type CardDate = Pick<
 
 const CardDate = ({ publishedAt }: CardDate) => {
   return (
-    <div className="mx-4 mt-4 mb-1 flex items-center gap-2 text-sm font-semibold text-slate-200">
+    <div className="mx-4 mb-1 mt-4 flex items-center gap-2 text-sm font-semibold text-slate-200">
       <span>{format(new Date(publishedAt), 'dd MMM yyyy')}</span>-
     </div>
   );
