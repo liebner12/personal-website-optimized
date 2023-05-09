@@ -18,7 +18,7 @@ export const SocialButtons = ({
   type: ContentType;
 }) => {
   return (
-    <ul className="mt-6 flex gap-6">
+    <>
       <DesktopPopover
         button={
           <PopoverButton
@@ -45,6 +45,6 @@ export const SocialButtons = ({
         />
       </Tooltip>
       <ShareButton variant={variant} />
-    </ul>
+    </>
   );
 };

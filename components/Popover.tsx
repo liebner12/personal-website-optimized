@@ -4,7 +4,6 @@ import React, { ReactNode, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Popover } from '@headlessui/react';
 import { IconType } from 'react-icons/lib';
-import { Button, ButtonProps } from './Button';
 
 export const DesktopPopover = ({
   children,
@@ -33,7 +32,7 @@ export const DesktopPopover = ({
 
   return (
     <motion.div
-      className="relative"
+      className="relative hidden lg:block"
       onHoverStart={() => handleHover(true)}
       onFocus={() => handleHover(true)}
       onBlur={() => handleHover(false)}

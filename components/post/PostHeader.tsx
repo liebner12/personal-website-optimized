@@ -94,7 +94,8 @@ export function PostHeader({
         )}
       </div>
       <div className="relative">
-        <PostViews />
+        {/* @ts-expect-error Server Component */}
+        <PostViews slug={slug} />
         <Image
           placeholder="blur"
           blurDataURL={blurDataURL}
