@@ -57,10 +57,17 @@ export const Reactions = ({
     setCurrentReactions(updatedReactions);
 
     localStorage.setItem(slug, JSON.stringify(updatedReactionsSelection));
-    fetch(`http://localhost:3000/api/posts/${slug}`, {
-      method: 'POST',
-      body: JSON.stringify(updatedReactions),
-    });
+    fetch(
+      `${
+        process.env.NODE_ENV === 'production'
+          ? 'https://personal-website-optimized.vercel.app/'
+          : 'http://localhost:3000'
+      }/api/posts/${slug}`,
+      {
+        method: 'POST',
+        body: JSON.stringify(updatedReactions),
+      }
+    );
   };
 
   return (
