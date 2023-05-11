@@ -1,12 +1,7 @@
-import { Suspense } from 'react';
 import { MdComment } from 'react-icons/md';
-import { RiHeartAddFill } from 'react-icons/ri';
-import { Reactions } from './Reactions';
 import { ShareButton } from './ShareButton';
 import { Button, ButtonProps } from 'components/Button';
 import { Tooltip } from 'components/Tooltip';
-import { DesktopPopover } from 'components/Popover';
-import { PopoverButton } from 'components/PopoverButton';
 import { ContentType } from 'types/frontmatters';
 
 export const SocialButtons = ({
@@ -19,20 +14,6 @@ export const SocialButtons = ({
 }) => {
   return (
     <>
-      <DesktopPopover
-        button={
-          <PopoverButton
-            variant="filled"
-            StartIcon={RiHeartAddFill}
-            ariaLabel="Add reaction"
-          />
-        }
-      >
-        <Suspense fallback={<div>...Loading</div>}>
-          {/* @ts-expect-error Server Component */}
-          <Reactions slug={slug} />
-        </Suspense>
-      </DesktopPopover>
       <Tooltip content="Comments" tabIndex={-1} size="sm">
         <Button
           variant={variant}

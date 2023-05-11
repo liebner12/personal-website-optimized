@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { ReactionsKeys } from 'data/constants';
+import { ReactionsType, ReactionsKeys } from 'data/constants';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -38,9 +38,9 @@ export const registerView = (slug: string) =>
     page_slug: slug,
   });
 
-export const registerReaction = (slug: string, reactions: string) => {
+export const registerReaction = (slug: string, reactions: ReactionsType) => {
   return supabase
     .from('posts')
-    .update({ reactions: JSON.parse(reactions) })
+    .update({ reactions: reactions })
     .eq('slug', slug);
 };

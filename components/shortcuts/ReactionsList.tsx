@@ -1,14 +1,36 @@
+'use client';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { Tooltip } from '../Tooltip';
 import {
   ReactionsKeys,
   REACTIONS_LIST_SM,
   REACTIONS_PRIORITIES,
+  ReactionsType,
 } from 'data/constants';
-import { getPost } from 'lib/getPost';
+import supabase from 'lib/supabase';
 
-export const ReactionsList = async ({ slug }: { slug: string }) => {
-  const { reactions } = await getPost(slug);
+export const ReactionsList = async ({
+  reactions,
+}: {
+  reactions: ReactionsType;
+}) => {
+  const [clientReactions, setClientReactions] = useState(reactions);
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('*')
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'posts' },
+        (payload) => setClientReactions(payload.new.reactions)
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [clientReactions]);
 
   if (!reactions) {
     return null;
@@ -16,7 +38,7 @@ export const ReactionsList = async ({ slug }: { slug: string }) => {
 
   return (
     <ul className="mt-4 flex flex-wrap gap-6d lg:gap-8">
-      {(Object.entries(reactions) as [ReactionsKeys, number][])
+      {(Object.entries(clientReactions) as [ReactionsKeys, number][])
         .filter(([, count]) => count)
         .sort(([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b])
         .map(([key, value]) => (
@@ -27,6 +49,7 @@ export const ReactionsList = async ({ slug }: { slug: string }) => {
                 alt={key}
                 width={32}
                 height={32}
+                fetchPriority="high"
               />
               <span className="text-lg text-white">{value}</span>
             </div>

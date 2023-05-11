@@ -46,6 +46,7 @@ export default async function Page({
             gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
           }}
         >
+          {/* @ts-expect-error Server Component */}
           <PostHeader
             slug={slug}
             title={title}
@@ -57,6 +58,7 @@ export default async function Page({
             blurDataURL={blurDataURL}
             href="/projects"
           />
+          {/* @ts-expect-error Server Component */}
           <ShortcutsBar content={markdown} slug={slug} type="projects" />
           <PostBody content={content} />
         </div>

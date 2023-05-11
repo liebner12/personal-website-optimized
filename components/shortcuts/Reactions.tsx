@@ -1,22 +1,65 @@
-import Image from 'next/image';
+'use client';
 import clsx from 'clsx';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import {
   ReactionsKeys,
   REACTIONS_LIST,
   REACTIONS_PRIORITIES,
+  ReactionsType,
 } from 'data/constants';
 import { Tooltip } from 'components/Tooltip';
 import { Button } from 'components/Button';
-import { getPost } from 'lib/getPost';
 
-const HOVER_LARGE_SCALE = {
-  whileHover: { scale: 1.25 },
-  whileTap: { scale: 0.96 },
-  whileFocus: { scale: 1.25 },
-};
+export const Reactions = ({
+  reactions,
+  slug,
+}: {
+  reactions: ReactionsType;
+  slug: string;
+}) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentReactions, setCurrentReactions] = useState(reactions);
+  const [reactionSelection, setReactionSelection] = useState(
+    Object.keys(REACTIONS_PRIORITIES).reduce(
+      (prev, key) => ({ ...prev, [key]: false }),
+      {}
+    ) as Record<ReactionsKeys, boolean>
+  );
 
-export const Reactions = async ({ slug }: { slug: string }) => {
-  const { reactions } = await getPost(slug);
+  useEffect(() => {
+    const reactionsSelections = localStorage.getItem(slug);
+
+    if (reactionsSelections) {
+      const parsedSelections = JSON.parse(reactionsSelections) || {};
+
+      setReactionSelection(parsedSelections);
+      setIsLoading(false);
+      return;
+    }
+  }, [slug]);
+
+  const handleClick = (key: ReactionsKeys) => {
+    const updatedReactionsSelection = {
+      ...reactionSelection,
+      [key]: !reactionSelection[key],
+    };
+
+    const updatedReactions = {
+      ...currentReactions,
+      [key]: reactionSelection[key]
+        ? currentReactions[key] - 1
+        : currentReactions[key] + 1,
+    };
+    setReactionSelection(updatedReactionsSelection);
+    setCurrentReactions(updatedReactions);
+
+    localStorage.setItem(slug, JSON.stringify(updatedReactionsSelection));
+    fetch(`http://localhost:3000/api/posts/${slug}`, {
+      method: 'POST',
+      body: JSON.stringify(updatedReactions),
+    });
+  };
 
   return (
     <ul className="relative flex flex-wrap items-center gap-2 sm:flex-nowrap">
@@ -29,13 +72,14 @@ export const Reactions = async ({ slug }: { slug: string }) => {
               variant="transparent"
               size="xs"
               color="text-white"
-              wrapperProps={HOVER_LARGE_SCALE}
               className={clsx(
-                'w-12 pb-1 pt-1 hover:bg-grey-800 focus:bg-grey-800',
+                'w-12 pb-1 pt-1 transition-transform hover:scale-110 hover:bg-grey-800 focus:bg-grey-800',
                 {
-                  'bg-grey-800': reactions?.[key],
+                  'bg-grey-800': reactionSelection[key],
                 }
               )}
+              disabled={isLoading}
+              onClick={() => handleClick(key)}
             >
               <div className="flex flex-shrink-0 flex-col justify-center gap-0.5">
                 <div className="flex-shrink-0">
@@ -45,12 +89,12 @@ export const Reactions = async ({ slug }: { slug: string }) => {
                   className={clsx(
                     'text-base',
                     {
-                      'font-bold text-primary-main': reactions?.[key],
+                      'font-bold text-primary-main': reactionSelection[key],
                     },
-                    { 'text-slate-200': !reactions?.[key] }
+                    { 'text-slate-200': !reactionSelection[key] }
                   )}
                 >
-                  {reactions?.[key] || 0}
+                  {currentReactions?.[key] || 0}
                 </span>
               </div>
             </Button>

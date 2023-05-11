@@ -342,3 +342,9 @@ body {
     }
   }
 }
+
+.popover {
+  &:hover > div{
+    display: block;
+  }
+}

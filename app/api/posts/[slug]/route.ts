@@ -1,11 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
-import { getPost, Post, registerReaction, registerView } from 'lib/getPost';
+import { registerReaction } from 'lib/getPost';
 
-export async function GET(
+export async function POST(
   request: Request,
   { params }: { params: { slug: string } }
 ) {
-  const post = await getPost(params.slug);
-  return NextResponse.json(post);
+  const res = await request.json();
+  await registerReaction(params.slug, res);
+  return NextResponse.json({ res });
 }

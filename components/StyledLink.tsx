@@ -22,6 +22,8 @@ export type StyledLink = {
   size?: 'xl' | 'lg' | 'md' | 'sm';
   style?: CSSProperties;
   as?: 'button' | 'link';
+  type?: 'submit';
+  formAction?: string | undefined;
 };
 
 const sizeVariants = {
@@ -52,9 +54,9 @@ export const StyledLink = forwardRef<
       style,
       disabled,
       as = 'Link',
-      onHoverEnd,
-      onHoverStart,
+      type,
       onBlur,
+      formAction,
     },
     ref
   ) => {
@@ -68,6 +70,7 @@ export const StyledLink = forwardRef<
           ref={ref}
           disabled={disabled}
           onClick={onClick}
+          type={type}
           className={clsx(
             {
               'font-bold text-primary-main': isActive,
@@ -81,6 +84,7 @@ export const StyledLink = forwardRef<
           )}
           style={style}
           aria-label={ariaLabel}
+          formAction={formAction}
         >
           {startIcon}
           {children}

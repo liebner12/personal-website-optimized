@@ -122,3 +122,5 @@ export const REACTIONS_PRIORITIES = {
 };
 
 export type ReactionsKeys = keyof typeof REACTIONS_LIST;
+
+export type ReactionsType = Record<ReactionsKeys, number>;

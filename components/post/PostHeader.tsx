@@ -10,6 +10,7 @@ import { BackButton } from 'components/BackButton';
 import { Button } from 'components/Button';
 import { ReactionsList } from 'components/shortcuts/ReactionsList';
 import { PostViews } from 'components/PostViews';
+import { getPost } from 'lib/getPost';
 
 export type PostHeader = Partial<
   Pick<BlogFrontmatter, 'title' | 'publishedAt' | 'readingTime'> &
@@ -21,7 +22,9 @@ export type PostHeader = Partial<
   slug: string;
 };
 
-export function PostHeader({
+export const revalidate = 60;
+
+export async function PostHeader({
   title,
   publishedAt,
   repository,
@@ -32,6 +35,8 @@ export function PostHeader({
   href,
   slug,
 }: PostHeader) {
+  const { reactions } = await getPost(slug);
+
   return (
     <div className="col-start-1 row-start-1">
       <div className=" mb-8">
@@ -56,9 +61,13 @@ export function PostHeader({
             </>
           )}
         </div>
-        <Suspense fallback={<div>...Loading</div>}>
+        <Suspense
+          fallback={
+            <div className="mt-4 flex h-8 w-48 animate-pulse rounded-full bg-grey-900" />
+          }
+        >
           {/* @ts-expect-error Server Component */}
-          <ReactionsList slug={slug} />
+          <ReactionsList reactions={reactions} />
         </Suspense>
         {(url || repository) && (
           <ul className="mt-6 flex items-center gap-4">
@@ -105,6 +114,7 @@ export function PostHeader({
           height={506}
           className="max-w-full rounded-lg"
           loading="eager"
+          fetchPriority="high"
         />
       </div>
     </div>

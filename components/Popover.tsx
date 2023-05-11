@@ -1,6 +1,5 @@
 'use client';
-import { AnimatePresence, motion } from 'framer-motion';
-import React, { ReactNode, useRef, useState } from 'react';
+import React, { ReactNode } from 'react';
 import clsx from 'clsx';
 import { Popover } from '@headlessui/react';
 import { IconType } from 'react-icons/lib';
@@ -12,51 +11,15 @@ export const DesktopPopover = ({
   children: ReactNode;
   button: ReactNode;
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const timeoutRef = useRef<number | null>(null);
-
-  const handleHover = (value: boolean) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    if (value) {
-      setIsHovered(true);
-      return;
-    }
-
-    timeoutRef.current = window.setTimeout(() => {
-      setIsHovered(false);
-    }, 200);
-  };
-
   return (
-    <motion.div
-      className="relative hidden lg:block"
-      onHoverStart={() => handleHover(true)}
-      onFocus={() => handleHover(true)}
-      onBlur={() => handleHover(false)}
-      onHoverEnd={() => handleHover(false)}
-    >
+    <div className="popover relative hidden lg:block">
       {button}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div className="absolute bottom-1/2 right-[120%] -z-50 translate-y-1/2">
-            <motion.div
-              className="rounded-full border-2 border-grey-800 bg-grey-900 px-6 py-3"
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 20, opacity: 0 }}
-              transition={{
-                duration: 0.2,
-              }}
-            >
-              {children}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+      <div className="absolute bottom-1/2 right-[100%] -z-50 hidden translate-y-1/2 pr-[20%]">
+        <div className="rounded-full border-2 border-grey-800 bg-grey-900 px-6 py-3">
+          {children}
+        </div>
+      </div>
+    </div>
   );
 };
 
