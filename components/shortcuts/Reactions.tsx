@@ -37,6 +37,8 @@ export const Reactions = ({
       setIsLoading(false);
       return;
     }
+
+    setIsLoading(false);
   }, [slug]);
 
   const handleClick = (key: ReactionsKeys) => {
