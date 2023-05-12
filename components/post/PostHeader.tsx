@@ -38,7 +38,7 @@ export async function PostHeader({
   const { reactions } = await getPost(slug);
 
   return (
-    <div className="col-start-1 row-start-1">
+    <div className="fade-in col-start-1 row-start-1">
       <div className=" mb-8">
         <BackButton href={href} />
         <h1 className="text-4xl font-bold text-white">{title}</h1>
