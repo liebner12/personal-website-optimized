@@ -33,6 +33,7 @@ export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
               {
                 properties: {
                   className: ['hash-anchor'],
+                  ariaHidden: true,
                 },
               },
             ],
