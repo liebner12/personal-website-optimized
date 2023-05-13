@@ -17,7 +17,7 @@ export function ShareTweetButton({
     <Button
       {...rest}
       href={intentUrl}
-      className={clsx('bg-[#1d9bf0] font-bold text-white', className)}
+      className={clsx('bg-[#1d9bf0] font-bold text-[#14171A]', className)}
       variant="transparent"
       target="_blank"
       StartIcon={SiTwitter}
