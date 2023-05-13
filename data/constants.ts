@@ -92,25 +92,25 @@ export const navigationListVariants: Variants = {
 };
 
 export const REACTIONS_LIST_SM = {
-  like: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Heart_h6gbn0.webp',
-  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Fire_zlazxh.webp',
+  like: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Heart_h6gbn0.webp',
+  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Fire_zlazxh.webp',
   'exploding head':
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Exploding_xtvmud.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Exploding_xtvmud.webp',
   'to the moon':
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Rocket_xwtjgh.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Rocket_xwtjgh.webp',
   interesting:
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Thinking_calccw.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Thinking_calccw.webp',
 };
 
 export const REACTIONS_LIST = {
-  like: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Heart_h6gbn0.webp',
-  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Fire_zlazxh.webp',
+  like: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Heart_h6gbn0.webp',
+  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Fire_zlazxh.webp',
   'exploding head':
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Exploding_xtvmud.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Exploding_xtvmud.webp',
   'to the moon':
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Rocket_xwtjgh.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Rocket_xwtjgh.webp',
   interesting:
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/f_auto/v1683203871/Thinking_calccw.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Thinking_calccw.webp',
 };
 
 export const REACTIONS_PRIORITIES = {
