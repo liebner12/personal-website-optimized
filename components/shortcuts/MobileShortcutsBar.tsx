@@ -31,7 +31,7 @@ export const MobileShortcutsBar = ({
   return (
     <div
       className={clsx(
-        'fixed bottom-6 right-0 z-20 flex w-full transition-transform sm:max-w-sm lg:hidden',
+        'fade-in fixed bottom-6 right-0 z-20 flex w-full transition-transform sm:max-w-sm lg:hidden',
         {
           'translate-y-[calc(100%+1.5rem)]': isNavbarHidden,
         }

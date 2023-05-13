@@ -350,11 +350,33 @@ body {
 }
 
 .fade-in {
-  animation: fade-in 0.5s forwards;
-  -webkit-animation: fade-in 0.5s forwards;
+  animation: fade-in 0.3s ease-in forwards;
+  -webkit-animation: fade-in 0.3s ease-in forwards;
 }
 
 @keyframes fade-in {
-  0% { opacity: 0; transform: translateY(100px) }
+  0% { opacity: 0; transform: translateY(40px) }
   100% { opacity: 1; transform: translateY(0px)}
 }
+
+.fade-in-x {
+  animation: fade-in-x 0.3s ease-in forwards;
+  -webkit-animation: fade-in-x 0.3s ease-in forwards;
+}
+
+@keyframes fade-in-x {
+  0% { opacity: 0; transform: translateX(40px) }
+  100% { opacity: 1; transform: translateX(0px)}
+}
+
+
+.fade-in-x-reverse {
+  animation: fade-in-x-reverse 0.3s ease-in forwards;
+  -webkit-animation: fade-in-x-reverse 0.3s ease-in forwards;
+}
+
+@keyframes fade-in-x-reverse {
+  0% { opacity: 0; transform: translateX(-40px) }
+  100% { opacity: 1; transform: translateX(0px)}
+}
+

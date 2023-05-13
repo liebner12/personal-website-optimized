@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { RiHeartAddFill } from 'react-icons/ri';
 import { TableOfContents } from './TableOfContents';
 import { SocialButtons } from './SocialButtons';
@@ -23,7 +22,7 @@ export async function ShortcutsBar({
   return (
     <>
       <div className="sticky top-16 z-40 col-start-2 row-span-2 hidden h-screen pb-16 lg:block">
-        <div className="col-start-2 hidden h-full lg:block">
+        <div className="fade-in-x col-start-2 hidden h-full lg:block">
           <TableOfContents content={content} />
           <ul className="mt-6 flex gap-6">
             <DesktopPopover
@@ -41,13 +40,11 @@ export async function ShortcutsBar({
           </ul>
         </div>
       </div>
-      <Suspense fallback={<div>...loading</div>}>
-        <MobileShortcutsBar
-          reactions={<Reactions reactions={reactions} slug={slug} />}
-        >
-          <SocialButtons variant="transparent" slug={slug} type={type} />
-        </MobileShortcutsBar>
-      </Suspense>
+      <MobileShortcutsBar
+        reactions={<Reactions reactions={reactions} slug={slug} />}
+      >
+        <SocialButtons variant="transparent" slug={slug} type={type} />
+      </MobileShortcutsBar>
     </>
   );
 }

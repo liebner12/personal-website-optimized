@@ -15,7 +15,7 @@ export default function HomePage() {
     <Container className="theme-home overflow-hidden py-10 lg:mt-0 lg:!pt-0">
       <section className="flex flex-col justify-center lg:h-screen lg:max-h-[58rem]">
         <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
-          <div className="prose prose-invert my-auto">
+          <div className="fade-in prose prose-invert my-auto">
             <Heading className="mb-8 xl:!max-w-xl">
               I am focused on
               <span className="text-primary-main"> web standards</span> and
@@ -56,7 +56,7 @@ export default function HomePage() {
             </div>
           </div>
           <div
-            className="relative mx-auto mt-20 flex-1 lg:mt-0"
+            className="fade-in-x relative mx-auto mt-20 flex-1 lg:mt-0"
             {...FADE_IN_FIRST}
           >
             <div className="absolute -left-6 -top-16 z-10 flex max-w-[90%] flex-col items-start gap-1 md:-left-12 md:-top-8">
