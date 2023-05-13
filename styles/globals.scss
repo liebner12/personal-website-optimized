@@ -355,7 +355,7 @@ body {
 }
 
 @keyframes fade-in {
-  0% { opacity: 0; transform: translateY(40px) }
+  0% { opacity: 0.01; transform: translateY(40px) }
   100% { opacity: 1; transform: translateY(0px)}
 }
 
@@ -365,7 +365,7 @@ body {
 }
 
 @keyframes fade-in-x {
-  0% { opacity: 0; transform: translateX(40px) }
+  0% { opacity: 0.01; transform: translateX(40px) }
   100% { opacity: 1; transform: translateX(0px)}
 }
 

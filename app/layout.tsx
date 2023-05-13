@@ -3,7 +3,6 @@ import 'styles/prose.css';
 import 'styles/prism.css';
 import { ReactNode } from 'react';
 import { Layout } from 'components/containers/Layout';
-import { Loader } from 'components/Loader';
 
 export const metadata = {
   title: 'Home',
@@ -15,7 +14,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Loader />
         <Layout>{children}</Layout>
       </body>
     </html>
