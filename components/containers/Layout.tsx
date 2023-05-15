@@ -16,6 +16,7 @@ export const Layout = ({ children }: Props) => {
       </div>
       <div className="flex w-full border-t-2 border-grey-900">
         <div className="mx-auto max-w-screen-lg">
+          {/* @ts-expect-error Server Component */}
           <Footer />
         </div>
       </div>

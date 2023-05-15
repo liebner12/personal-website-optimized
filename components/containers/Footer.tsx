@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import { ArrowLink } from 'components/ArrowLink';
 import { StyledLink } from 'components/StyledLink';
 import { Spotify } from 'components/Spotify';
+import { getPost } from 'lib/getPost';
+import { Dot } from 'components/Dot';
 
 type Props = {
   path?: string;
@@ -42,7 +44,8 @@ const FooterItem = ({ path, text, target, as, children }: Props) => {
   );
 };
 
-export const Footer = () => {
+export const Footer = async () => {
+  const post = await getPost('total');
   return (
     <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-16">
       {/* @ts-expect-error Server Component */}
@@ -107,21 +110,9 @@ export const Footer = () => {
         </FooterList>
       </div>
       <div className="mt-20 flex w-full flex-col items-center gap-6 sm:mt-32 sm:flex-row sm:items-center sm:gap-10">
-        <div
-          className={clsx(
-            'flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 px-5 py-2 text-grey-400',
-            { 'animate-pulse text-transparent': false }
-          )}
-        >
-          <span
-            className={clsx('relative grid h-3 w-3 place-items-center', {
-              'opacity-0': false,
-            })}
-          >
-            <span className="absolute left-0 top-0 inline-flex h-full w-full animate-ping rounded-full bg-primary-main opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-main"></span>
-          </span>
-          0 total views count
+        <div className="flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 px-5 py-2 text-grey-400">
+          <Dot />
+          {post?.count} total views count
         </div>
         <div className="text-grey-300 sm:ml-auto">
           All rights reserved © Michał Liebner 2023
