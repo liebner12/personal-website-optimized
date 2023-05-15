@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { format } from 'date-fns';
-import useSWR from 'swr';
 import { HiClock } from 'react-icons/hi';
 import clsx from 'clsx';
 import { MdFavorite } from 'react-icons/md';

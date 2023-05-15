@@ -1,5 +1,3 @@
-import { Variants } from 'framer-motion';
-
 export const THEMES = {
   about: 'theme-about',
   blog: 'theme-blog',
@@ -63,7 +61,7 @@ export const FADE_IN_VIEW = {
   viewport: { once: true, margin: '-50px' },
 };
 
-export const navigationItemVariants: Variants = {
+export const navigationItemVariants = {
   open: {
     y: 0,
     opacity: 1,
@@ -82,7 +80,7 @@ export const navigationItemVariants: Variants = {
   },
 };
 
-export const navigationListVariants: Variants = {
+export const navigationListVariants = {
   open: {
     transition: { staggerChildren: 0.07, delayChildren: 0.2 },
   },

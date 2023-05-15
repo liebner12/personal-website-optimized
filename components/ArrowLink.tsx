@@ -1,7 +1,4 @@
-'use client';
 import React, { ReactNode } from 'react';
-import { motion } from 'framer-motion';
-import type { Variant } from 'framer-motion';
 import {
   BsArrowDown,
   BsArrowLeft,
@@ -12,31 +9,6 @@ import clsx from 'clsx';
 import { StyledLink } from './StyledLink';
 
 type ArrowDirections = 'down' | 'up' | 'left' | 'right';
-type ElementState = 'tap' | 'hover' | 'initial';
-type ArrowVariants = Record<ArrowDirections, Record<ElementState, Variant>>;
-
-const arrowVariants: ArrowVariants = {
-  down: {
-    initial: { y: 0 },
-    hover: { y: 2 },
-    tap: { y: 6 },
-  },
-  up: {
-    initial: { y: 0 },
-    hover: { y: -2 },
-    tap: { y: -6 },
-  },
-  left: {
-    initial: { x: 0 },
-    hover: { x: -2 },
-    tap: { x: -6 },
-  },
-  right: {
-    initial: { x: 0 },
-    hover: { x: 2 },
-    tap: { x: 6 },
-  },
-};
 
 type Props = {
   direction?: ArrowDirections;
@@ -86,8 +58,8 @@ const ArrowBody = ({
                 cy="24"
               />
 
-              <motion.circle
-                className="text-primary-main"
+              <circle
+                className="animate-circle text-primary-main"
                 stroke="currentColor"
                 strokeWidth="2"
                 fill="transparent"
@@ -96,27 +68,17 @@ const ArrowBody = ({
                 cy="24"
                 style={{
                   strokeDasharray: `${pathLength} ${pathLength}`,
-                  rotate: -90,
-                }}
-                variants={{
-                  initial: { strokeDashoffset: pathLength },
-                  hover: { strokeDashoffset: 0 },
-                  tap: { strokeDashoffset: 0 },
-                  focus: { strokeDashoffset: 0 },
-                }}
-                transition={{
-                  damping: 0,
+                  rotate: '-90px',
                 }}
               />
             </svg>
           </div>
         )}
-        <motion.span
-          variants={arrowVariants[direction]}
-          className="m-auto inline-block"
+        <span
+          className={`animate-arrow animate-arrow-${direction} m-auto inline-block`}
         >
           <ArrowIcon direction={direction} className="h-6 w-6" />
-        </motion.span>
+        </span>
       </div>
       {(direction === 'left' || direction === 'down') && children}
     </>
@@ -137,7 +99,7 @@ export const ArrowLink = ({
       {as === 'button' ? (
         <button
           className={clsx(
-            'inline-flex items-center font-semibold focus:outline-none',
+            'animate-circle-wrapper inline-flex items-center font-semibold focus:outline-none',
             { 'gap-6 text-xl': isCircle },
             { 'gap-4 text-lg': !isCircle },
             className
@@ -153,7 +115,7 @@ export const ArrowLink = ({
         <StyledLink
           focusState=""
           className={clsx(
-            'inline-flex items-center font-semibold focus:outline-none',
+            'animate-circle-wrapper inline-flex items-center font-semibold focus:outline-none',
             { 'gap-6 text-xl': isCircle },
             { 'gap-4 text-lg': !isCircle },
             className

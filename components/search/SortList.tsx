@@ -1,4 +1,3 @@
-'use client';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import {
@@ -7,10 +6,7 @@ import {
   IoMdCheckmark,
   IoMdEye,
 } from 'react-icons/io';
-import { motion } from 'framer-motion';
 import clsx from 'clsx';
-
-const MotionButton = motion(Listbox.Button);
 
 type SortListType = {
   sortBy: string;
@@ -23,7 +19,7 @@ export const SortList = ({ sortBy, setSortBy, sortByList }: SortListType) => {
     <div className="h-full w-full min-w-[12rem]">
       <Listbox value={sortBy} onChange={setSortBy}>
         <div className="relative h-full">
-          <MotionButton className="focus-state relative h-full w-full rounded-xl border-2 border-grey-800 bg-grey-800 px-4 py-4 transition-colors hover:bg-grey-900">
+          <Listbox.Button className="focus-state relative h-full w-full rounded-xl border-2 border-grey-800 bg-grey-800 px-4 py-4 transition-colors hover:bg-grey-900">
             <span className="flex items-center gap-2 text-grey-300">
               {sortBy === 'date' ? (
                 <IoMdCalendar className="h-6 w-6" />
@@ -38,7 +34,7 @@ export const SortList = ({ sortBy, setSortBy, sortByList }: SortListType) => {
                 aria-hidden="true"
               />
             </span>
-          </MotionButton>
+          </Listbox.Button>
           <Transition
             as={Fragment}
             leave="transition ease-in duration-100"

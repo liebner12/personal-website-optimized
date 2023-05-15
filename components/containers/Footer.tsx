@@ -1,14 +1,8 @@
-'use client';
-import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import clsx from 'clsx';
 import { ArrowLink } from 'components/ArrowLink';
-import {
-  FADE_IN_VIEW,
-  navigationItemVariants,
-  navigationListVariants,
-} from 'data/constants';
 import { StyledLink } from 'components/StyledLink';
+import { Spotify } from 'components/Spotify';
 
 type Props = {
   path?: string;
@@ -25,19 +19,12 @@ const FooterList = ({
   children: ReactNode;
   className?: string;
 }) => {
-  return (
-    <motion.ul
-      className={clsx('flex flex-col gap-4', className)}
-      variants={navigationListVariants}
-    >
-      {children}
-    </motion.ul>
-  );
+  return <ul className={clsx('flex flex-col gap-4', className)}>{children}</ul>;
 };
 
 const FooterItem = ({ path, text, target, as, children }: Props) => {
   return (
-    <motion.li className="flex items-center" variants={navigationItemVariants}>
+    <li className="flex items-center">
       {as === 'header' ? (
         <div className="mb-4 text-xl font-semibold">{text}</div>
       ) : as === 'container' ? (
@@ -51,19 +38,16 @@ const FooterItem = ({ path, text, target, as, children }: Props) => {
           <p>{text}</p>
         </StyledLink>
       )}
-    </motion.li>
+    </li>
   );
 };
 
 export const Footer = () => {
   return (
     <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-16">
-      <motion.div
-        className="grid grid-cols-2 gap-10 sm:gap-y-20 md:grid-cols-3"
-        initial="closed"
-        whileInView="open"
-        viewport={{ once: true }}
-      >
+      {/* @ts-expect-error Server Component */}
+      <Spotify />
+      <div className="grid grid-cols-2 gap-10 sm:gap-y-20 md:grid-cols-3">
         <FooterList>
           <FooterItem as="header" text="Site map" />
           <FooterItem path="/" text="Home" />
@@ -121,13 +105,9 @@ export const Footer = () => {
             </div>
           </FooterItem>
         </FooterList>
-      </motion.div>
-      <motion.div
-        className="mt-20 flex w-full flex-col items-center gap-6 sm:mt-32 sm:flex-row sm:items-center sm:gap-10"
-        {...FADE_IN_VIEW}
-      >
-        <motion.div
-          {...FADE_IN_VIEW}
+      </div>
+      <div className="mt-20 flex w-full flex-col items-center gap-6 sm:mt-32 sm:flex-row sm:items-center sm:gap-10">
+        <div
           className={clsx(
             'flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 px-5 py-2 text-grey-400',
             { 'animate-pulse text-transparent': false }
@@ -142,11 +122,11 @@ export const Footer = () => {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-main"></span>
           </span>
           0 total views count
-        </motion.div>
+        </div>
         <div className="text-grey-300 sm:ml-auto">
           All rights reserved © Michał Liebner 2023
         </div>
-      </motion.div>
+      </div>
     </footer>
   );
 };

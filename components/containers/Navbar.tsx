@@ -15,7 +15,7 @@ import { MobileMenu } from 'components/MobileMenu';
 
 const Menu = () => {
   return (
-    <div className="navbar fade-in-x-reverse sticky left-0 top-0 z-30 mr-4 h-screen w-0 items-start text-white">
+    <div className="navbar sticky left-0 top-0 z-30 mr-4 h-screen w-0 items-start text-white">
       <div className="absolute left-0 top-0 flex h-full w-auto flex-col justify-between py-16 pl-16 xl:pl-20">
         <div className="nav-arrow block">
           <HiOutlineChevronDoubleRight className="h-8 w-8 text-primary-main" />
