@@ -41,7 +41,7 @@ export default async function Page({
     <div>
       <Container className="theme-projects !pb-0 !pt-0 md:!pt-[5%]">
         <div
-          className="relative lg:grid lg:gap-16"
+          className="relative lg:grid lg:gap-x-16"
           style={{
             gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
           }}
