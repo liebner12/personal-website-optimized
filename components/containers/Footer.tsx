@@ -6,6 +6,8 @@ import { Spotify } from 'components/Spotify';
 import { getPost } from 'lib/getPost';
 import { Dot } from 'components/Dot';
 
+export const revalidate = 60;
+
 type Props = {
   path?: string;
   text?: string;
