@@ -22,9 +22,9 @@ export const currentlyPlayingSong = async () => {
   const { access_token } = await getAccessToken();
 
   return fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+    next: { revalidate: 60 },
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
-    next: { revalidate: 60 },
   });
 };
