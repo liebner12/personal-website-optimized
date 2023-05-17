@@ -26,5 +26,5 @@ export const currentlyPlayingSong = async () => {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
-  });
+  }).catch((e) => console.log(e));
 };
