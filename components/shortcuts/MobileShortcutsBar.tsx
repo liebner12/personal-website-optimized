@@ -31,13 +31,13 @@ export const MobileShortcutsBar = ({
   return (
     <div
       className={clsx(
-        'fade-in fixed bottom-6 right-0 z-20 flex w-full transition-transform sm:max-w-sm lg:hidden',
+        ' fixed bottom-6 right-0 z-20 flex w-full transition-transform sm:max-w-sm lg:hidden',
         {
           'translate-y-[calc(100%+1.5rem)]': isNavbarHidden,
         }
       )}
     >
-      <div className="mx-4 flex-1 rounded-full border-2 border-grey-800 bg-grey-900 py-1 shadow-lg sm:mx-8d">
+      <div className="fade-in mx-4 flex-1 rounded-full border-2 border-grey-800 bg-grey-900 py-1 shadow-lg sm:mx-8d">
         <ul className="mx-4 flex justify-around">
           <MobilePopover
             ButtonIcon={RiHeartAddFill}
