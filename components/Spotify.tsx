@@ -3,8 +3,6 @@ import Link from 'next/link';
 import { BsSpotify } from 'react-icons/bs';
 import { currentlyPlayingSong } from 'lib/spotify';
 
-export const revalidate = 60;
-
 export const Spotify = async () => {
   const response = await currentlyPlayingSong();
 

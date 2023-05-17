@@ -25,5 +25,6 @@ export const currentlyPlayingSong = async () => {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
+    next: { revalidate: 60 },
   });
 };
