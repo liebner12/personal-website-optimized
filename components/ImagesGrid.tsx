@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { navigationItemVariants, navigationListVariants } from 'data/constants';
+import { navigationListVariants } from 'data/constants';
 
 export const ImagesGrid = () => {
   return (

@@ -52,7 +52,13 @@ export const Footer = async () => {
     }/api/posts/total`,
     { next: { revalidate: 120 } }
   );
-  const post = await response.json();
+
+  let post;
+  try {
+    post = await response?.json();
+  } catch (e) {
+    console.log(e);
+  }
 
   return (
     <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-16">
@@ -118,10 +124,12 @@ export const Footer = async () => {
         </FooterList>
       </div>
       <div className="mt-20 flex w-full flex-col items-center gap-6 sm:mt-32 sm:flex-row sm:items-center sm:gap-10">
-        <div className="flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 px-5 py-2 text-grey-400">
-          <Dot />
-          {post?.response?.count} total views count
-        </div>
+        {post?.response?.count && (
+          <div className="flex items-center gap-3 rounded-full border-2 border-grey-800 bg-grey-900 px-5 py-2 text-grey-400">
+            <Dot />
+            {post?.response?.count} total views count
+          </div>
+        )}
         <div className="text-grey-300 sm:ml-auto">
           All rights reserved © Michał Liebner 2023
         </div>
