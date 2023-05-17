@@ -31,7 +31,6 @@ export const currentlyPlayingSong = async () => {
         },
       }
     );
-    console.log(response);
     return response.json();
   } catch (e) {
     return {};
