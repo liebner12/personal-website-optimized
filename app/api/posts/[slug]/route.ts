@@ -15,5 +15,9 @@ export async function GET(
   { params }: { params: { slug: string } }
 ) {
   const response = await getPost(params.slug);
-  return NextResponse.json({ response });
+  if (response) {
+    return NextResponse.json({ response });
+  }
+
+  return NextResponse.json({ error: 'error' });
 }

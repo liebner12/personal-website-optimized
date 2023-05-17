@@ -53,12 +53,7 @@ export const Footer = async () => {
     { next: { revalidate: 120 } }
   );
 
-  let post;
-  try {
-    post = await response?.json();
-  } catch (e) {
-    console.log(e);
-  }
+  const post = await response.json();
 
   return (
     <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-16">
