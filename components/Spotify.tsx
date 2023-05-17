@@ -6,7 +6,14 @@ import { currentlyPlayingSong } from 'lib/spotify';
 export const Spotify = async () => {
   const response = await currentlyPlayingSong();
 
-  const { item, is_playing } = await response.json();
+  let spotify;
+  try {
+    spotify = await response.json();
+  } catch (e) {
+    console.log(e);
+  }
+
+  const { item, is_playing } = spotify;
 
   if (is_playing && item) {
     const title = item.name;
