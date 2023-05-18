@@ -10,6 +10,8 @@ export const metadata = {
     'On this website I showcase my projects and write blog posts connected with Javascript ecosystem',
 };
 
+export const revalidate = 60;
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
