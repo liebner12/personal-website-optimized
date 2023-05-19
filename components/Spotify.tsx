@@ -23,7 +23,7 @@ export const Spotify = async () => {
           target="_blank"
           rel="noreferrer"
           href={url}
-          className="mb-20 block rounded-xl border-2 border-grey-800 bg-grey-900 px-4 py-4 text-grey-400 transition-colors hover:bg-grey-800 sm:rounded-full sm:px-16 sm:py-6"
+          className="focus-state mb-20 block rounded-xl border-2 border-grey-800 bg-grey-900 px-4 py-4 text-grey-400 transition-colors hover:bg-grey-800 sm:rounded-full sm:px-16 sm:py-6"
         >
           <div className="flex items-center gap-4 sm:gap-6">
             <Image
