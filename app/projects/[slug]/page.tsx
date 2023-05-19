@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { ShortcutsBar } from 'components/shortcuts/ShortcutsBar';
 import { PostHeader } from 'components/post/PostHeader';
 import { Container } from 'components/containers/Container';
@@ -11,6 +12,48 @@ export async function generateStaticParams() {
   return getFiles('projects').map((file) => ({
     slug: file.split('.').slice(0, -1).join(''),
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { slug } = params;
+  const projects = await getAllFilesFrontmatter('projects');
+
+  const project = projects.find((project) => project.slug === slug);
+
+  if (project) {
+    const { title, desc, image, publishedAt } = project;
+    return {
+      title: { default: title, template: '%s | Michał Liebner' },
+      description: desc,
+      colorScheme: 'dark',
+      applicationName: 'michal-liebner',
+      creator: 'Michał Liebner',
+      authors: [{ name: 'Michał Liebner' }],
+      openGraph: {
+        title: { default: title, template: '%s | Michał Liebner' },
+        description: desc,
+        url: `https://michal-liebner.vercel.app/${projects}/${slug}`,
+        siteName: 'michal-liebner.vercel.app',
+        images: [
+          {
+            url: image,
+            width: 900,
+            height: 506,
+          },
+        ],
+        locale: 'en-US',
+        type: 'article',
+        publishedTime: publishedAt,
+        authors: ['Michał Liebner'],
+      },
+    };
+  }
+
+  return {};
 }
 
 export default async function Page({
