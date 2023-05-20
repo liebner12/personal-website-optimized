@@ -1,4 +1,3 @@
-'use client';
 import {
   HiOutlineChevronDoubleRight,
   HiOutlineHashtag,
@@ -7,8 +6,6 @@ import {
   HiOutlinePhone,
   HiOutlineUser,
 } from 'react-icons/hi';
-import { usePathname } from 'next/navigation';
-import { getCurrentTheme } from 'utils/getCurrentTheme';
 import { SkipToContent } from 'components/SkipToContent';
 import { NavbarLink } from 'components/NavbarLink';
 import { MobileMenu } from 'components/MobileMenu';
@@ -21,15 +18,32 @@ const Menu = () => {
           <HiOutlineChevronDoubleRight className="h-8 w-8 text-primary-main" />
         </div>
         <ul className="my-auto flex w-full flex-col justify-around gap-10 text-lg font-semibold">
-          <NavbarLink path="/" text="Home" isExact icon={HiOutlineHome} />
-          <NavbarLink path="/about" text="About" icon={HiOutlineUser} />
+          <NavbarLink
+            path="/"
+            text="Home"
+            isExact
+            icon={<HiOutlineHome className="h-6 w-6" />}
+          />
+          <NavbarLink
+            path="/about"
+            text="About"
+            icon={<HiOutlineUser className="h-6 w-6" />}
+          />
           <NavbarLink
             path="/projects"
             text="Projects"
-            icon={HiOutlineHashtag}
+            icon={<HiOutlineHashtag className="h-6 w-6" />}
           />
-          <NavbarLink path="/blog" text="Blog" icon={HiOutlineNewspaper} />
-          <NavbarLink path="/contact" text="Contact" icon={HiOutlinePhone} />
+          <NavbarLink
+            path="/blog"
+            text="Blog"
+            icon={<HiOutlineNewspaper className="h-6 w-6" />}
+          />
+          <NavbarLink
+            path="/contact"
+            text="Contact"
+            icon={<HiOutlinePhone className="h-6 w-6" />}
+          />
         </ul>
       </div>
     </div>
@@ -37,10 +51,8 @@ const Menu = () => {
 };
 
 export const Navbar = () => {
-  const pathname = usePathname();
-  const { theme } = getCurrentTheme(pathname || '');
   return (
-    <nav className={theme}>
+    <nav>
       <SkipToContent id="Skip navbar">
         <div className="relative hidden h-full lg:block">
           <Menu />

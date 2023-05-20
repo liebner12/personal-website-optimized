@@ -1,13 +1,13 @@
 'use client';
-import { IconType } from 'react-icons/lib';
 import { usePathname } from 'next/navigation';
+import { ReactNode } from 'react';
 import { StyledLink } from './StyledLink';
 
 type Props = {
   path: string;
   text: string;
   isExact?: boolean;
-  icon?: IconType;
+  icon?: ReactNode;
   onClick?: () => void;
 };
 
@@ -24,12 +24,11 @@ export const NavbarLink = ({ path, text, isExact, icon, onClick }: Props) => {
         href={path}
         ariaLabel={text}
         isActive={isActive}
-        StartIcon={icon}
         color="text-white"
-        className="z-20 h-6 gap-3 text-xl font-bold"
+        className="z-20 flex h-6 items-center gap-3 text-xl font-bold"
         onClick={onClick}
       >
-        <p className="link-text tracking-wide">{text}</p>
+        {icon} <p className="link-text tracking-wide">{text}</p>
       </StyledLink>
     </li>
   );
