@@ -100,6 +100,14 @@ export const REACTIONS_LIST_SM = {
     'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Thinking_calccw.webp',
 };
 
+export const FALLBACK_REACTIONS_LIST = {
+  like: 0,
+  cool: 0,
+  'exploding head': 0,
+  'to the moon': 0,
+  interesting: 0,
+};
+
 export const REACTIONS_LIST = {
   like: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Heart_h6gbn0.webp',
   cool: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Fire_zlazxh.webp',

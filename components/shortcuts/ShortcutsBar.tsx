@@ -4,21 +4,21 @@ import { SocialButtons } from './SocialButtons';
 import { MobileShortcutsBar } from './MobileShortcutsBar';
 import { Reactions } from './Reactions';
 import { ContentType } from 'types/frontmatters';
-import { getPost } from 'lib/getPost';
 import { DesktopPopover } from 'components/Popover';
 import { PopoverButton } from 'components/PopoverButton';
+import { ReactionsType } from 'data/constants';
 
-export async function ShortcutsBar({
+export function ShortcutsBar({
   content,
   slug,
   type,
+  reactions,
 }: {
   content: string;
   slug: string;
   type: ContentType;
+  reactions: ReactionsType;
 }) {
-  const { reactions } = await getPost(slug);
-
   return (
     <>
       <div className="sticky top-16 z-40 col-start-2 row-span-2 hidden h-screen pb-16 lg:block">

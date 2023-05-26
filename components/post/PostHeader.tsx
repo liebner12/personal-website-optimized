@@ -3,28 +3,20 @@ import { MdCalendarToday, MdTimer } from 'react-icons/md';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { Suspense } from 'react';
 import { ProjectFrontmatter, BlogFrontmatter } from 'types/frontmatters';
 import { Tooltip } from 'components/Tooltip';
 import { BackButton } from 'components/BackButton';
 import { Button } from 'components/Button';
 import { ReactionsList } from 'components/shortcuts/ReactionsList';
 import { PostViews } from 'components/PostViews';
-import { getPost } from 'lib/getPost';
+import { FALLBACK_REACTIONS_LIST } from 'data/constants';
 
-export type PostHeader = Partial<
-  Pick<BlogFrontmatter, 'title' | 'publishedAt' | 'readingTime'> &
-    Pick<ProjectFrontmatter, 'title' | 'repository' | 'url' | 'publishedAt'>
-> & {
+export type PostHeader = Partial<BlogFrontmatter & ProjectFrontmatter> & {
   image: string;
   href: string;
-  blurDataURL?: string;
-  slug: string;
 };
 
-export const revalidate = 60;
-
-export async function PostHeader({
+export function PostHeader({
   title,
   publishedAt,
   repository,
@@ -33,10 +25,9 @@ export async function PostHeader({
   readingTime,
   blurDataURL,
   href,
-  slug,
+  views,
+  reactions,
 }: PostHeader) {
-  const { reactions } = await getPost(slug);
-
   return (
     <div className="fade-in col-start-1 row-start-1">
       <div className=" mb-8">
@@ -61,14 +52,7 @@ export async function PostHeader({
             </>
           )}
         </div>
-        <Suspense
-          fallback={
-            <div className="mt-4 flex h-8 w-48 animate-pulse rounded-full bg-grey-900" />
-          }
-        >
-          {/* @ts-expect-error Server Component */}
-          <ReactionsList reactions={reactions} />
-        </Suspense>
+        <ReactionsList reactions={reactions || FALLBACK_REACTIONS_LIST} />
         {(url || repository) && (
           <ul className="mt-6 flex items-center gap-4">
             {url && (
@@ -103,8 +87,7 @@ export async function PostHeader({
         )}
       </div>
       <div className="relative">
-        {/* @ts-expect-error Server Component */}
-        <PostViews slug={slug} />
+        <PostViews views={views || 0} />
         <Image
           placeholder="blur"
           blurDataURL={blurDataURL}

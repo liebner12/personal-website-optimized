@@ -1,33 +1,30 @@
 import { ReadTimeResults } from 'reading-time';
-import { Blog, BlogWithMeta } from './blogs';
-import { Project, ProjectWithMeta } from './projects';
+import { Blog } from './blogs';
+import { Project } from './projects';
+import { ReactionsType } from 'data/constants';
 
 export type ContentType = 'blog' | 'projects';
 
 export type BlogFrontmatter = Blog & {
   slug: string;
   readingTime: ReadTimeResults;
-  views?: number;
+  views: number;
   blurDataURL: string;
   content?: string;
+  numberOfComments: number;
+  reactions?: ReactionsType;
 };
 
 export type ProjectFrontmatter = Project & {
   slug: string;
   readingTime: ReadTimeResults;
-  views?: number;
+  views: number;
   blurDataURL: string;
   content?: string;
+  numberOfComments: number;
+  reactions?: ReactionsType;
 };
-
-export type InjectedViews = { views?: number };
-
-export type PostMeta = ProjectWithMeta | BlogWithMeta;
 
 export type PickFrontmatter<T extends ContentType> = T extends 'blog'
   ? BlogFrontmatter
   : ProjectFrontmatter;
-
-export type PickFrontmatterWithMeta<T extends ContentType> = T extends 'blog'
-  ? BlogWithMeta
-  : ProjectWithMeta;

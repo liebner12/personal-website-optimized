@@ -388,7 +388,7 @@ body {
 
 @keyframes fade-in-x-reverse {
   0% {
-    opacity: 0;
+    opacity: 0.01;
     transform: translateX(-40px);
   }
   100% {

@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { Feed } from 'feed';
 import { getAllFilesFrontmatter } from './getAllFilesFrontmatter';
 import { meta } from 'data/meta';
@@ -37,7 +36,5 @@ export async function generateRssFeed() {
     });
   });
 
-  fs.mkdirSync('./public/rss', { recursive: true });
-  fs.writeFileSync('./public/rss/feed.xml', feed.rss2());
-  fs.writeFileSync('./public/rss/feed.json', feed.json1());
+  return feed;
 }

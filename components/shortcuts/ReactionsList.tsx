@@ -10,11 +10,7 @@ import {
 } from 'data/constants';
 import supabase from 'lib/supabase';
 
-export const ReactionsList = async ({
-  reactions,
-}: {
-  reactions: ReactionsType;
-}) => {
+export const ReactionsList = ({ reactions }: { reactions: ReactionsType }) => {
   const [clientReactions, setClientReactions] = useState(reactions);
 
   useEffect(() => {

@@ -6,10 +6,10 @@ import { FADE_IN_VIEW } from 'data/constants';
 
 export const CardsRange = () => {
   return (
-    <motion.div className="relative mx-auto" {...FADE_IN_VIEW}>
+    <div className="relative mx-auto">
       <div className="theme-projects relative h-[28rem] w-80">
         <ul className="cards-range"></ul>
       </div>
-    </motion.div>
+    </div>
   );
 };

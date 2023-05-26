@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { BLOG_SORT_LIST } from 'data/constants';
-import { ContentType, PickFrontmatterWithMeta } from 'types/frontmatters';
+import { ContentType, PickFrontmatter } from 'types/frontmatters';
 import { sortByDate } from 'utils/sortByDate';
 
 const sortPosts = <T extends ContentType>(
   sortBy: string,
-  results: Array<PickFrontmatterWithMeta<T>>
+  results: Array<PickFrontmatter<T>>
 ) => {
   switch (sortBy) {
     case 'views':
@@ -17,13 +17,13 @@ const sortPosts = <T extends ContentType>(
 };
 
 export const useSelectedPosts = <T extends ContentType>(
-  posts: Array<PickFrontmatterWithMeta<T>>,
+  posts: Array<PickFrontmatter<T>>,
   type?: T
 ) => {
   const [search, setSearch] = useState<string>('');
   const [sortBy, setSortBy] = useState(BLOG_SORT_LIST[0]);
   const [filteredPosts, setFilteredPosts] =
-    useState<Array<PickFrontmatterWithMeta<T>>>(posts);
+    useState<Array<PickFrontmatter<T>>>(posts);
 
   useEffect(() => {
     const results = posts.filter((post) => {

@@ -1,5 +1,3 @@
-import { BlogFrontmatter, InjectedViews } from './frontmatters';
-
 export type Blog = {
   slug: string;
   title: string;
@@ -9,5 +7,3 @@ export type Blog = {
   publishedAt: string;
   lastUpdated?: string;
 };
-
-export type BlogWithMeta = BlogFrontmatter & InjectedViews;

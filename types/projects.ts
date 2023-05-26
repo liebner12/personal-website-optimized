@@ -1,4 +1,3 @@
-import { InjectedViews, ProjectFrontmatter } from './frontmatters';
 import { IconsList } from 'components/Icons';
 
 export type Project = {
@@ -12,5 +11,3 @@ export type Project = {
   repository: string;
   url?: string;
 };
-
-export type ProjectWithMeta = ProjectFrontmatter & InjectedViews;
