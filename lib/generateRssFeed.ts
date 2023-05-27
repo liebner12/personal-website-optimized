@@ -1,9 +1,10 @@
 import { Feed } from 'feed';
 import { getAllFilesFrontmatter } from './getAllFilesFrontmatter';
 import { meta } from 'data/meta';
+import { PostWithFrontmatter } from 'types/frontmatters';
 
 export async function generateRssFeed() {
-  const blogs = await getAllFilesFrontmatter('blog');
+  const blogs = (await getAllFilesFrontmatter('blog')) as PostWithFrontmatter[];
   const siteURL = 'https://michal-liebner.vercel.app';
   const date = new Date();
   const author = {

@@ -1,6 +1,6 @@
-import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
+import { BlogWithMetaData, ProjectWithMetaData } from 'types/frontmatters';
 
 export const sortByViews = (
-  contentA: BlogFrontmatter | ProjectFrontmatter,
-  contentB: BlogFrontmatter | ProjectFrontmatter
+  contentA: BlogWithMetaData | ProjectWithMetaData,
+  contentB: BlogWithMetaData | ProjectWithMetaData
 ) => (contentA?.views ?? 0) - (contentB?.views ?? 0);
