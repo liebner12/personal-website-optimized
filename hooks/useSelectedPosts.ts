@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { BLOG_SORT_LIST } from 'data/constants';
-import { ContentType, PickFrontmatter } from 'types/frontmatters';
+import { ContentType, PickPostWithMetaData } from 'types/frontmatters';
 import { sortByDate } from 'utils/sortByDate';
 
 const sortPosts = <T extends ContentType>(
   sortBy: string,
-  results: Array<PickFrontmatter<T>>
+  results: Array<PickPostWithMetaData<T>>
 ) => {
   switch (sortBy) {
     case 'views':
@@ -17,13 +17,13 @@ const sortPosts = <T extends ContentType>(
 };
 
 export const useSelectedPosts = <T extends ContentType>(
-  posts: Array<PickFrontmatter<T>>,
-  type?: T
+  posts: Array<PickPostWithMetaData<T>>,
+  type: T
 ) => {
   const [search, setSearch] = useState<string>('');
   const [sortBy, setSortBy] = useState(BLOG_SORT_LIST[0]);
   const [filteredPosts, setFilteredPosts] =
-    useState<Array<PickFrontmatter<T>>>(posts);
+    useState<Array<PickPostWithMetaData<T>>>(posts);
 
   useEffect(() => {
     const results = posts.filter((post) => {
@@ -34,7 +34,9 @@ export const useSelectedPosts = <T extends ContentType>(
         formattedSearch
           .split(' ')
           .every((tag) =>
-            post.tags.join(' ').toLowerCase().includes(tag.toLowerCase())
+            'icons' in post
+              ? post.icons.join(' ').toLowerCase().includes(tag.toLowerCase())
+              : post.tags.join(' ').toLowerCase().includes(tag.toLowerCase())
           )
       );
     });

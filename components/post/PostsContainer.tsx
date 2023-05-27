@@ -5,18 +5,20 @@ import { SearchContainer } from 'components/search/SerachContainer';
 import { useSelectedPosts } from 'hooks/useSelectedPosts';
 import { TagsType } from 'lib/getTags';
 import { theme } from 'tailwind.config';
-import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
+import { ContentType, Post, PostWithMeta } from 'types/frontmatters';
 import { checkTagged } from 'utils/checkTagged';
 
-export const PostsContainer = ({
+export function PostsContainer<T extends PostWithMeta>({
   posts,
   tags,
+  type,
 }: {
-  posts: ProjectFrontmatter[] & BlogFrontmatter[];
-  tags: TagsType;
-}) => {
+  posts: Post<T>[];
+  tags: TagsType | string[];
+  type: ContentType;
+}) {
   const { filteredPosts, search, setSearch, sortBy, setSortBy, toggleTag } =
-    useSelectedPosts(posts, 'projects');
+    useSelectedPosts(posts, type);
 
   return (
     <>
@@ -38,10 +40,10 @@ export const PostsContainer = ({
             publishedAt,
             readingTime,
             desc,
-            tags,
             numberOfComments,
             views,
             reactions,
+            ...other
           }) => {
             let numberOfReactions = 0;
             Object.values(reactions || {}).forEach((val) => {
@@ -62,7 +64,8 @@ export const PostsContainer = ({
                 <Card.Text title={title} desc={desc} />
                 <Card.Footer
                   slug={slug}
-                  icons={tags}
+                  tags={'tags' in other ? other.tags : undefined}
+                  icons={'icons' in other ? other.icons : undefined}
                   title={title}
                   checkTagged={(tag) => checkTagged(tags, tag, search)}
                   views={views}
@@ -76,4 +79,4 @@ export const PostsContainer = ({
       </List>
     </>
   );
-};
+}

@@ -7,7 +7,7 @@ export const TagsList = ({
   onClick,
   checkTagged,
 }: {
-  tags: TagsType;
+  tags: TagsType | Array<string>;
   onClick: (item: string) => void;
   checkTagged: (tag: string) => boolean;
 }) => {

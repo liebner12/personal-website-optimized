@@ -5,7 +5,7 @@ export type Project = {
   title: string;
   image: string;
   desc: string;
-  tags: Array<IconsList>;
+  icons: Array<IconsList>;
   publishedAt: string;
   lastUpdated?: string;
   repository: string;

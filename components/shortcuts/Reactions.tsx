@@ -7,15 +7,16 @@ import {
   REACTIONS_LIST,
   REACTIONS_PRIORITIES,
   ReactionsType,
+  FALLBACK_REACTIONS_LIST,
 } from 'data/constants';
 import { Tooltip } from 'components/Tooltip';
 import { Button } from 'components/Button';
 
 export const Reactions = ({
-  reactions,
+  reactions = FALLBACK_REACTIONS_LIST,
   slug,
 }: {
-  reactions: ReactionsType;
+  reactions?: ReactionsType;
   slug: string;
 }) => {
   const [isLoading, setIsLoading] = useState(true);

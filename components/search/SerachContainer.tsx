@@ -9,7 +9,7 @@ import { checkTagged } from 'utils/checkTagged';
 type SearchContainerType = {
   sortBy?: string;
   setSortBy?: Dispatch<SetStateAction<string>>;
-  tags: TagsType;
+  tags: TagsType | Array<string>;
   toggleTag: (item: string) => void;
   setSearch: Dispatch<SetStateAction<string>>;
   search: string;

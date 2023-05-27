@@ -3,9 +3,14 @@ import { Heading } from 'components/Heading';
 import { getTags } from 'lib/getTags';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { PostsContainer } from 'components/post/PostsContainer';
+import { ProjectWithMetaData } from 'types/frontmatters';
+import { sortByDate } from 'utils/sortByDate';
 
 export default async function Projects() {
-  const projects = await getAllFilesFrontmatter('projects');
+  const projects = (await getAllFilesFrontmatter(
+    'projects',
+    true
+  )) as ProjectWithMetaData[];
   const tags = getTags(projects);
 
   return (
@@ -15,7 +20,11 @@ export default async function Projects() {
           My personal<span className="text-primary-main"> journey</span> as a
           <span className="text-primary-main"> frontend</span> developer
         </Heading>
-        <PostsContainer posts={projects} tags={tags} />
+        <PostsContainer
+          posts={projects.sort(sortByDate)}
+          tags={tags}
+          type="projects"
+        />
       </Container>
     </>
   );

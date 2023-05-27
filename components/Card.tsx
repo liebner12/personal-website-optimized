@@ -8,7 +8,12 @@ import { FaCommentDots } from 'react-icons/fa';
 import { MdFavorite } from 'react-icons/md';
 import { AiFillEye } from 'react-icons/ai';
 import { Icons, IconsList } from './Icons';
-import { BlogFrontmatter, ProjectFrontmatter } from 'types/frontmatters';
+import {
+  BlogFrontmatter,
+  BlogWithMetaData,
+  ProjectFrontmatter,
+  ProjectWithMetaData,
+} from 'types/frontmatters';
 
 type Card = Pick<ProjectFrontmatter & BlogFrontmatter, 'slug'> & {
   children: JSX.Element[] | JSX.Element;
@@ -54,7 +59,7 @@ const CardImage = ({ image, title, overlay, blurDataURL }: CardImage) => {
 };
 
 export type CardDate = Pick<
-  ProjectFrontmatter & BlogFrontmatter,
+  ProjectWithMetaData & BlogWithMetaData,
   'publishedAt' | 'readingTime'
 >;
 
@@ -82,7 +87,7 @@ const CardText = ({ title, desc }: CardText) => {
 };
 
 export type CardFooter = Pick<
-  ProjectFrontmatter & BlogFrontmatter,
+  ProjectWithMetaData & BlogWithMetaData,
   'slug' | 'title' | 'numberOfComments' | 'views'
 > & {
   checkTagged?: (tag: string) => boolean;

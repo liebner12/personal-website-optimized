@@ -17,7 +17,7 @@ export function ShortcutsBar({
   content: string;
   slug: string;
   type: ContentType;
-  reactions: ReactionsType;
+  reactions: ReactionsType | null;
 }) {
   return (
     <>

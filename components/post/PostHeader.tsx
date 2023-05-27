@@ -3,7 +3,7 @@ import { MdCalendarToday, MdTimer } from 'react-icons/md';
 import { BiLink } from 'react-icons/bi';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { ProjectFrontmatter, BlogFrontmatter } from 'types/frontmatters';
+import { BlogWithMetaData, ProjectWithMetaData } from 'types/frontmatters';
 import { Tooltip } from 'components/Tooltip';
 import { BackButton } from 'components/BackButton';
 import { Button } from 'components/Button';
@@ -11,7 +11,7 @@ import { ReactionsList } from 'components/shortcuts/ReactionsList';
 import { PostViews } from 'components/PostViews';
 import { FALLBACK_REACTIONS_LIST } from 'data/constants';
 
-export type PostHeader = Partial<BlogFrontmatter & ProjectFrontmatter> & {
+export type PostHeader = Partial<BlogWithMetaData & ProjectWithMetaData> & {
   image: string;
   href: string;
 };

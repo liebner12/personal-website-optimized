@@ -1,12 +1,12 @@
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { ShortcutsBar } from 'components/shortcuts/ShortcutsBar';
 import { PostHeader } from 'components/post/PostHeader';
 import { Container } from 'components/containers/Container';
 import { PostFooter } from 'components/post/PostFooter';
 import { getFiles } from 'lib/getFiles';
-import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { PostBody } from 'components/post/PostBody';
+import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
+import { ProjectWithMetaData } from 'types/frontmatters';
 
 export async function generateStaticParams() {
   return getFiles('projects').map((file) => ({
@@ -20,40 +20,37 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const { slug } = params;
-  const projects = await getAllFilesFrontmatter('projects');
+  const project = (await getFileBySlugFrontmatter(
+    'projects',
+    slug
+  )) as ProjectWithMetaData;
 
-  const project = projects.find((project) => project.slug === slug);
-
-  if (project) {
-    const { title, desc, image, publishedAt } = project;
-    return {
+  const { title, desc, image, publishedAt } = project;
+  return {
+    title: { default: title, template: '%s | Michał Liebner' },
+    description: desc,
+    colorScheme: 'dark',
+    applicationName: 'michal-liebner',
+    creator: 'Michał Liebner',
+    authors: [{ name: 'Michał Liebner' }],
+    openGraph: {
       title: { default: title, template: '%s | Michał Liebner' },
       description: desc,
-      colorScheme: 'dark',
-      applicationName: 'michal-liebner',
-      creator: 'Michał Liebner',
-      authors: [{ name: 'Michał Liebner' }],
-      openGraph: {
-        title: { default: title, template: '%s | Michał Liebner' },
-        description: desc,
-        url: `https://michal-liebner.vercel.app/${projects}/${slug}`,
-        siteName: 'michal-liebner.vercel.app',
-        images: [
-          {
-            url: image,
-            width: 900,
-            height: 506,
-          },
-        ],
-        locale: 'en-US',
-        type: 'article',
-        publishedTime: publishedAt,
-        authors: ['Michał Liebner'],
-      },
-    };
-  }
-
-  return {};
+      url: `https://michal-liebner.vercel.app/projects/${slug}`,
+      siteName: 'michal-liebner.vercel.app',
+      images: [
+        {
+          url: image,
+          width: 900,
+          height: 506,
+        },
+      ],
+      locale: 'en-US',
+      type: 'article',
+      publishedTime: publishedAt,
+      authors: ['Michał Liebner'],
+    },
+  };
 }
 
 export default async function Page({
@@ -61,12 +58,10 @@ export default async function Page({
 }: {
   params: { slug: string };
 }) {
-  const projects = await getAllFilesFrontmatter('projects');
-
-  const project = projects.find((project) => project.slug === slug);
-  if (!project) {
-    return notFound();
-  }
+  const project = (await getFileBySlugFrontmatter(
+    'projects',
+    slug
+  )) as ProjectWithMetaData;
 
   const {
     title,
