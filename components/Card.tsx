@@ -25,7 +25,7 @@ export const Card = ({ slug, children, endpoint = 'blog' }: Card) => {
     <li className="h-full">
       <Link
         href={`/${endpoint}/${slug}`}
-        className="focus-state focus-state-clean relative flex h-full flex-col rounded-xl bg-grey-900 pb-5"
+        className="focus-state relative flex h-full flex-col rounded-xl bg-grey-900 pb-5 transition-transform hover:scale-105 focus:scale-95 focus:ring-4"
       >
         {children}
       </Link>

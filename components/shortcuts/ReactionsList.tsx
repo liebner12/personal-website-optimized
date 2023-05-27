@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Tooltip } from '../Tooltip';
 import {
   ReactionsKeys,
-  REACTIONS_LIST_SM,
+  REACTIONS_LIST,
   REACTIONS_PRIORITIES,
   ReactionsType,
 } from 'data/constants';
@@ -41,7 +41,7 @@ export const ReactionsList = ({ reactions }: { reactions: ReactionsType }) => {
           <Tooltip content={key} key={key} size="sm" tabIndex={-1}>
             <div className="flex cursor-default items-center gap-0.5 text-2xld">
               <Image
-                src={REACTIONS_LIST_SM[key]}
+                src={REACTIONS_LIST[key]}
                 alt={key}
                 width={32}
                 height={32}

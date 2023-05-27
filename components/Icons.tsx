@@ -1,4 +1,3 @@
-'use client';
 import {
   SiAlgolia,
   SiBootstrap,
@@ -16,7 +15,6 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si';
-import { AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
 import { Tooltip } from './Tooltip';
 
@@ -50,20 +48,18 @@ export const Icons = ({
 
         const current = iconsList[icon];
         return (
-          <AnimatePresence key={current.name}>
-            <Tooltip content={current.name} tabIndex={-1}>
-              <current.icon
-                className={clsx(
-                  { 'text-primary-main': checkTagged(icon) },
-                  'hover:text-primary-main',
-                  sizeVariants[size],
-                  technologyClassName
-                )}
-                role="img"
-                title={current.name}
-              />
-            </Tooltip>
-          </AnimatePresence>
+          <Tooltip content={current.name} tabIndex={-1} key={current.name}>
+            <current.icon
+              className={clsx(
+                { 'text-primary-main': checkTagged(icon) },
+                'hover:text-primary-main',
+                sizeVariants[size],
+                technologyClassName
+              )}
+              role="img"
+              title={current.name}
+            />
+          </Tooltip>
         );
       })}
     </ul>

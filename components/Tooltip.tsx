@@ -1,6 +1,5 @@
 'use client';
 import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
 import { ReactNode, useRef, useState } from 'react';
 
 type Props = {
@@ -30,31 +29,28 @@ export const Tooltip = ({
   };
 
   return (
-    <motion.li
-      onHoverStart={() => setVisibility(true)}
-      onHoverEnd={() => setVisibility(false)}
+    <li
+      onTouchStart={() => setVisibility(true)}
+      onTouchEnd={() => setVisibility(false)}
+      onMouseOver={() => setVisibility(true)}
+      onMouseLeave={() => setVisibility(false)}
       onFocus={() => setVisibility(true)}
       onBlur={() => setVisibility(false)}
       className="relative flex justify-center focus:outline-0"
       tabIndex={tabIndex}
     >
-      <AnimatePresence>
-        {isVisible && (
-          <motion.div
-            initial={{ y: '10px', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: '10px', opacity: 0 }}
-            className={clsx(
-              { 'mb-3 px-4 py-0.5': size == 'md' },
-              { 'mb-2 px-2 py-0.5 text-base': size == 'sm' },
-              'absolute bottom-full whitespace-nowrap rounded-lg bg-[#eeeeee] capitalize text-grey-900'
-            )}
-          >
-            {content}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isVisible && (
+        <div
+          className={clsx(
+            { 'mb-3 px-4 py-0.5': size == 'md' },
+            { 'mb-2 px-2 py-0.5 text-base': size == 'sm' },
+            'fade-in-tooltip absolute bottom-full whitespace-nowrap rounded-lg bg-[#eeeeee] capitalize text-grey-900'
+          )}
+        >
+          {content}
+        </div>
+      )}
       {children}
-    </motion.li>
+    </li>
   );
 };

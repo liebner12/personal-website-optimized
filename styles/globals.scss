@@ -349,6 +349,22 @@ body {
   }
 }
 
+.fade-in-tooltip {
+  animation: fade-in-tooltip 0.2s ease-out forwards;
+  -webkit-animation: fade-in-tooltip 0.2s ease-out forwards;
+}
+
+@keyframes fade-in-tooltip {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 .fade-in {
   animation: fade-in 0.3s ease-in forwards;
   -webkit-animation: fade-in 0.3s ease-in forwards;

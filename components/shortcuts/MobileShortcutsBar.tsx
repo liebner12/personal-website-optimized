@@ -33,7 +33,7 @@ export const MobileShortcutsBar = ({
       className={clsx(
         ' fixed bottom-6 right-0 z-20 flex w-full transition-transform sm:max-w-sm lg:hidden',
         {
-          'translate-y-[calc(100%+1.5rem)]': isNavbarHidden,
+          'translate-y-[calc(100%+4rem)]': isNavbarHidden,
         }
       )}
     >

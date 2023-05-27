@@ -89,17 +89,6 @@ export const navigationListVariants = {
   },
 };
 
-export const REACTIONS_LIST_SM = {
-  like: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Heart_h6gbn0.webp',
-  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Fire_zlazxh.webp',
-  'exploding head':
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Exploding_xtvmud.webp',
-  'to the moon':
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Rocket_xwtjgh.webp',
-  interesting:
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Thinking_calccw.webp',
-};
-
 export const FALLBACK_REACTIONS_LIST = {
   like: 0,
   cool: 0,
@@ -109,14 +98,14 @@ export const FALLBACK_REACTIONS_LIST = {
 };
 
 export const REACTIONS_LIST = {
-  like: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Heart_h6gbn0.webp',
-  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Fire_zlazxh.webp',
+  like: 'https://res.cloudinary.com/dtce87smh/image/upload/v1685215598/Heart_gvxow3.webp',
+  cool: 'https://res.cloudinary.com/dtce87smh/image/upload/v1685215611/Fire_hfhxvp.webp',
   'exploding head':
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Exploding_xtvmud.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/v1685215601/Exploding_hopmy5.webp',
   'to the moon':
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Rocket_xwtjgh.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/v1685215599/Rocket_ypxqvs.webp',
   interesting:
-    'https://res.cloudinary.com/dtce87smh/image/upload/w_48/v1683203871/Thinking_calccw.webp',
+    'https://res.cloudinary.com/dtce87smh/image/upload/v1685215605/Thinking_ejxayg.webp',
 };
 
 export const REACTIONS_PRIORITIES = {
