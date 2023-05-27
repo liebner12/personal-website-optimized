@@ -6,7 +6,7 @@ import { Reactions } from './Reactions';
 import { ContentType } from 'types/frontmatters';
 import { DesktopPopover } from 'components/Popover';
 import { PopoverButton } from 'components/PopoverButton';
-import { ReactionsType } from 'data/constants';
+import { FALLBACK_REACTIONS_LIST, ReactionsType } from 'data/constants';
 
 export function ShortcutsBar({
   content,
@@ -34,14 +34,22 @@ export function ShortcutsBar({
                 />
               }
             >
-              <Reactions reactions={reactions} slug={slug} />
+              <Reactions
+                reactions={reactions || FALLBACK_REACTIONS_LIST}
+                slug={slug}
+              />
             </DesktopPopover>
             <SocialButtons slug={slug} type={type} />
           </ul>
         </div>
       </div>
       <MobileShortcutsBar
-        reactions={<Reactions reactions={reactions} slug={slug} />}
+        reactions={
+          <Reactions
+            reactions={reactions || FALLBACK_REACTIONS_LIST}
+            slug={slug}
+          />
+        }
       >
         <SocialButtons variant="transparent" slug={slug} type={type} />
       </MobileShortcutsBar>
