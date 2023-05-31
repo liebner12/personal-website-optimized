@@ -62,6 +62,7 @@ export function PostHeader({
                   target="_blank"
                   StartIcon={BiLink}
                   ariaLabel="Link to the page"
+                  className="animate-hover"
                 />
               </Tooltip>
             )}
@@ -73,6 +74,7 @@ export function PostHeader({
                   StartIcon={FaGithub}
                   href={repository}
                   target="_blank"
+                  className="animate-hover"
                 />
               </Tooltip>
             )}
@@ -81,6 +83,7 @@ export function PostHeader({
                 StartIcon={FaRegComments}
                 href="#comments-github"
                 ariaLabel="Comments"
+                className="animate-hover"
               />
             </Tooltip>
           </ul>

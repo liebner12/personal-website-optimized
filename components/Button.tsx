@@ -31,13 +31,13 @@ const getVariant = (
       return 'border-2 border-grey-800 bg-grey-900 font-semibold';
     }
     case 'secondary': {
-      return 'border-2 border-grey-800 font-semibold';
+      return 'border-2 border-grey-800 font-semibold animate-hover';
     }
     case 'transparent': {
       return '';
     }
     default: {
-      return 'bg-primary-main font-bold';
+      return 'bg-primary-main font-bold animate-hover';
     }
   }
 };

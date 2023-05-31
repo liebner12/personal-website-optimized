@@ -1,5 +1,5 @@
 .prose {
-  max-width: 50rem;
+  max-width: 50rem !important;
   font-size: 18px;
 }
 
