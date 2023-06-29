@@ -6,8 +6,12 @@ export async function POST(
   { params }: { params: { slug: string } }
 ) {
   const res = await request.json();
-  await registerReaction(params.slug, res);
-  return NextResponse.json({ res });
+  try {
+    await registerReaction(params.slug, res);
+    return NextResponse.json({ res });
+  } catch (e) {
+    return NextResponse.json({ e });
+  }
 }
 
 export async function GET(

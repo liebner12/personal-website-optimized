@@ -82,7 +82,7 @@ export const Reactions = ({
               size="xs"
               color="text-white"
               className={clsx(
-                'w-12 pb-1 pt-1 transition-transform hover:scale-110 hover:bg-grey-800 focus:bg-grey-800',
+                'pb-1 pt-1 transition-transform hover:scale-110 hover:bg-grey-800 focus:bg-grey-800 lg:w-12',
                 {
                   'bg-grey-800': reactionSelection[key],
                 }
@@ -92,7 +92,7 @@ export const Reactions = ({
             >
               <div className="flex flex-shrink-0 flex-col justify-center gap-0.5">
                 <div className="flex-shrink-0">
-                  <Image src={icon} alt={key} width={64} height={64} />
+                  <Image src={icon} alt={key} width={36} height={36} />
                 </div>
                 <span
                   className={clsx(

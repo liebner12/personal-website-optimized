@@ -51,7 +51,7 @@ export function PostsContainer<T extends PostWithMeta>({
             });
 
             return (
-              <Card endpoint="projects" slug={slug} key={slug}>
+              <Card endpoint={type} slug={slug} key={slug}>
                 <Card.Image
                   title={title}
                   image={image}

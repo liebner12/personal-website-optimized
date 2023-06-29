@@ -5,7 +5,7 @@ import { Container } from 'components/containers/Container';
 import { PostFooter } from 'components/post/PostFooter';
 import { PostBody } from 'components/post/PostBody';
 import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
-import { ProjectWithMetaData } from 'types/frontmatters';
+import { BlogWithMetaData } from 'types/frontmatters';
 
 export const revalidate = 3600;
 
@@ -16,9 +16,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = params;
   const project = (await getFileBySlugFrontmatter(
-    'projects',
+    'blog',
     slug
-  )) as ProjectWithMetaData;
+  )) as BlogWithMetaData;
 
   const { title, desc, image, publishedAt } = project;
   return {
@@ -54,15 +54,13 @@ export default async function Page({
   params: { slug: string };
 }) {
   const project = (await getFileBySlugFrontmatter(
-    'projects',
+    'blog',
     slug
-  )) as ProjectWithMetaData;
+  )) as BlogWithMetaData;
 
   const {
     title,
-    url,
     readingTime,
-    repository,
     image,
     publishedAt,
     blurDataURL,
@@ -74,7 +72,7 @@ export default async function Page({
 
   return (
     <div>
-      <Container className="theme-projects !pb-0 !pt-0 md:!pt-[5%]">
+      <Container className="theme-blog !pb-0 !pt-0 md:!pt-[5%]">
         <div
           className="relative lg:grid lg:gap-x-16"
           style={{
@@ -84,26 +82,24 @@ export default async function Page({
           <PostHeader
             slug={slug}
             title={title}
-            url={url}
             readingTime={readingTime}
-            repository={repository}
             publishedAt={publishedAt}
             image={image}
             blurDataURL={blurDataURL}
             views={views}
             reactions={reactions}
-            href="/projects"
+            href="/blog"
           />
           <ShortcutsBar
             reactions={reactions}
             content={markdown}
             slug={slug}
-            type="projects"
+            type="blog"
           />
           <PostBody content={content} />
         </div>
       </Container>
-      <PostFooter title={title} type="projects" />
+      <PostFooter title={title} type="blog" />
     </div>
   );
 }

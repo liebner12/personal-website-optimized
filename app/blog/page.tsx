@@ -8,12 +8,12 @@ import { sortByDate } from 'utils/sortByDate';
 
 export const revalidate = 3600;
 
-export default async function Projects() {
-  const projects = (await getAllFilesFrontmatter(
-    'projects',
+export default async function Blogs() {
+  const blogs = (await getAllFilesFrontmatter(
+    'blog',
     true
   )) as ProjectWithMetaData[];
-  const tags = getTags(projects);
+  const tags = getTags(blogs);
 
   return (
     <>
@@ -23,9 +23,9 @@ export default async function Projects() {
           <span className="text-primary-main"> frontend</span> developer
         </Heading>
         <PostsContainer
-          posts={projects.sort(sortByDate)}
+          posts={blogs.sort(sortByDate)}
           tags={tags}
-          type="projects"
+          type="blog"
         />
       </Container>
     </>
