@@ -1,5 +1,5 @@
-export const putView = async (slug: string) =>
-  fetch(
+export const putView = async (slug: string) => {
+  await fetch(
     `${
       process.env.NODE_ENV === 'production'
         ? 'https://personal-website-optimized.vercel.app/'
@@ -10,3 +10,4 @@ export const putView = async (slug: string) =>
       next: { revalidate: 0 },
     }
   );
+};

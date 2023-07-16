@@ -34,7 +34,6 @@ export async function PUT(
     await registerView(params.slug);
     return NextResponse.json({ res: 'ok' });
   } catch (e) {
-    console.log('aaa', e);
     return NextResponse.json({ e });
   }
 }
