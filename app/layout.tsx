@@ -4,6 +4,7 @@ import 'styles/prism.css';
 import { ReactNode } from 'react';
 import { Layout } from 'components/containers/Layout';
 import { ThemeProvider } from 'components/ThemeProvider';
+import { putView } from 'lib/putView';
 
 const description =
   'On this website I showcase my projects and write blog posts connected with Javascript ecosystem';
@@ -127,6 +128,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  putView('total');
   return (
     <html lang="en">
       <body>

@@ -11,6 +11,7 @@ import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data/constants';
 import Me from 'assets/images/profileSecond.webp';
 import { BlogWithMetaData, ProjectWithMetaData } from 'types/frontmatters';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
+import { putView } from 'lib/putView';
 
 export default async function HomePage() {
   const blogs = (await getAllFilesFrontmatter(
@@ -21,6 +22,7 @@ export default async function HomePage() {
     'projects',
     true
   )) as ProjectWithMetaData[];
+  putView('homepage');
 
   return (
     <Container className="theme-home overflow-hidden py-10 lg:mt-0 lg:!pt-0">

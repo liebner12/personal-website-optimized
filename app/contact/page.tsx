@@ -2,8 +2,10 @@ import { FiGithub, FiLinkedin, FiMail, FiTwitter } from 'react-icons/fi';
 import { Heading } from 'components/Heading';
 import { ContactButton } from 'components/ContactBlock';
 import { Container } from 'components/containers/Container';
+import { putView } from 'lib/putView';
 
 export default function Contact() {
+  putView('contact');
   return (
     <Container className="w-full">
       <div className="my-auto">

@@ -33,10 +33,14 @@ export const getPost = async (slug: string): Promise<Post> => {
   return data;
 };
 
-export const registerView = (slug: string) =>
-  supabase.rpc('increment_views', {
+export const registerView = async (slug: string) => {
+  const { data, error } = await supabase.rpc('increment_views', {
     page_slug: slug,
   });
+
+  if (error) console.error(error);
+  else console.log(data);
+};
 
 export const registerReaction = (slug: string, reactions: ReactionsType) => {
   return supabase

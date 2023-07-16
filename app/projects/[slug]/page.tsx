@@ -7,6 +7,7 @@ import { PostBody } from 'components/post/PostBody';
 import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
 import { ProjectWithMetaData } from 'types/frontmatters';
 import { getFiles } from 'lib/getFiles';
+import { putView } from 'lib/putView';
 
 export const revalidate = 3600;
 
@@ -64,6 +65,7 @@ export default async function Page({
     'projects',
     slug
   )) as ProjectWithMetaData;
+  putView(slug);
 
   const {
     title,

@@ -7,6 +7,7 @@ import { PostBody } from 'components/post/PostBody';
 import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
 import { BlogWithMetaData } from 'types/frontmatters';
 import { getFiles } from 'lib/getFiles';
+import { putView } from 'lib/putView';
 
 export const revalidate = 3600;
 
@@ -60,6 +61,8 @@ export default async function Page({
 }: {
   params: { slug: string };
 }) {
+  putView(slug);
+
   const project = (await getFileBySlugFrontmatter(
     'blog',
     slug

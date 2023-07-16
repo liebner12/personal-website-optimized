@@ -5,10 +5,13 @@ import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { PostsContainer } from 'components/post/PostsContainer';
 import { BlogWithMetaData } from 'types/frontmatters';
 import { sortByDate } from 'utils/sortByDate';
+import { putView } from 'lib/putView';
 
 export const revalidate = 3600;
 
 export default async function Blogs() {
+  putView('blog');
+
   const blogs = (await getAllFilesFrontmatter(
     'blog',
     true

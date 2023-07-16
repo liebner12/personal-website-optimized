@@ -5,6 +5,7 @@ import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { PostsContainer } from 'components/post/PostsContainer';
 import { ProjectWithMetaData } from 'types/frontmatters';
 import { sortByDate } from 'utils/sortByDate';
+import { putView } from 'lib/putView';
 
 export const revalidate = 3600;
 
@@ -14,6 +15,7 @@ export default async function Projects() {
     true
   )) as ProjectWithMetaData[];
   const tags = getTags(projects);
+  putView('projects');
 
   return (
     <>
