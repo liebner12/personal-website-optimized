@@ -1,13 +1,7 @@
 export const putView = async (slug: string) => {
-  await fetch(
-    `${
-      process.env.NODE_ENV === 'production'
-        ? 'https://personal-website-optimized.vercel.app/'
-        : 'http://localhost:3000'
-    }/api/posts/${slug}`,
-    {
-      method: 'PUT',
-      next: { revalidate: 0 },
-    }
-  );
+  try {
+    console.log('a');
+  } catch (e) {
+    console.log(e);
+  }
 };
