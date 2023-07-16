@@ -5,7 +5,7 @@ import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { PostsContainer } from 'components/post/PostsContainer';
 import { ProjectWithMetaData } from 'types/frontmatters';
 import { sortByDate } from 'utils/sortByDate';
-import { putView } from 'lib/putView';
+import { PageView } from 'components/PageView';
 
 export const revalidate = 3600;
 
@@ -15,10 +15,9 @@ export default async function Projects() {
     true
   )) as ProjectWithMetaData[];
   const tags = getTags(projects);
-  putView('projects');
-
   return (
     <>
+      <PageView slug="projects" />
       <Container isGrid>
         <Heading className="col-span-1 mb-8 lg:col-span-8" size="sm">
           My personal<span className="text-primary-main"> journey</span> as a

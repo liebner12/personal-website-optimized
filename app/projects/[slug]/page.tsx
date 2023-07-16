@@ -7,7 +7,7 @@ import { PostBody } from 'components/post/PostBody';
 import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
 import { ProjectWithMetaData } from 'types/frontmatters';
 import { getFiles } from 'lib/getFiles';
-import { putView } from 'lib/putView';
+import { PageView } from 'components/PageView';
 
 export const revalidate = 3600;
 
@@ -65,7 +65,6 @@ export default async function Page({
     'projects',
     slug
   )) as ProjectWithMetaData;
-  putView(slug);
 
   const {
     title,
@@ -83,6 +82,7 @@ export default async function Page({
 
   return (
     <div>
+      <PageView slug={slug} />
       <Container className="theme-projects !pb-0 !pt-0 md:!pt-[5%]">
         <div
           className="relative lg:grid lg:gap-x-16"
