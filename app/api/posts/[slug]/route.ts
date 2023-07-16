@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getPost, registerReaction } from 'lib/getPost';
+import { getPost, registerReaction, registerView } from 'lib/getPost';
 
 export async function POST(
   request: Request,
@@ -24,4 +24,17 @@ export async function GET(
   }
 
   return NextResponse.json({ error: 'error' });
+}
+
+export async function PUT(
+  request: Request,
+  { params }: { params: { slug: string } }
+) {
+  try {
+    await registerView(params.slug);
+    return NextResponse.json({ res: 'ok' });
+  } catch (e) {
+    console.log('aaa', e);
+    return NextResponse.json({ e });
+  }
 }

@@ -3,7 +3,7 @@ import { Heading } from 'components/Heading';
 import { getTags } from 'lib/getTags';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 import { PostsContainer } from 'components/post/PostsContainer';
-import { ProjectWithMetaData } from 'types/frontmatters';
+import { BlogWithMetaData } from 'types/frontmatters';
 import { sortByDate } from 'utils/sortByDate';
 
 export const revalidate = 3600;
@@ -12,7 +12,7 @@ export default async function Blogs() {
   const blogs = (await getAllFilesFrontmatter(
     'blog',
     true
-  )) as ProjectWithMetaData[];
+  )) as BlogWithMetaData[];
   const tags = getTags(blogs);
 
   return (

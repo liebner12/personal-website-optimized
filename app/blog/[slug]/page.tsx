@@ -6,8 +6,15 @@ import { PostFooter } from 'components/post/PostFooter';
 import { PostBody } from 'components/post/PostBody';
 import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
 import { BlogWithMetaData } from 'types/frontmatters';
+import { getFiles } from 'lib/getFiles';
 
 export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  return getFiles('blog').map((file) => ({
+    slug: file.split('.').slice(0, -1).join(''),
+  }));
+}
 
 export async function generateMetadata({
   params,

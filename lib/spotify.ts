@@ -13,6 +13,7 @@ const getAccessToken = async () => {
       grant_type: 'refresh_token',
       refresh_token,
     }),
+    next: { revalidate: 60 },
   });
 
   return response.json();
@@ -21,23 +22,19 @@ const getAccessToken = async () => {
 export const currentlyPlayingSong = async () => {
   const { access_token } = await getAccessToken();
 
-  try {
-    const response = await fetch(
-      'https://api.spotify.com/v1/me/player/currently-playing',
-      {
-        next: { revalidate: 60 },
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      }
-    );
-
-    if (response.status === 204 || response.status > 400) {
-      return {};
+  const response = await fetch(
+    'https://api.spotify.com/v1/me/player/currently-playing',
+    {
+      next: { revalidate: 60 },
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
     }
+  );
 
-    return response.json();
-  } catch (e) {
+  if (response.status === 204 || response.status > 400) {
     return {};
   }
+
+  return response.json();
 };

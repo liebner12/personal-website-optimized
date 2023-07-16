@@ -4,7 +4,7 @@ import { BsSpotify } from 'react-icons/bs';
 import { currentlyPlayingSong } from 'lib/spotify';
 
 export const Spotify = async () => {
-  const { item, is_playing } = await currentlyPlayingSong();
+  const { item, is_playing } = (await currentlyPlayingSong()) || {};
 
   if (is_playing && item) {
     const title = item.name;

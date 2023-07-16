@@ -9,8 +9,19 @@ import { ImagesGrid } from 'components/ImagesGrid';
 import { CardsRange } from 'components/CardsRange';
 import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data/constants';
 import Me from 'assets/images/profileSecond.webp';
+import { BlogWithMetaData, ProjectWithMetaData } from 'types/frontmatters';
+import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const blogs = (await getAllFilesFrontmatter(
+    'blog',
+    false
+  )) as BlogWithMetaData[];
+  const projects = (await getAllFilesFrontmatter(
+    'projects',
+    true
+  )) as ProjectWithMetaData[];
+
   return (
     <Container className="theme-home overflow-hidden py-10 lg:mt-0 lg:!pt-0">
       <section className="flex flex-col justify-center lg:h-screen lg:max-h-[58rem]">
@@ -83,7 +94,9 @@ export default function HomePage() {
         </div>
       </section>
       <section className="mx-auto grid max-w-6xl items-center gap-20 pt-40 lg:grid-cols-2 lg:gap-10 xl:gap-20">
-        <ImagesGrid />
+        <ImagesGrid
+          images={[...blogs.map(({ image, title }) => ({ image, alt: title }))]}
+        />
         <div {...FADE_IN_VIEW} className="row-start-1 lg:row-start-auto">
           <h2 className="text-4xl font-bold text-primary-main md:text-6xl lg:text-5xl xl:text-6xl">
             Posts that share my knowledge
@@ -116,7 +129,7 @@ export default function HomePage() {
             <ArrowLink href="/projects">See more projects</ArrowLink>
           </div>
         </div>
-        <CardsRange />
+        <CardsRange posts={projects} />
       </section>
     </Container>
   );
