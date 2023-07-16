@@ -1,4 +1,4 @@
-export const putView = (slug: string) => {
+export const putView = async (slug: string) => {
   try {
     fetch(
       `${
@@ -8,7 +8,6 @@ export const putView = (slug: string) => {
       }/api/posts/${slug}`,
       {
         method: 'PUT',
-        next: { revalidate: 0 },
       }
     );
   } catch (e) {
