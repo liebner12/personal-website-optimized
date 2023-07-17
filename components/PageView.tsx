@@ -6,5 +6,5 @@ export const PageView = ({ slug }: { slug: string }) => {
   useEffect(() => {
     putView(slug);
   }, [slug]);
-  return <></>;
+  return <div></div>;
 };
