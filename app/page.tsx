@@ -11,7 +11,6 @@ import { FADE_IN_FIRST, FADE_IN_SECOND, FADE_IN_VIEW } from 'data/constants';
 import Me from 'assets/images/profileSecond.webp';
 import { BlogWithMetaData, ProjectWithMetaData } from 'types/frontmatters';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
-import { PageView } from 'components/PageView';
 
 export default async function HomePage() {
   const blogs = (await getAllFilesFrontmatter(
@@ -24,7 +23,6 @@ export default async function HomePage() {
   )) as ProjectWithMetaData[];
   return (
     <>
-      <PageView slug="homepage" />
       <Container className="theme-home overflow-hidden py-10 lg:mt-0 lg:!pt-0">
         <section className="flex flex-col justify-center lg:h-screen lg:max-h-[58rem]">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
