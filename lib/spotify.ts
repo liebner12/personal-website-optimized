@@ -25,7 +25,6 @@ export const currentlyPlayingSong = async () => {
   const response = await fetch(
     'https://api.spotify.com/v1/me/player/currently-playing',
     {
-      next: { revalidate: 60 },
       cache: 'no-store',
       headers: {
         Authorization: `Bearer ${access_token}`,
