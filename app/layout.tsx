@@ -4,7 +4,6 @@ import 'styles/prism.css';
 import { ReactNode } from 'react';
 import { Layout } from 'components/containers/Layout';
 import { ThemeProvider } from 'components/ThemeProvider';
-import { pushView } from 'lib/pushView';
 import { PushView } from 'components/PushView';
 
 const description =
@@ -127,6 +126,8 @@ export const metadata = {
     ],
   },
 };
+
+export const revalidate = 1;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

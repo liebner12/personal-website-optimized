@@ -8,7 +8,7 @@ import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
 import { ProjectWithMetaData } from 'types/frontmatters';
 import { getFiles } from 'lib/getFiles';
 
-export const revalidate = 3600;
+export const revalidate = 1;
 
 export async function generateStaticParams() {
   return getFiles('projects').map((file) => ({

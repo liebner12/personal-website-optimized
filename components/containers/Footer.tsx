@@ -45,14 +45,15 @@ const FooterItem = ({ path, text, target, as, children }: Props) => {
 };
 
 export const Footer = async () => {
-  const post = await fetch(
+  const request = await fetch(
     `${
       process.env.NODE_ENV === 'production'
         ? 'https://personal-website-optimized.vercel.app/'
         : 'http://localhost:3000'
     }/api/posts/total`,
-    { next: { revalidate: 120 } }
-  ).then((res) => res.json());
+    { next: { revalidate: 10 } }
+  );
+  const post = await request.json();
 
   return (
     <footer className="w-full px-8 pb-8 pt-24 md:px-12 lg:pb-16">
