@@ -6,7 +6,7 @@ import { PostsContainer } from 'components/post/PostsContainer';
 import { ProjectWithMetaData } from 'types/frontmatters';
 import { sortByDate } from 'utils/sortByDate';
 
-export const revalidate = 1;
+export const revalidate = 60;
 
 export default async function Projects() {
   const projects = (await getAllFilesFrontmatter(

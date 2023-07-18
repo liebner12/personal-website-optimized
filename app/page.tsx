@@ -12,7 +12,7 @@ import Me from 'assets/images/profileSecond.webp';
 import { BlogWithMetaData, ProjectWithMetaData } from 'types/frontmatters';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
 
-export const revalidate = 1;
+export const revalidate = 60;
 
 export default async function HomePage() {
   const blogs = (await getAllFilesFrontmatter(

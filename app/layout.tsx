@@ -127,7 +127,7 @@ export const metadata = {
   },
 };
 
-export const revalidate = 1;
+export const revalidate = 60;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
