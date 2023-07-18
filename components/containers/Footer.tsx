@@ -51,7 +51,7 @@ export const Footer = async () => {
         ? 'https://personal-website-optimized.vercel.app/'
         : 'http://localhost:3000'
     }/api/posts/total`,
-    { cache: 'no-store' }
+    { next: { revalidate: 120 } }
   ).then((res) => res.json());
 
   return (
