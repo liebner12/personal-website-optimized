@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { registerView } from 'lib/getPost';
 
-export async function PUSH(
+export async function POST(
   request: Request,
   { params }: { params: { slug: string } }
 ) {
