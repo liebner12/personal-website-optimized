@@ -14,16 +14,10 @@ module.exports = {
           {
             from: path.resolve(__dirname, 'data', 'blog'),
             to: path.resolve(__dirname, '.next', 'data', 'blog'),
-            globOptions: {
-              ignore: ['**/*.mdx'],
-            },
           },
           {
             from: path.resolve(__dirname, 'data', 'projects'),
             to: path.resolve(__dirname, '.next', 'data', 'projects'),
-            globOptions: {
-              ignore: ['**/*.mdx'],
-            },
           },
         ],
       })
