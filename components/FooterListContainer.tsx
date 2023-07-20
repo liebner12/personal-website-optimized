@@ -1,3 +1,4 @@
+'use client';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
