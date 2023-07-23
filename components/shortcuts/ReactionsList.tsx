@@ -8,10 +8,6 @@ import {
 } from 'data/constants';
 
 export const ReactionsList = ({ reactions }: { reactions: ReactionsType }) => {
-  if (!reactions) {
-    return null;
-  }
-
   return (
     <ul className="mt-4 flex flex-wrap gap-6d lg:gap-8">
       {(Object.entries(reactions) as [ReactionsKeys, number][])
