@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { getFileBySlug } from './getFile';
 import { getMDXContent } from './getMDXContent';
 import { injectPostMetaData } from './injectPostMetaData';
@@ -8,7 +9,13 @@ export async function getFileBySlugFrontmatter(
   slug: string,
   shouldFillMetaData = true
 ) {
-  const markdown = getFileBySlug(type, slug);
+  let markdown;
+  try {
+    markdown = getFileBySlug(type, slug);
+  } catch (e) {
+    notFound();
+  }
+
   const formattedFile = await getMDXContent(markdown, slug);
 
   if (shouldFillMetaData) {
