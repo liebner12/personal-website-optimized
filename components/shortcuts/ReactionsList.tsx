@@ -1,4 +1,6 @@
+'use client';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { Tooltip } from '../Tooltip';
 import {
   ReactionsKeys,
@@ -6,11 +8,36 @@ import {
   REACTIONS_PRIORITIES,
   ReactionsType,
 } from 'data/constants';
+import supabase from 'lib/supabase';
 
 export const ReactionsList = ({ reactions }: { reactions: ReactionsType }) => {
+  const [clientReactions, setClientReactions] = useState(reactions);
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('*')
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'posts' },
+        (payload) => {
+          console.log(payload.new.reactions, 'asdf');
+          setClientReactions(payload.new.reactions);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [clientReactions]);
+
+  if (!reactions) {
+    return null;
+  }
+
   return (
     <ul className="mt-4 flex flex-wrap gap-6d lg:gap-8">
-      {(Object.entries(reactions) as [ReactionsKeys, number][])
+      {(Object.entries(clientReactions) as [ReactionsKeys, number][])
         .filter(([, count]) => count)
         .sort(([a], [b]) => REACTIONS_PRIORITIES[a] - REACTIONS_PRIORITIES[b])
         .map(([key, value]) => (

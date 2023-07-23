@@ -9,7 +9,6 @@ export async function POST(
   const res = await request.json();
   try {
     await registerReaction(params.slug, res);
-    revalidatePath(`/projects/${params.slug}`);
     return NextResponse.json({ res });
   } catch (e) {
     return NextResponse.json({ e });
