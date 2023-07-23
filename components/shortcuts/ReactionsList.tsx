@@ -20,7 +20,6 @@ export const ReactionsList = ({ reactions }: { reactions: ReactionsType }) => {
         'postgres_changes',
         { event: 'UPDATE', schema: 'public', table: 'posts' },
         (payload) => {
-          console.log(payload.new.reactions, 'asdf');
           setClientReactions(payload.new.reactions);
         }
       )
