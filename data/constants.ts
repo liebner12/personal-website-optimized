@@ -56,7 +56,7 @@ export const HOVER_SCALE = {
 };
 
 export const FADE_IN_VIEW = {
-  initial: { y: '40px', opacity: 0 },
+  initial: { y: '40px', opacity: 0.1 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-50px' },
 };

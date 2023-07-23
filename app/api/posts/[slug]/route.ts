@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getPost, registerReaction } from 'lib/getPost';
+import { registerReaction } from 'lib/getPost';
 
 export async function POST(
   request: Request,
@@ -12,16 +12,4 @@ export async function POST(
   } catch (e) {
     return NextResponse.json({ e });
   }
-}
-
-export async function GET(
-  _: Request,
-  { params }: { params: { slug: string } }
-) {
-  const response = await getPost(params.slug);
-  if (response) {
-    return NextResponse.json({ response });
-  }
-
-  return NextResponse.json({ error: 'error' });
 }

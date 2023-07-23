@@ -7,6 +7,7 @@ import { PostBody } from 'components/post/PostBody';
 import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
 import { ProjectWithMetaData } from 'types/frontmatters';
 import { getFiles } from 'lib/getFiles';
+import { PushView } from 'components/PushView';
 
 export const revalidate = 60;
 
@@ -81,6 +82,7 @@ export default async function Page({
 
   return (
     <div>
+      <PushView slug={slug} />
       <Container className="theme-projects !pb-0 !pt-0 md:!pt-[5%]">
         <div
           className="relative lg:grid lg:gap-x-16"

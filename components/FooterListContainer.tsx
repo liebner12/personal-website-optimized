@@ -106,15 +106,9 @@ export function FooterListContainer() {
           </div>
         </FooterItem>
         <FooterItem as="container">
-          <div className="w-full">
-            <label className="mb-8 block text-lg text-grey-300 ">
-              <span className="mb-4 text-xl font-semibold">Email</span>
-              <input className="focus-state mt-2 h-28 w-full rounded-xl border-2 border-grey-800 bg-grey-900 p-4 transition-colors hover:bg-grey-800"></input>
-            </label>
-            <ArrowLink href="https://liebner.substack.com/" target="_blank">
-              Sign me up
-            </ArrowLink>
-          </div>
+          <ArrowLink href="https://liebner.substack.com/" target="_blank">
+            Sign me up
+          </ArrowLink>
         </FooterItem>
       </FooterList>
     </motion.div>
