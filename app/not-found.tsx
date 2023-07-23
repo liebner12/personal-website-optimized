@@ -7,7 +7,7 @@ import { Missing } from 'components/Missing';
 import { Button } from 'components/Button';
 import { Container } from 'components/containers/Container';
 
-export default function Error() {
+export default function NotFound() {
   return (
     <>
       <PushView slug="error" />
@@ -23,10 +23,9 @@ export default function Error() {
             <Missing color={theme.colors.error} />
           </div>
           <div>
-            <h1 className="text-4xl font-bold leading-tight text-primary-main lg:text-[6rem]">
-              Error
+            <h1 className="text-4xl font-bold leading-tight text-primary-main lg:text-[5rem] mb-8">
+              Page Not Found
             </h1>
-            <p className="mb-8 mt-2 text-lg text-grey-300">Unexpected error</p>
             <Button size="lg" href="/">
               Get To Home Page
             </Button>
@@ -35,4 +34,5 @@ export default function Error() {
       </Container>
     </>
   );
-}
+};
+
