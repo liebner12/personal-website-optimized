@@ -80,6 +80,25 @@ export const navigationItemVariants = {
   },
 };
 
+export const navbarItemVariants = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: [0.6, 0.05, 0.01, 0.9],
+    },
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.6, 0.05, 0.01, 0.9],
+    },
+  },
+};
+
 export const navigationListVariants = {
   open: {
     transition: { staggerChildren: 0.07, delayChildren: 0.2 },

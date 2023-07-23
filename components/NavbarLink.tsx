@@ -1,7 +1,9 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import { StyledLink } from './StyledLink';
+import { navbarItemVariants } from 'data/constants';
 
 type Props = {
   path: string;
@@ -19,7 +21,7 @@ export const NavbarLink = ({ path, text, isExact, icon, onClick }: Props) => {
     : new RegExp(`${path}*`).test(pathname || '');
 
   return (
-    <li className="flex h-10 items-center">
+    <motion.li className="flex h-10 items-center" variants={navbarItemVariants}>
       <StyledLink
         href={path}
         ariaLabel={text}
@@ -30,6 +32,6 @@ export const NavbarLink = ({ path, text, isExact, icon, onClick }: Props) => {
       >
         {icon} <p className="link-text tracking-wide">{text}</p>
       </StyledLink>
-    </li>
+    </motion.li>
   );
 };

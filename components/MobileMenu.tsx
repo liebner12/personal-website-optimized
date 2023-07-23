@@ -7,7 +7,7 @@ import { NavbarLink } from './NavbarLink';
 import { Button } from './Button';
 import { useMediaQuery } from 'hooks/useMediaQuery';
 import { theme } from 'tailwind.config';
-import { navigationItemVariants, navigationListVariants } from 'data/constants';
+import { navbarItemVariants, navigationListVariants } from 'data/constants';
 
 const backgroundFill: Variants = {
   open: {
@@ -136,7 +136,7 @@ export const MobileMenu = () => {
             onClick={toggleSetIsOpen}
           />
           <motion.li
-            variants={navigationItemVariants}
+            variants={navbarItemVariants}
             className="mx-auto pb-10 pt-10"
           >
             <Button
