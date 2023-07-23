@@ -23,7 +23,7 @@ export default function NotFound() {
             <Missing color={theme.colors.error} />
           </div>
           <div>
-            <h1 className="text-4xl font-bold leading-tight text-primary-main lg:text-[5rem] mb-8">
+            <h1 className="mb-8 text-4xl font-bold leading-tight text-primary-main lg:text-[5rem]">
               Page Not Found
             </h1>
             <Button size="lg" href="/">
@@ -34,5 +34,4 @@ export default function NotFound() {
       </Container>
     </>
   );
-};
-
+}
