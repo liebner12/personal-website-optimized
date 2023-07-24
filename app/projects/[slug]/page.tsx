@@ -75,11 +75,12 @@ export default async function Page({
     publishedAt,
     blurDataURL,
     content,
+    markdown,
     views,
     reactions,
   } = project;
 
-  const toc = getHeadingsFromMdx(content);
+  const toc = getHeadingsFromMdx(markdown);
 
   return (
     <div>

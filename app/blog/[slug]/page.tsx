@@ -75,9 +75,10 @@ export default async function Page({
     content,
     views,
     reactions,
+    markdown,
   } = project;
 
-  const toc = getHeadingsFromMdx(content);
+  const toc = getHeadingsFromMdx(markdown);
 
   return (
     <div>

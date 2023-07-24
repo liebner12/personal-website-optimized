@@ -7,7 +7,6 @@ import { ArrowLink } from 'components/ArrowLink';
 import { Heading } from 'components/Heading';
 import { ImagesGrid } from 'components/ImagesGrid';
 import { CardsRange } from 'components/CardsRange';
-import { FADE_IN_FIRST, FADE_IN_SECOND } from 'data/constants';
 import Me from 'assets/images/profileSecond.webp';
 import { BlogWithMetaData, ProjectWithMetaData } from 'types/frontmatters';
 import { getAllFilesFrontmatter } from 'lib/getAllFilesFrontmatter';
@@ -38,11 +37,11 @@ export default async function HomePage() {
                 modern
                 <span className="text-primary-main"> web apps</span> development
               </Heading>
-              <p className="max-w-lg text-xl" {...FADE_IN_SECOND}>
+              <p className="max-w-lg text-xl">
                 Hi! My name is Michał. I work with Javascript Ecosystem on both
                 backend and front side of applications.
               </p>
-              <div {...FADE_IN_SECOND}>
+              <div>
                 <div className="flex flex-col-reverse flex-wrap items-start gap-4 sm:flex-row">
                   <Button href="/blog" size="lg">
                     Read the blog
@@ -71,10 +70,7 @@ export default async function HomePage() {
                 </div>
               </div>
             </div>
-            <div
-              className="fade-in-x relative mx-auto mt-20 flex-1 lg:mt-0"
-              {...FADE_IN_FIRST}
-            >
+            <div className="fade-in-x relative mx-auto mt-20 flex-1 lg:mt-0">
               <div className="absolute -left-6 -top-16 z-10 flex max-w-[90%] flex-col items-start gap-1 md:-left-12 md:-top-8">
                 <div className="border-full rounded-full bg-home-light px-12 py-4 font-semibold text-home-dark">
                   Want to learn JavaScript development?🧑‍💻
