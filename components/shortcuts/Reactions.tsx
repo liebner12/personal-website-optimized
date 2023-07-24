@@ -1,8 +1,6 @@
-'use client';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { revalidatePath } from 'next/cache';
 import {
   ReactionsKeys,
   REACTIONS_LIST,
@@ -14,13 +12,14 @@ import { Button } from 'components/Button';
 
 export const Reactions = ({
   reactions,
+  setReactions,
   slug,
 }: {
   reactions: ReactionsType;
+  setReactions: (reactions: ReactionsType) => void;
   slug: string;
 }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [currentReactions, setCurrentReactions] = useState(reactions);
   const [reactionSelection, setReactionSelection] = useState(
     Object.keys(REACTIONS_PRIORITIES).reduce(
       (prev, key) => ({ ...prev, [key]: false }),
@@ -49,13 +48,11 @@ export const Reactions = ({
     };
 
     const updatedReactions = {
-      ...currentReactions,
-      [key]: reactionSelection[key]
-        ? currentReactions[key] - 1
-        : currentReactions[key] + 1,
+      ...reactions,
+      [key]: reactionSelection[key] ? reactions[key] - 1 : reactions[key] + 1,
     };
     setReactionSelection(updatedReactionsSelection);
-    setCurrentReactions(updatedReactions);
+    setReactions(updatedReactions);
 
     localStorage.setItem(slug, JSON.stringify(updatedReactionsSelection));
     fetch(
@@ -104,7 +101,7 @@ export const Reactions = ({
                     { 'text-slate-200': !reactionSelection[key] }
                   )}
                 >
-                  {currentReactions?.[key] || 0}
+                  {reactions?.[key] || 0}
                 </span>
               </div>
             </Button>

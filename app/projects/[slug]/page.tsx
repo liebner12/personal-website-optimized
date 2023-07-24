@@ -1,6 +1,4 @@
 import { Metadata } from 'next';
-import { ShortcutsBar } from 'components/shortcuts/ShortcutsBar';
-import { PostHeader } from 'components/post/PostHeader';
 import { Container } from 'components/containers/Container';
 import { PostFooter } from 'components/post/PostFooter';
 import { PostBody } from 'components/post/PostBody';
@@ -8,6 +6,8 @@ import { getFileBySlugFrontmatter } from 'lib/getFileBySlugFrontmatter';
 import { ProjectWithMetaData } from 'types/frontmatters';
 import { getFiles } from 'lib/getFiles';
 import { PushView } from 'components/PushView';
+import { getHeadingsFromMdx } from 'lib/getHeadingsFromMdx';
+import { PostData } from 'components/containers/PostData';
 
 export const revalidate = 60;
 
@@ -75,10 +75,11 @@ export default async function Page({
     publishedAt,
     blurDataURL,
     content,
-    markdown,
     views,
     reactions,
   } = project;
+
+  const toc = getHeadingsFromMdx(content);
 
   return (
     <div>
@@ -90,7 +91,7 @@ export default async function Page({
             gridTemplateColumns: 'minmax(0, 3fr) minmax(225px, 1fr)',
           }}
         >
-          <PostHeader
+          <PostData
             slug={slug}
             title={title}
             url={url}
@@ -101,12 +102,7 @@ export default async function Page({
             blurDataURL={blurDataURL}
             views={views}
             reactions={reactions}
-            href="/projects"
-          />
-          <ShortcutsBar
-            reactions={reactions}
-            content={markdown}
-            slug={slug}
+            toc={toc}
             type="projects"
           />
           <PostBody content={content} />
