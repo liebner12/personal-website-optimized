@@ -73,7 +73,7 @@ export function FooterListContainer() {
         <FooterItem as="header" text="General" />
         <FooterItem path="/privacy" text="Privacy" />
         <FooterItem path="/newsletter" text="Newsletter" />
-        <FooterItem path="/rss/feed.xml" text="RSS" />
+        <FooterItem path="/feed.xml" text="RSS" />
         <FooterItem as="container">
           <FooterList className="mt-10">
             <FooterItem as="header" text="Contact" />

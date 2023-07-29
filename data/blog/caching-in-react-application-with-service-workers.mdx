@@ -1,0 +1,100 @@
+---
+  title: 'Preloading and Caching Images in React Application with Workbox Service Worker'
+  image: 'https://res.cloudinary.com/dtce87smh/image/upload/f_auto,c_scale,w_1000,ar_16:9/v1690665790/preloading-images_dhvpcx.jpg'
+  desc: 'Simple guide how to preload images and use cache to instantly load them and revalidate.'
+  publishedAt: 'Sat Jan 15 2023 12:33:05 GMT+0200'
+  tags: ['Preloading', 'Caching', 'ServiceWorkers']
+---
+
+> ## Introduction
+In this article, I want to explore how to preload images and cache them in a React application. Preloading images can improve the user experience by reducing the loading time and avoiding layout shifts and with caching images can also enhance the performance and offline availability of the app.
+
+> ## What is Workbox?
+Workbox is a set of JavaScript libraries that make it easy to create and manage service workers. Service workers are background scripts that can intercept network requests, cache assets, and perform other tasks. Workbox provides various features such as precaching, runtime caching, strategies, expiration, background sync, and more.
+
+> ## How to Preload Images in React?
+One way to preload images in _React_ is to use a custom hook that creates an array of image elements and sets their src attribute to the image URLs. The hook can also accept a callback function that runs when all the images are loaded. For example:
+
+```jsx
+import { useEffect, useRef } from "react";
+
+// A custom hook that preloads an array of image URLs
+const usePreload = (images, callback) => {
+  // A ref to store the loaded images count
+  const loaded = useRef(0);
+
+  // A function that increments the loaded count and calls the callback if all images are loaded
+  const onLoad = () => {
+    loaded.current++;
+    if (loaded.current === images.length) {
+      callback();
+    }
+  };
+
+  // A useEffect hook that creates an array of image elements and sets their src and onLoad attributes
+  useEffect(() => {
+    const imageElements = [];
+    for (let i = 0; i < images.length; i++) {
+      const image = new Image();
+      image.src = images[i];
+      image.onLoad = onLoad;
+      imageElements.push(image);
+    }
+  }, [images, callback]);
+};
+
+export default usePreload;
+```
+
+> ## How to Cache Images with Workbox?
+
+To cache images with Workbox, we need to create a service worker file and register it in our React app. In the service worker file, we can use the workbox.routing.registerRoute method to specify which requests to cache and which strategy to use.
+
+> ## What are Workbox Strategies?
+
+Workbox strategies are predefined classes that implement different caching behaviors. They determine how the service worker responds to a network request and how it interacts with the cache. Workbox provides several built-in strategies such as:
+
+- _CacheFirst:_ This strategy tries to fetch the response from the cache first. If the cache misses, it falls back to the network and updates the cache with the network response.
+- _NetworkFirst:_This strategy tries to fetch the response from the network first. If the network fails, it falls back to the cache.
+- _StaleWhileRevalidate:_ This strategy returns the cached response if available, but also fetches the response from the network in the background and updates the cache with the fresh response.
+- _NetworkOnly:_ This strategy always fetches the response from the network and ignores the cache.
+- _CacheOnly:_ This strategy always returns the response from the cache and ignores the network.
+
+The choice of strategy depends on the type of resource and the desired user experience. For example, for static assets that rarely change, we can use CacheFirst or StaleWhileRevalidate to serve them quickly from the cache. For dynamic content that needs to be up-to-date, we can use NetworkFirst or NetworkOnly to get the latest response from the network.
+
+For our image requests, we can use StaleWhileRevalidate to serve them fast from the cache while also updating them with fresh responses from the network. For example:
+
+```jsx
+// Import workbox libraries
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/6.3.0/workbox-sw.js"
+);
+
+// Set workbox log level to debug in development mode
+workbox.setConfig({
+  debug: process.env.NODE_ENV === "development",
+});
+
+// Precache static assets
+workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+
+// Cache image requests with a stale-while-revalidate strategy
+workbox.routing.registerRoute(
+  // Match requests that end with .jpg, .png, or .gif
+  ({ request }) => request.destination === "image",
+  // Use a stale-while-revalidate strategy with a custom cache name and expiration
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: "images",
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        // Cache up to 50 images
+        maxEntries: 50,
+        // Expire images after 30 days
+        maxAgeSeconds: 30 * 24 * 60 * 60,
+      }),
+    ],
+  })
+);
+```
+> ## Conclusion
+In this article, we learned how to preload images and cache them in a React application using Workbox service worker. We saw how to use a custom hook to preload images and how to use Workbox routing and strategies to cache image requests. We also learned about the different caching behaviors of Workbox strategies and how to choose the best one for our use case. Preloading and caching images can help us create a faster and more reliable app for our users.

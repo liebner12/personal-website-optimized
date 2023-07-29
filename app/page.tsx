@@ -84,6 +84,8 @@ export default async function HomePage() {
                 className="mx-auto rounded-xl"
                 alt="Image presenting me"
                 loading="eager"
+                placeholder="blur"
+                blurDataURL={Me.blurDataURL}
               />
               <div className="absolute -bottom-8 -right-6 z-10 flex flex-col items-end gap-1 md:-right-12">
                 <div className="border-full rounded-full bg-home-light px-12 py-4 font-semibold text-home-dark">

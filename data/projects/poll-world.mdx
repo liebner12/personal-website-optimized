@@ -9,16 +9,11 @@
 
 > ## Short Explanation
 
-This app was created as a team for course during studies in Wrocław University of Science and Technology. We wanted to create service
-that would allow user to gain points for filling out surveys, questionnaires for different companies. For most of us filling them are waste of time
-and we get nothing from this, so we wanted to create system that would reward user.
+During my studies at Wrocław University of Science and Technology, I had the opportunity to work on an exciting app project as part of a team. Our primary goal was to create a user-friendly service that incentivizes users for participating in surveys and questionnaires for various companies. Often, these surveys can be perceived as time-consuming and unrewarding. We wanted to change that perception by designing a system that rewards users for their valuable input.
 
 > ## Project Goals
 
-The main idea behind this project was to implement complete system both on backend and frontend side in a team. We had to cooporate and
-attend meetings to carve final product. POC should contain application and backend server that would communicate via Rest API and later on
-we would add service as a website to create admin tools to create surveys. Also end user should have access to dashboard with most important data
-and manage own personal information.
+The main idea behind this project was to implement a complete system both on the backend and frontend, working collaboratively as a team. Our journey involved cooperation and attending meetings to craft the final product. The Proof of Concept (POC) included the application and backend server, communicating through a Rest API. In the future, we planned to expand the system by adding a website for creating admin tools to manage surveys. Additionally, end-users would have access to a dashboard with the most important data, enabling them to manage their personal information.
 
 <GridCols>
   <CloudinaryImage
@@ -101,34 +96,25 @@ and manage own personal information.
   <Icons icons={['reactnative', 'expo', 'redux']} />
 </div>
 
-In this project frontend was created as mobile app with React Native and Expo platform and backend was created using Django framework in Python. I think these stacks was a great choice
-because we could create easily proper API to communicate with server and as I had experience with React library before it was easier to jump in to similar technology. Thanks to that we could
-put more effort to improving quality of project instead of learning things from scratch. React Native came out as great framework with good enough performance to handle our application
-and Expo made a lot of things easier like special development mode that's easier to configure, prebuilt components, icons.
+For this project, the frontend was built as a mobile app using _React Native and the Expo platform_. On the backend, we employed the _Django framework in Python_. This tech stack was a great choice because it allowed us to create a proper API to communicate with the server. As I had prior experience with React, it was easier to transition to a similar technology. React Native proved to be a great framework with good enough performance to handle our application, while Expo simplified the development process by offering prebuilt components and icons, among other conveniences.
 
 > ## Spotlight
 
 ### First Team Project
 
-In this project, I collaborated with a team to bring all functionality, we had to split the work to bring project to the end and focus on our strenghts.
-That's why I was doing our front side of app with support from 2 collegues that even though they had more backend background they came out to be helpful designing connection with backend.
+In this project, I collaborated with a team to bring all the functionality to life. We divided the work to effectively reach our project goals and focused on our strengths. I took charge of the frontend side of the app with support from two colleagues, who, despite their background in backend development, proved to be helpful in designing the connection with the backend.
 
 ### Communicating with backend
 
-We had to think about ways that we want to communicate with backend and ask our backend team for proper endpoints. We settled on Rest API that was easy to integrate but we structured
-our system that communicate to be built with small, single resposible functions. Thanks to that we even wrote few unit tests to make application more stable.
+To ensure smooth communication with the backend, we had to carefully plan and design the API endpoints. We opted for a Rest API that was easy to integrate, and we structured our communication to be based on small, single-responsible functions. As a result, we could even write unit tests to increase the application's stability.
 
 ### Authorization
 
-This applicaton was designed for logged in user, that's why we had to put a lot of effort on properly handling user _authentication_ and _authorization_.
-We set up option to login with Google and Facebook and created redux store that contained user information like amount of tokens that he gained and some personal data
-to properly adjust UI. Also we controlled to which pages user has access.
+Since the application was designed for logged-in users, we devoted significant effort to handling user authentication and authorization. We set up options to login with Google and Facebook and created a Redux store to manage user information, such as the number of tokens earned and some personal data, to adapt the UI accordingly. Additionally, we carefully controlled access to various pages based on user privileges.
 
 ### Forms
 
-In this project I created our own form component that allowed to easily with full functionality and simple API. I wanted to
-create it from scratch instead of using tools like _Formik_ because it was great oppurtonity to learn advanced state management and component structuring.
-This component allows to validate provided tools and could manage infinite number of sub-fields with great UX with focusing next input field.
+In this project, I created our own form component that facilitated easy form creation with full functionality and a simple API. Developing it from scratch, rather than using tools like Formik, provided an excellent opportunity to learn about advanced state management and component structuring. The custom form component allowed us to validate input fields and manage an infinite number of sub-fields with an excellent user experience, such as focusing on the next input field.
 
 ```jsx
 <Form
@@ -158,9 +144,7 @@ This component allows to validate provided tools and could manage infinite numbe
 
 ### How to style in Native application
 
-Despite the fact that React Native is very simmilar to React, especially in case of state managment I had to learn how to
-style and architecture small components in project like this one. There were few differences when we compare native styling to CSS
-but still it was similar experience. I have created small components that resembles ones created with styled-components library e.g.
+Despite the similarities between React and _React Native_, especially in terms of state management, I had to learn how to style and architect small components in a project like this. While there were some differences from traditional CSS styling, the experience was generally similar. I created small components that resembled ones created with styled-components library. For instance:
 
 ```jsx
 const Paragraph = ({ children, center, grey }) => {
@@ -176,15 +160,14 @@ const Paragraph = ({ children, center, grey }) => {
 };
 ```
 
-Also we created main source of styling with consts to easily change and modulate our layout style.
+Additionally, we established a primary source of styling with constants to easily modify and adjust our layout style.
 
 ### Single responsibility components
 
-Another important thing is that we have put a lot of effor to make this code look clean. So we followed _SOLID_ principle
-and created small code from small functions, thanks to that it came out much easier to test with unit tests and also we could structure components
-in _atomic architecture_ that also helps to manage responsibilities of each components.
+Maintaining clean code was a crucial aspect of this project, and we followed the _SOLID principle_, creating small functions for a single responsibility. This approach made it easier to test the code with unit tests and allowed us to structure components following the atomic architecture, which helped manage each component's responsibilities effectively.
 
-Thanks to making this project on both frontend and backend side I also learned how communcation works in similar environments. Not only that
-I also gained skills to properly connect application with server via Rest API and how to authorize users in cases like this.
+Thanks to this project, I also gained knowledge about communication between frontend and backend environments. I learned how to properly connect applications with the server via a Rest API and handle user authorization in cases like this.
 
-I learned also how to authorize user and how to handle logging on frontend side, how to use token keys and Redux to handle state.
+Lastly, handling user authentication and logging on the frontend side using token keys and Redux for state management became part of my skillset through this project.
+
+
