@@ -32,7 +32,7 @@ export function PostHeader({
     <div className="fade-in col-start-1 row-start-1">
       <div className=" mb-8">
         <BackButton href={href} />
-        <h1 className="text-4xl font-bold text-white">{title}</h1>
+        <h1 className="max-w-[50rem] text-4xl font-bold text-white">{title}</h1>
         <div className="mt-3 flex flex-wrap items-center gap-2 text-base font-semibold text-slate-200">
           {readingTime && (
             <>

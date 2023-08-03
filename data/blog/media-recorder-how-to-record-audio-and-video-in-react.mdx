@@ -1,0 +1,277 @@
+---
+  title: 'Media Recorder: How to Record Audio and Video in React'
+  image: 'https://res.cloudinary.com/dtce87smh/image/upload/f_auto,c_scale,w_1000,ar_16:9/v1691091891/media-recorder_fxirce.jpg'
+  desc: 'An explanation of Media Recorder API and how to use it .'
+  publishedAt: 'Sat Jun 10 2023 12:33:05 GMT+0200'
+  tags: ['MediaRecorder', 'Recording', '']
+---
+
+> ## Introduction
+In this article, I want to show how to use the Media Recorder API to record audio and video streams in a React app and also learn about Media Streams and Tracks, which are the building blocks of media recording. Then I will present short implemententation of a working recording app in React using a custom hook and a render prop component.
+
+> ## What is Media Recorder?
+Media Recorder is a browser API that allows to record audio and video streams from various sources, such as the user’s microphone, camera, or screen. It also lets control the recording process, such as starting, stopping, pausing, and resuming the recording. It also provides the recorded data in the form of Blob objects, which we can store, download, or play back.
+
+> ## What are Media Streams and Tracks?
+Media Streams and Tracks are interfaces that represent media content in the browser. A Media Stream is a collection of audio and video tracks that have a common source or destination. For example, a Media Stream can be obtained from the user’s microphone and camera using the navigator.mediaDevices.getUserMedia() method, or from the user’s screen using the navigator.mediaDevices.getDisplayMedia() method.
+
+A Media Track is a single audio or video track that belongs to a Media Stream. A Media Track has various properties and methods that allow to manipulate its content, such as mute, unmute, enable, disable, apply constraints, etc. A Media Track can also have an associated MediaStreamTrack object, which represents the track’s data source or sink.
+
+> ## How to Record Audio and Video?
+To record audio and video, we need to use the MediaRecorder API along with the Media Streams and Tracks interfaces. Here are the most important properties and methods:
+- _mediaRecorder_: The MediaRecorder instance that is used to record the stream.
+- _recordingStatus_: The current status of the recording, which can be “recording”, “inactive”, or “paused”.
+- _startRecording_: A function that starts the recording process.
+- _stopRecording_: A function that stops the recording process.
+- _pauseRecording_: A function that pauses the recording process.
+- _resumeRecording_: A function that resumes the recording process.
+- _recordedChunks_: An array of Blob objects that contain the recorded data.
+- _clearRecordedChunks_: A function that clears the recorded data.
+
+> ## How to Implement a Working Recording App in React?
+Let’s see how it can be implemented step by step in code.
+
+> ### Custom Hook for Media Recording
+First, let’s create a custom hook that accepts a stream prop and returns an object with various properties and methods related to media recording. The hook uses some state variables to store the MediaRecorder instance, the recording status, and the recorded data. It also uses a useEffect hook to create a new MediaRecorder instance whenever the stream prop changes. The hook also sets up some event listeners for the MediaRecorder instance to handle different scenarios. Also it defines some functions to start, stop, pause, resume, and clear the recording process. It's typicall boilerplate code that should be adjusted for personal use case.
+
+```jsx
+import { useState, useEffect } from "react";
+
+// A custom hook that encapsulates the logic of media recording
+const useMediaRecorder = (stream) => {
+  // A state variable that holds the MediaRecorder instance
+  const [mediaRecorder, setMediaRecorder] = useState(null);
+
+  // A state variable that holds the current status of the recording
+  const [recordingStatus, setRecordingStatus] = useState("inactive");
+
+  // A state variable that holds an array of Blob objects containing the recorded data
+  const [recordedChunks, setRecordedChunks] = useState([]);
+
+  // A useEffect hook that creates a new MediaRecorder instance when the stream prop changes
+  useEffect(() => {
+    // Check if stream is truthy
+    if (stream) {
+      // Create a new MediaRecorder instance with the stream and some options
+      const recorder = new MediaRecorder(stream, {
+        mimeType: "video/webm;codecs=vp9",
+        videoBitsPerSecond: 1000000 // 1 Mbps
+      });
+
+      // Set up event listeners for the recorder
+
+      // When data is available, push it to the recordedChunks array
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) {
+          setRecordedChunks((prev) => [...prev, e.data]);
+        }
+      };
+
+      // When an error occurs, log it to the console
+      recorder.onerror = (e) => {
+        console.error(e.error);
+      };
+
+      // When recording starts, set the recordingStatus to "recording"
+      recorder.onstart = () => {
+        setRecordingStatus("recording");
+      };
+
+      // When recording stops, set the recordingStatus to "inactive"
+      recorder.onstop = () => {
+        setRecordingStatus("inactive");
+      };
+
+      // When recording pauses, set the recordingStatus to "paused"
+      recorder.onpause = () => {
+        setRecordingStatus("paused");
+      };
+
+      // When recording resumes, set the recordingStatus to "recording"
+      recorder.onresume = () => {
+        setRecordingStatus("recording");
+      };
+
+      // Set the mediaRecorder state variable to the recorder instance
+      setMediaRecorder(recorder);
+    }
+  }, [stream]);
+
+  // A function that starts the recording process
+  const startRecording = () => {
+    // Check if mediaRecorder is truthy and its state is inactive
+    if (mediaRecorder && mediaRecorder.state === "inactive") {
+      // Start the mediaRecorder with a timeslice of 10 ms
+      mediaRecorder.start(10);
+    }
+  };
+
+  // A function that stops the recording process
+  const stopRecording = () => {
+    // Check if mediaRecorder is truthy and its state is not inactive
+    if (mediaRecorder && mediaRecorder.state !== "inactive") {
+      // Stop the mediaRecorder
+      mediaRecorder.stop();
+    }
+  };
+
+  // A function that pauses the recording process
+  const pauseRecording = () => {
+    // Check if mediaRecorder is truthy and its state is recording
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+      // Pause the mediaRecorder
+      mediaRecorder.pause();
+    }
+  };
+
+  // A function that resumes the recording process
+  const resumeRecording = () => {
+    // Check if mediaRecorder is truthy and its state is paused
+    if (mediaRecorder && mediaRecorder.state === "paused") {
+      // Resume the mediaRecorder
+      mediaRecorder.resume();
+    }
+  };
+
+  // A function that clears the recorded data
+  const clearRecordedChunks = () => {
+    // Set the recordedChunks state variable to an empty array
+    setRecordedChunks([]);
+  };
+
+  // Return an object with the mediaRecorder, recordingStatus, and other functions
+  return {
+    mediaRecorder,
+    recordingStatus,
+    startRecording,
+    stopRecording,
+    pauseRecording,
+    resumeRecording,
+    recordedChunks,
+    clearRecordedChunks,
+  };
+};
+
+export default useMediaRecorder;
+```
+
+> ### Render Prop Component
+
+This code defines a simple render prop component that uses the useMediaRecorder hook with the stream prop and renders its children with the hook’s return value as a prop. This way, we can reuse the logic of media recording in different UI components.
+
+```jsx
+import useMediaRecorder from "./useMediaRecorder";
+
+// A render prop component that uses the useMediaRecorder hook and renders its children with the hook's return value as a prop
+const MediaRecorder = ({ stream, children }) => {
+  // Use the useMediaRecorder hook with the stream prop
+  const recorder = useMediaRecorder(stream);
+
+  // Render the children with the recorder prop
+  return <>{children(recorder)}</>;
+};
+
+export default MediaRecorder;
+```
+
+> ### UI Component with camera
+
+This code defines a UI component that uses the MediaRecorder component and displays the camera feed and recording options. It handles getting the user’s permission and stream using the navigator.mediaDevices.getUserMedia() method. The component renders a button to get the permission and stream, and then renders a video element with a ref attribute to display the camera feed. The component also renders the MediaRecorder component with the stream prop. The MediaRecorder component renders its children with the recorder prop, which contains the mediaRecorder, recordingStatus, and other functions. This code contians some basic buttons to start, stop, pause, and resume the recording process, as well as a recording status. The component also renders a video element and a download link if there are recorded chunks available.
+
+
+```jsx
+import React, { useState, useRef } from "react";
+import MediaRecorder from "./MediaRecorder";
+
+// A UI component that uses the MediaRecorder component and displays the camera feed and recording options
+const Recorder = () => {
+  // A state variable that holds the user's permission status
+  const [permission, setPermission] = useState(false);
+
+  // A state variable that holds the user's stream
+  const [stream, setStream] = useState(null);
+
+  // A ref variable that holds the video element
+  const videoRef = useRef(null);
+
+  // A function that gets the user's permission and stream using the navigator.mediaDevices.getUserMedia() method
+  const getPermissionAndStream = async () => {
+    try {
+      // Check if MediaDevices.getUserMedia() is supported by the browser
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Request permission and stream for video only from the user
+        const streamData = await navigator.mediaDevices.getUserMedia({
+          audio: false,
+          video: true,
+        });
+
+        // Set the permission and stream state variables to true and streamData respectively
+        setPermission(true);
+        setStream(streamData);
+
+        // Set the video element's srcObject to the streamData
+        videoRef.current.srcObject = streamData;
+      } else {
+        // Throw an error if MediaDevices.getUserMedia() is not supported
+        throw new Error("MediaDevices.getUserMedia() is not supported");
+      }
+    } catch (err) {
+      // Alert the user with the error message
+      alert(err.message);
+    }
+  };
+
+  return (
+    <div>
+      <h2>Camera Recorder</h2>
+      <main>
+        <div className="recorder-controls">
+          {!permission ? (
+            <button onClick={getPermissionAndStream} type="button">
+              Get Permission and Stream
+            </button>
+          ) : null}
+          {permission ? (
+            <>
+              <video ref={videoRef} autoPlay muted />
+              <MediaRecorder stream={stream}>
+                {({ mediaRecorder, recordingStatus, startRecording, stopRecording, pauseRecording, resumeRecording, recordedChunks }) => (
+                  <>
+                    <button onClick={startRecording} type="button">
+                      Start Recording
+                    </button>
+                    <button onClick={stopRecording} type="button">
+                      Stop Recording
+                    </button>
+                    <button onClick={pauseRecording} type="button">
+                      Pause Recording
+                    </button>
+                    <button onClick={resumeRecording} type="button">
+                      Resume Recording
+                    </button>
+                    <p>Recording Status: {recordingStatus}</p>
+                    {recordedChunks.length > 0 ? (
+                      <>
+                        <video src={URL.createObjectURL(new Blob(recordedChunks))} controls />
+                        <a href={URL.createObjectURL(new Blob(recordedChunks))} download="recorded.webm">
+                          Download Recorded Video
+                        </a>
+                      </>
+                    ) : null}
+                  </>
+                )}
+              </MediaRecorder>
+            </>
+          ) : null}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default Recorder;
+```
+
+> ## Summary
+
+And that’s it I hope this article helped you learn about the Media Recorder API and how to record audio and video streams in React and JavaScript development.
