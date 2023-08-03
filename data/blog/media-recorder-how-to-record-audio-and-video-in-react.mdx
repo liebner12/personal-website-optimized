@@ -1,5 +1,5 @@
 ---
-  title: 'Media Recorder: How to Record Audio and Video in React'
+  title: 'Media Recorder: How to Record Audio and Video in  '
   image: 'https://res.cloudinary.com/dtce87smh/image/upload/f_auto,c_scale,w_1000,ar_16:9/v1691091891/media-recorder_fxirce.jpg'
   desc: 'An explanation of Media Recorder API and how to use it .'
   publishedAt: 'Sat Jun 10 2023 12:33:05 GMT+0200'
@@ -7,15 +7,15 @@
 ---
 
 > ## Introduction
-In this article, I want to show how to use the Media Recorder API to record audio and video streams in a React app and also learn about Media Streams and Tracks, which are the building blocks of media recording. Then I will present short implemententation of a working recording app in React using a custom hook and a render prop component.
+In this article, I want to show how to use the _Media Recorder API_ to record audio and video streams in a React app and also learn about Media Streams and Tracks, which are the building blocks of media recording. Then I will present short implemententation of a working recording app in React using a custom hook and a render prop component.
 
 > ## What is Media Recorder?
-Media Recorder is a browser API that allows to record audio and video streams from various sources, such as the user’s microphone, camera, or screen. It also lets control the recording process, such as starting, stopping, pausing, and resuming the recording. It also provides the recorded data in the form of Blob objects, which we can store, download, or play back.
+Media Recorder is a browser API that allows to record audio and video streams from various sources, such as the user’s microphone, camera, or screen. It also lets control the recording process, such as starting, stopping, pausing, and resuming the recording. It also provides the recorded data in the form of _Blob_ objects, which we can store, download, or play back.
 
 > ## What are Media Streams and Tracks?
-Media Streams and Tracks are interfaces that represent media content in the browser. A Media Stream is a collection of audio and video tracks that have a common source or destination. For example, a Media Stream can be obtained from the user’s microphone and camera using the navigator.mediaDevices.getUserMedia() method, or from the user’s screen using the navigator.mediaDevices.getDisplayMedia() method.
+Media Streams and Tracks are interfaces that represent media content in the browser. A _Media Stream_  is a collection of audio and video tracks that have a common source or destination. For example, a Media Stream can be obtained from the user’s microphone and camera using the `navigator.mediaDevices.getUserMedia()` method, or from the user’s screen using the `navigator.mediaDevices.getDisplayMedia()` method.
 
-A Media Track is a single audio or video track that belongs to a Media Stream. A Media Track has various properties and methods that allow to manipulate its content, such as mute, unmute, enable, disable, apply constraints, etc. A Media Track can also have an associated MediaStreamTrack object, which represents the track’s data source or sink.
+A _Media Track_ is a single audio or video track that belongs to a _Media Stream_. A Media Track has various properties and methods that allow to manipulate its content, such as mute, unmute, enable, disable, apply constraints, etc. A Media Track can also have an associated _MediaStreamTrack_ object, which represents the track’s data source or sink.
 
 > ## How to Record Audio and Video?
 To record audio and video, we need to use the MediaRecorder API along with the Media Streams and Tracks interfaces. Here are the most important properties and methods:
@@ -176,7 +176,7 @@ export default MediaRecorder;
 
 > ### UI Component with camera
 
-This code defines a UI component that uses the MediaRecorder component and displays the camera feed and recording options. It handles getting the user’s permission and stream using the navigator.mediaDevices.getUserMedia() method. The component renders a button to get the permission and stream, and then renders a video element with a ref attribute to display the camera feed. The component also renders the MediaRecorder component with the stream prop. The MediaRecorder component renders its children with the recorder prop, which contains the mediaRecorder, recordingStatus, and other functions. This code contians some basic buttons to start, stop, pause, and resume the recording process, as well as a recording status. The component also renders a video element and a download link if there are recorded chunks available.
+This code defines a UI component that uses the _MediaRecorder_ component and displays the camera feed and recording options. It handles getting the user’s permission and stream using the `navigator.mediaDevices.getUserMedia()` method. The component renders a button to get the permission and stream, and then renders a video element with a ref attribute to display the camera feed. The component also renders the _MediaRecorder_ component with the stream prop. Then component renders its children with the recorder prop, which contains the mediaRecorder, recording status, and other functions. This code contians some basic buttons to start, stop, pause, and resume the recording process, as well as a recording status. The component also renders a video element and a download link if there are recorded chunks available.
 
 
 ```jsx
@@ -274,4 +274,4 @@ export default Recorder;
 
 > ## Summary
 
-And that’s it I hope this article helped you learn about the Media Recorder API and how to record audio and video streams in React and JavaScript development.
+And that’s it I hope this article helped you learn about the _Media Recorder API_ and how to record audio and video streams in React and JavaScript development.
