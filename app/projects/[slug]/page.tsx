@@ -92,11 +92,11 @@ export default async function Page({
         revalidate: 0,
       },
     }
-  );
+  ).catch(console.error);
 
   const {
     post: { reactions, views },
-  } = await response.json();
+  } = (await response?.json()) || { post: { reactions: {}, views: 0 } };
 
   return (
     <div>
