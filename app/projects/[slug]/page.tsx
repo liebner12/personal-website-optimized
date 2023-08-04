@@ -9,7 +9,7 @@ import { PushView } from 'components/PushView';
 import { getHeadingsFromMdx } from 'lib/getHeadingsFromMdx';
 import { PostData } from 'components/containers/PostData';
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   return getFiles('projects').map((file) => ({
