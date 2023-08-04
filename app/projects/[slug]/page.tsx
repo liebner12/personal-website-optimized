@@ -76,11 +76,27 @@ export default async function Page({
     blurDataURL,
     content,
     markdown,
-    views,
-    reactions,
   } = project;
 
   const toc = getHeadingsFromMdx(markdown);
+
+  const response = await fetch(
+    `${
+      process.env.NODE_ENV === 'production'
+        ? 'https://personal-website-optimized.vercel.app/'
+        : 'http://localhost:3000'
+    }/api/views/${slug}`,
+    {
+      method: 'GET',
+      next: {
+        revalidate: 0,
+      },
+    }
+  );
+
+  const {
+    post: { reactions, views },
+  } = await response.json();
 
   return (
     <div>

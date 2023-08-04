@@ -15,7 +15,7 @@ export type Post =
 export const getPost = async (slug: string): Promise<Post> => {
   const { data, error } = await supabase
     .from('posts')
-    .select('count, reactions')
+    .select('count,reactions')
     .match({ slug: slug })
     .single();
 
