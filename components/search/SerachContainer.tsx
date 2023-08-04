@@ -26,7 +26,7 @@ export const SearchContainer = ({
   return (
     <div
       {...FADE_IN_SECOND}
-      className="mb-auto block w-full flex-shrink-0 flex-col rounded-xl text-white lg:col-span-12 lg:flex xl:col-span-4 xl:col-start-9 xl:row-span-3"
+      className="fade-in-x mb-auto block w-full flex-shrink-0 flex-col rounded-xl text-white lg:col-span-12 lg:flex xl:col-span-4 xl:col-start-9 xl:row-span-3"
     >
       <div className="flex flex-col gap-3 md:flex-row xl:flex-col">
         <Search value={search} setSearch={setSearch} />
