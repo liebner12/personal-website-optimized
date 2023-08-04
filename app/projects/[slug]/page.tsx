@@ -83,7 +83,7 @@ export default async function Page({
   const response = await fetch(
     `${
       process.env.NODE_ENV === 'production'
-        ? process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
         : 'http://localhost:3000'
     }/api/views/${slug}`,
     {
