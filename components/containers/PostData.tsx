@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ReadTimeResults } from 'reading-time';
 import { PostHeader } from 'components/post/PostHeader';
 import { ShortcutsBar } from 'components/shortcuts/ShortcutsBar';
@@ -36,6 +36,23 @@ export const PostData = ({
   type,
 }: Props) => {
   const [currentReactions, setCurrentReactions] = useState(reactions);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(`/api/views/${slug}`, {
+          method: 'GET',
+        });
+        const {
+          post: { reactions: fetchedReactions },
+        } = await response.json();
+
+        setCurrentReactions(fetchedReactions);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [slug]);
 
   return (
     <>
