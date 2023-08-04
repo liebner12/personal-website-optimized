@@ -310,6 +310,12 @@ body {
   mask: var(--mask);
 }
 
+.prose {
+  code > span {
+    @apply break-words;
+  }
+}
+
 @media (min-width: 768px) {
   .background-gradient {
     background: radial-gradient(
