@@ -1,5 +1,5 @@
 'use client';
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { ReadTimeResults } from 'reading-time';
 import { PostHeader } from 'components/post/PostHeader';
 import { ShortcutsBar } from 'components/shortcuts/ShortcutsBar';
@@ -35,27 +35,7 @@ export const PostData = ({
   toc,
   type,
 }: Props) => {
-  const {
-    post: { reactions: fetchedReactions },
-  } = use(
-    fetch(
-      `${
-        process.env.NODE_ENV === 'production'
-          ? `https://${process.env.VERCEL_URL}`
-          : 'http://localhost:3000'
-      }/api/views/${slug}`,
-      {
-        method: 'GET',
-        next: {
-          revalidate: 0,
-        },
-      }
-    ).then((res) => res.json())
-  );
-
-  const [currentReactions, setCurrentReactions] = useState(
-    fetchedReactions || reactions
-  );
+  const [currentReactions, setCurrentReactions] = useState(reactions);
 
   return (
     <>
