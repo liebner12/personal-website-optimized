@@ -27,8 +27,8 @@ export default async function HomePage() {
   return (
     <>
       <PushView slug="homepage" />
-      <Container className="theme-home overflow-hidden py-10 lg:mt-0 lg:!pt-0">
-        <section className="flex flex-col justify-center lg:h-screen lg:max-h-[58rem]">
+      <Container className="theme-home overflow-hidden py-10">
+        <section className="lg:max-h-[58rem]">
           <div className="flex flex-col gap-20 lg:flex-row lg:items-center">
             <div className="fade-in prose prose-invert my-auto">
               <Heading className="mb-8 xl:!max-w-xl">
