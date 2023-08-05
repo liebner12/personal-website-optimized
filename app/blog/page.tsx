@@ -20,9 +20,11 @@ export default async function Blogs() {
     <>
       <PushView slug="blog" />
       <Container isGrid>
-        <Heading className="col-span-1 mb-8 lg:col-span-8" size="sm">
-          My personal<span className="text-primary-main"> journey</span> as a
-          <span className="text-primary-main"> frontend</span> developer
+        <Heading className="fade-in col-span-1 mb-8 lg:col-span-8" size="sm">
+          Embracing JavaScript: A
+          <span className="text-primary-main"> Journey </span>from
+          <span className="text-primary-main"> Novice</span> to
+          <span className="text-primary-main"> Ninja</span>
         </Heading>
         <PostsContainer
           posts={blogs.sort(sortByDate)}

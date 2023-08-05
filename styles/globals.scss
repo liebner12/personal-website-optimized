@@ -388,8 +388,12 @@ body {
 }
 
 .fade-in-x {
-  animation: fade-in-x 0.3s ease-in forwards;
-  -webkit-animation: fade-in-x 0.3s ease-in forwards;
+  animation: fade-in 0.3s ease-in forwards;
+  -webkit-animation: fade-in 0.3s ease-in forwards;
+  @media (min-width: 1024px) {
+    animation: fade-in-x 0.3s ease-in forwards;
+    -webkit-animation: fade-in-x 0.3s ease-in forwards;
+  }
 }
 
 @keyframes fade-in-x {

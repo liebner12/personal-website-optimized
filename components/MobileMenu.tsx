@@ -47,7 +47,7 @@ export const MobileMenu = () => {
       animate={isOpen ? 'open' : 'closed'}
     >
       <motion.div
-        className="absolute left-0 top-0 z-40 h-[100dvh] w-full bg-backgroundOpacity backdrop-blur-sm"
+        className="absolute left-0 top-0 z-40 h-screen w-full bg-backgroundOpacity"
         variants={backgroundFill}
       />
       <motion.button
@@ -73,7 +73,7 @@ export const MobileMenu = () => {
                 backgroundColor: theme.colors.primary.main,
               },
             }}
-            className="h-[3px] w-full flex-shrink-0 rounded-full bg-grey-200"
+            className="h-[3px] w-[23px] flex-shrink-0 rounded-full bg-grey-200"
           />
           <motion.span
             variants={{
@@ -104,13 +104,13 @@ export const MobileMenu = () => {
                 backgroundColor: theme.colors.primary.main,
               },
             }}
-            className="h-[3px] w-full flex-shrink-0 rounded-full bg-grey-200"
+            className="h-[3px] w-[16px] flex-shrink-0 rounded-full bg-grey-200"
           />
         </div>
       </motion.button>
       <motion.div
         className={clsx(
-          'grid-rows-auto-fr fixed left-0 top-0 z-40 h-screen w-full transition-all'
+          'grid-rows-auto-fr fixed left-0 top-0 z-40 h-[100dvh] w-full transition-all'
         )}
         variants={{
           open: { display: 'grid', transition: { duration: 0 } },
