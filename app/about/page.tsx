@@ -51,6 +51,7 @@ export default async function About() {
             <Image
               alt="Picture presenting me"
               src={Me}
+              loading="eager"
               placeholder="blur"
               className="rounded-xl"
             />
@@ -119,7 +120,7 @@ export default async function About() {
           </div>
           <div className="fade-in-x">
             <Image
-              alt="Picture presenting me"
+              alt="Picture of me and my girlfriend Weronika"
               src={MeWithWera}
               placeholder="blur"
               className="rounded-xl"
