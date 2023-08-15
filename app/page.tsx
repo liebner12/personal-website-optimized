@@ -102,7 +102,7 @@ export default async function HomePage() {
               ...blogs.map(({ image, title }) => ({ image, alt: title })),
             ]}
           />
-          <div className="row-start-1 lg:row-start-auto">
+          <div className="fade-in row-start-1 lg:row-start-auto">
             <h2 className="text-4xl font-bold text-primary-main md:text-6xl lg:text-5xl xl:text-6xl">
               Posts that share my knowledge
             </h2>
@@ -121,7 +121,7 @@ export default async function HomePage() {
           id="intro"
           className="mx-auto grid max-w-6xl items-center gap-20 py-20 pt-60 lg:grid-cols-2 lg:gap-36 lg:pt-40 xl:gap-20"
         >
-          <div>
+          <div className="fade-in">
             <h2 className="text-4xl font-bold text-primary-main md:text-6xl lg:text-5xl xl:text-6xl">
               Checkout my developer journey through my projects
             </h2>

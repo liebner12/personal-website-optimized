@@ -60,7 +60,7 @@ export default async function About() {
           id="intro"
           className="mx-auto grid max-w-6xl items-center gap-20 py-20 pt-60 lg:grid-cols-2 lg:gap-36 lg:pt-40 xl:gap-20"
         >
-          <div className="fade-in relative">
+          <div className="fade-in-x relative">
             <ul className="abolute animate-background left-0 top-0 text-primary-main">
               {[...Array(4)].map((value, index) => (
                 <li key={index}>
@@ -83,10 +83,10 @@ export default async function About() {
               alt="League of Legends champions"
               width={1400}
               height={892}
-              className="fade-in-x relative z-10"
+              className="relative z-10"
             />
           </div>
-          <div className="prose prose-invert">
+          <div className="fade-in prose prose-invert">
             <h2 className="text-4xl font-bold md:text-6xl lg:text-5xl xl:text-6xl">
               Besides coding{' '}
               <span className="text-primary-main">I love video games</span>
