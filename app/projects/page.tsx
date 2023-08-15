@@ -20,7 +20,7 @@ export default async function Projects() {
     <>
       <PushView slug="projects" />
       <Container isGrid>
-        <Heading className="col-span-1 mb-8 lg:col-span-8" size="sm">
+        <Heading className="fade-in col-span-1 mb-8 lg:col-span-8" size="sm">
           My personal<span className="text-primary-main"> journey</span> as a
           <span className="text-primary-main"> frontend</span> developer
         </Heading>

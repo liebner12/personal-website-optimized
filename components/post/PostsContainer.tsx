@@ -30,7 +30,10 @@ export function PostsContainer<T extends PostWithMeta>({
         sortBy={sortBy}
         setSortBy={setSortBy}
       />
-      <List isEmpty={filteredPosts.length === 0} color={theme.colors.projects}>
+      <List
+        isEmpty={filteredPosts.length === 0}
+        color={type === 'projects' ? theme.colors.projects : theme.colors.blog}
+      >
         {filteredPosts.map(
           ({
             slug,
