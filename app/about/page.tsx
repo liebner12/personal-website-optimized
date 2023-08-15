@@ -15,8 +15,8 @@ export default async function About() {
     <>
       <PushView slug="about" />
       <Container className="theme-about overflow-hidden py-10">
-        <section className="fade-in mx-auto grid max-w-6xl items-center gap-20 lg:grid-cols-2 lg:gap-10 xl:gap-20">
-          <div className="prose prose-invert row-start-1 lg:row-start-auto">
+        <section className="mx-auto grid max-w-6xl items-center gap-20 lg:grid-cols-2 lg:gap-10 xl:gap-20">
+          <div className="fade-in prose prose-invert row-start-1 lg:row-start-auto">
             <h1 className="text-4xl font-bold  md:text-6xl lg:text-5xl xl:text-6xl">
               Hi, <span className="text-primary-main">I&apos;m Michał</span>
             </h1>
@@ -47,7 +47,7 @@ export default async function About() {
               </ArrowLink>
             </div>
           </div>
-          <div>
+          <div className="fade-in-x">
             <Image
               alt="Picture presenting me"
               src={Me}
@@ -58,9 +58,9 @@ export default async function About() {
         </section>
         <section
           id="intro"
-          className="fade-in mx-auto grid max-w-6xl items-center gap-20 py-20 pt-60 lg:grid-cols-2 lg:gap-36 lg:pt-40 xl:gap-20"
+          className="mx-auto grid max-w-6xl items-center gap-20 py-20 pt-60 lg:grid-cols-2 lg:gap-36 lg:pt-40 xl:gap-20"
         >
-          <div className="relative">
+          <div className="fade-in relative">
             <ul className="abolute animate-background left-0 top-0 text-primary-main">
               {[...Array(4)].map((value, index) => (
                 <li key={index}>
@@ -83,7 +83,7 @@ export default async function About() {
               alt="League of Legends champions"
               width={1400}
               height={892}
-              className="relative z-10"
+              className="fade-in-x relative z-10"
             />
           </div>
           <div className="prose prose-invert">
@@ -103,8 +103,8 @@ export default async function About() {
             </p>
           </div>
         </section>
-        <section className="fade-in mx-auto grid max-w-6xl items-center gap-20 py-20 lg:grid-cols-2 lg:gap-10 xl:gap-20">
-          <div className="prose prose-invert row-start-1 lg:row-start-auto">
+        <section className="mx-auto grid max-w-6xl items-center gap-20 py-20 lg:grid-cols-2 lg:gap-10 xl:gap-20">
+          <div className="fade-in prose prose-invert row-start-1 lg:row-start-auto">
             <h1 className="text-4xl font-bold  md:text-6xl lg:text-5xl xl:text-6xl">
               My <span className="text-primary-main">personal life</span>
             </h1>
@@ -117,7 +117,7 @@ export default async function About() {
               my free time I share with my girlfriend Weronika.
             </p>
           </div>
-          <div>
+          <div className="fade-in-x">
             <Image
               alt="Picture presenting me"
               src={MeWithWera}
