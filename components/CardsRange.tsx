@@ -10,7 +10,9 @@ export const CardsRange = ({
 }: {
   posts: Array<ProjectWithMetaData>;
 }) => {
-  const [currentPosts, setCurrentPosts] = useState(posts.slice(0, 3));
+  const [currentPosts, setCurrentPosts] = useState(
+    posts.sort((a, b) => (b?.views ?? 0) - (a?.views ?? 0)).slice(0, 3)
+  );
   // Sory for code quality :sadge:
   return (
     <div className="flex w-full max-w-full md:block md:w-auto">
