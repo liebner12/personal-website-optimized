@@ -19,7 +19,7 @@ export const Footer = async () => {
           </div>
         )}
         <div className="text-grey-300 sm:ml-auto">
-          All rights reserved © Michał Liebner 2023
+          All rights reserved © Michał Liebner 2024
         </div>
       </div>
     </footer>
