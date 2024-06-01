@@ -30,7 +30,7 @@ export default async function About() {
             </p>
             <p className="text-lg">
               I love to learn new things and I&apos;m not afraid of challenges.
-              Currently I am working as a web developer at{' '}
+              Currently I am working as a frontend developer at{' '}
               <a
                 className="font-bold text-primary-main !underline"
                 href="https://identt.io"
