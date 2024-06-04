@@ -7,6 +7,7 @@ module.exports = {
     domains: ['i.scdn.co', 'res.cloudinary.com'],
     minimumCacheTTL: 86400,
   },
+  output: 'export',
   webpack: (config) => {
     config.plugins.push(
       new CopyWebpackPlugin({
